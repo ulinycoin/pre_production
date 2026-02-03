@@ -1255,5 +1255,38 @@
       "generateFailed": "Failed to generate PDF",
       "noData": "No data found in selected sheets"
     }
+  },
+  "monetization": {
+    "upgrade_now": "Upgrade to PRO",
+    "upgrade": "Upgrade",
+    "pro_badge": "PRO",
+    "restore": "Restore",
+    "restore_hint": "Enter your LemonSqueezy license key",
+    "restore_button": "Restore Purchase",
+    "restore_description": "Subscriptions are synced with your Support ID automatically. Use this form only if you're on a new device.",
+    "choose_plan": "Choose Plan",
+    "secure_checkout": "100% Secure Checkout",
+    "free": {
+      "name": "Free Plan",
+      "price": "0",
+      "interval": "forever",
+      "cta": "Current Plan",
+      "description": "Basic tools and limits"
+    },
+    "pro": {
+      "cta": "Join PRO"
+    },
+    "lifetime": {
+      "cta": "Best Value"
+    },
+    "features": {
+      "no_limits": "No File Limits",
+      "batch": "Batch Processing (20+)",
+      "tier3": "All Tools (OCR, Sign)",
+      "support": "Priority Support",
+      "unlimited": "Unlimited"
+    },
+    "premium_feature": "Premium Feature",
+    "premium_description": "This tool is only available for PRO users. Join now to remove all limits and get access to advanced PDF processing features."
   }
 }

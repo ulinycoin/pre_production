@@ -1,10 +1,12 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import type { Tool, ToolGroup } from '@/types';
 import { TOOL_GROUPS } from '@/types';
 import { Button } from '@/components/ui/button';
 import { useI18n } from '@/hooks/useI18n';
 import { useSupportId } from '@/hooks/useSupportId';
+import { useSubscription } from '@/hooks/useSubscription';
 import {
+  Zap,
   Files,
   Scissors,
   Minimize2,
@@ -74,6 +76,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
 }) => {
   const { t } = useI18n();
   const supportId = useSupportId();
+  const { isPremium } = useSubscription();
 
   // Filter tools based on selected group
   const filteredTools = TOOLS.filter((tool) =>
@@ -139,8 +142,37 @@ export const Sidebar: React.FC<SidebarProps> = ({
             })}
           </ul>
 
+          {/* Pro / Upgrade Section */}
+          <div className="mt-4 px-2 pb-4">
+            {isPremium ? (
+              <div className={`flex items-center gap-3 p-3 rounded-2xl bg-green-500/10 border border-green-500/20 text-green-500 ${collapsed ? 'justify-center' : ''}`}>
+                <Zap size={18} className="fill-green-500" />
+                {!collapsed && (
+                  <div className="flex flex-col">
+                    <span className="text-xs font-bold uppercase tracking-wider">Pro Status</span>
+                    <span className="text-[10px] opacity-70">Active subscription</span>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <button
+                onClick={() => window.location.hash = '#upgrade'}
+                className={`group relative flex items-center gap-3 p-3 rounded-2xl bg-accent-blue/10 border border-accent-blue/30 text-accent-blue transition-all hover:bg-accent-blue/20 hover:border-accent-blue/50 w-full overflow-hidden ${collapsed ? 'justify-center' : ''}`}
+              >
+                <div className="card-glass opacity-0 group-hover:opacity-100"></div>
+                <Zap size={18} className="fill-accent-blue animate-pulse-slow relative z-10" />
+                {!collapsed && (
+                  <div className="flex flex-col items-start relative z-10 text-left">
+                    <span className="text-xs font-bold uppercase tracking-wider">Upgrade to Pro</span>
+                    <span className="text-[10px] opacity-70 italic line-clamp-1">Unlock all tools & limits</span>
+                  </div>
+                )}
+              </button>
+            )}
+          </div>
+
           {/* Resources Footer */}
-          <div className="mt-8 pt-4 border-t border-white/10">
+          <div className="mt-4 pt-4 border-t border-white/10">
             {!collapsed && (
               <div className="px-3 space-y-4">
                 <h3 className="text-[10px] uppercase tracking-[0.2em] font-bold text-gray-500/80">

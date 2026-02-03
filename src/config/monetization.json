@@ -1,0 +1,51 @@
+{
+    "tiers": {
+        "free": {
+            "name": "Free",
+            "price": 0,
+            "features": [
+                "Basic PDF Tools",
+                "50MB File Limit",
+                "2 Files Batch"
+            ],
+            "tier": [
+                1,
+                2
+            ]
+        },
+        "pro": {
+            "name": "Pro Subscription",
+            "price": 4.99,
+            "interval": "month",
+            "currency": "EUR",
+            "features": [
+                "All Premium Tools",
+                "Unlimited File Size",
+                "20 Files Batch",
+                "Priority Support"
+            ],
+            "tier": [
+                1,
+                2,
+                3
+            ]
+        },
+        "lifetime": {
+            "name": "Pro Lifetime",
+            "price": 49.99,
+            "interval": "once",
+            "currency": "EUR",
+            "features": [
+                "All Premium Tools",
+                "Lifetime Updates",
+                "No Subscription",
+                "Priority Support"
+            ],
+            "tier": [
+                1,
+                2,
+                3
+            ]
+        }
+    }
+}

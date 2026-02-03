@@ -10,7 +10,9 @@ import { Toaster } from '@/components/ui/sonner';
 import { useSupportId } from '@/hooks/useSupportId';
 import { FeedbackDialog } from '@/components/common/FeedbackDialog';
 import { ExtensionPromptBanner } from '@/components/common/ExtensionPromptBanner';
-import { MessageSquare, Puzzle } from 'lucide-react';
+import { MessageSquare, Puzzle, Zap } from 'lucide-react';
+import { SubscriptionModal } from '@/components/modals/SubscriptionModal';
+import { useSubscription } from '@/hooks/useSubscription';
 import type { Theme, ToolGroup } from '@/types';
 
 // Lazy load tool components for better performance
@@ -51,7 +53,9 @@ function App() {
   const { currentTool, setCurrentTool, context } = useHashRouter();
   const { t } = useI18n();
   const supportId = useSupportId();
+  const { isPremium } = useSubscription();
   const [isFeedbackOpen, setIsFeedbackOpen] = useState(false);
+  const [isSubscriptionModalOpen, setIsSubscriptionModalOpen] = useState(false);
 
   // Theme management
   const [theme, setTheme] = useState<Theme>(() => {
@@ -109,6 +113,23 @@ function App() {
 
     document.addEventListener('click', handleDownloadClick, true);
     return () => document.removeEventListener('click', handleDownloadClick, true);
+  }, []);
+
+  // Listen for #upgrade hash to open subscription modal
+  useEffect(() => {
+    const handleHashChange = () => {
+      if (window.location.hash === '#upgrade') {
+        setIsSubscriptionModalOpen(true);
+        // Optional: clear hash after opening
+        // window.history.replaceState(null, '', window.location.pathname + window.location.search);
+      }
+    };
+
+    window.addEventListener('hashchange', handleHashChange);
+    // Check on initial load
+    handleHashChange();
+
+    return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
 
@@ -179,6 +200,24 @@ function App() {
               <span className="text-lg relative z-10 transition-transform duration-500 group-hover:rotate-[12deg]">☕</span>
               <span className="relative z-10">{t('common.supportDeveloper')}</span>
             </a>
+
+            {/* Upgrade/Pro Badge */}
+            {!isPremium ? (
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setIsSubscriptionModalOpen(true)}
+                className="flex items-center gap-2 px-3 py-2 bg-accent-blue/10 hover:bg-accent-blue/20 text-accent-blue border border-accent-blue/20 rounded-lg transition-all font-bold text-sm group"
+              >
+                <Zap size={16} className="fill-accent-blue animate-pulse-slow" />
+                <span className="hidden md:inline">{t('monetization.upgrade')}</span>
+              </Button>
+            ) : (
+              <div className="flex items-center gap-2 px-3 py-2 bg-green-500/10 text-green-500 border border-green-500/20 rounded-lg font-bold text-xs uppercase tracking-wider">
+                <Zap size={14} className="fill-green-500" />
+                {t('monetization.pro_badge')}
+              </div>
+            )}
 
             {/* Feedback Button */}
             <Button
@@ -319,6 +358,10 @@ function App() {
         onOpenChange={setIsFeedbackOpen}
         supportId={supportId}
         currentTool={currentTool || undefined}
+      />
+      <SubscriptionModal
+        isOpen={isSubscriptionModalOpen}
+        onClose={() => setIsSubscriptionModalOpen(false)}
       />
     </div>
   );
