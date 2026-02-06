@@ -1,0 +1,48 @@
+--- de.json ---
+No missing keys.
+Untranslated keys (same as EN, 99): ['addFormFields.panel.defaultOptions', 'addFormFields.types.dropdown', 'addFormFields.types.text', 'addFormFields.zoom', 'addText.format.position', 'addText.zoom', 'common.change', 'common.clearAll', 'common.convertAnother', 'common.downloadAll', 'common.generatingPreview', 'common.newSize', 'common.nextPage', 'common.optional', 'common.originalSize', 'common.page', 'common.pages', 'common.prevPage', 'common.preview', 'common.quickActions']
+Interpolation mismatches (1):
+  editText.applyChanges: EN {'{s}', '{count}'} VS LOC {'{count}'}
+
+--- es.json ---
+No missing keys.
+Untranslated keys (same as EN, 88): ['addFormFields.panel.defaultOptions', 'addFormFields.zoom', 'addText.zoom', 'common.change', 'common.clickToEdit', 'common.downloadAll', 'common.error', 'common.generatingPreview', 'common.newSize', 'common.nextPage', 'common.originalSize', 'common.page', 'common.pages', 'common.prevPage', 'common.selectFiles', 'common.selected', 'common.selectedFile', 'common.useInOtherTools', 'common.zoom', 'editText.format.textColor']
+Interpolation mismatches (1):
+  editText.applyChanges: EN {'{s}', '{count}'} VS LOC {'{count}'}
+
+--- fr.json ---
+No missing keys.
+Untranslated keys (same as EN, 105): ['addFormFields.panel.defaultOptions', 'addText.format.position', 'addText.format.rotation', 'addText.toolbar.page', 'common.change', 'common.downloadAll', 'common.generatingPreview', 'common.nextPage', 'common.page', 'common.pages', 'common.prevPage', 'common.selectFiles', 'common.selected', 'common.zoom', 'compress.pages', 'compress.quality.high.name', 'compress.quality.low.name', 'editText.format.rotation', 'editText.xLabel', 'editText.yLabel']
+Interpolation mismatches (1):
+  editText.applyChanges: EN {'{s}', '{count}'} VS LOC {'{count}'}
+
+--- it.json ---
+No missing keys.
+Untranslated keys (same as EN, 69): ['addFormFields.panel.defaultOptions', 'addFormFields.zoom', 'addText.zoom', 'common.change', 'common.downloadAll', 'common.email', 'common.generatingPreview', 'common.nextPage', 'common.prevPage', 'common.selectFiles', 'common.selected', 'common.zoom', 'editText.xLabel', 'editText.yLabel', 'imagesToPdf.pageSizes.a4', 'imagesToPdf.pageSizes.letter', 'monetization.free.price', 'monetization.private_secure_fast', 'monetization.pro_badge', 'ocr.errors.limitReached']
+Interpolation mismatches (1):
+  editText.applyChanges: EN {'{s}', '{count}'} VS LOC {'{count}'}
+
+--- ja.json ---
+No missing keys.
+Untranslated keys (same as EN, 53): ['addFormFields.panel.defaultOptions', 'addText.defaultFileName', 'common.change', 'common.generatingPreview', 'common.nextPage', 'common.prevPage', 'common.selected', 'editText.xLabel', 'editText.yLabel', 'imagesToPdf.pageSizes.a4', 'monetization.free.price', 'monetization.private_secure_fast', 'monetization.pro_badge', 'ocr.errors.limitReached', 'ocr.errors.limitReachedDesc', 'ocr.outputFormat.hocr', 'ocr.outputFormat.hocrShort', 'ocr.outputFormat.tsv', 'rotate.nextPage', 'rotate.prevPage']
+Interpolation mismatches (1):
+  editText.applyChanges: EN {'{s}', '{count}'} VS LOC {'{count}'}
+
+--- pt.json ---
+No missing keys.
+Untranslated keys (same as EN, 69): ['addFormFields.panel.defaultOptions', 'addFormFields.zoom', 'addText.title', 'addText.toolbar.redo', 'addText.toolbar.undo', 'addText.zoom', 'common.change', 'common.generatingPreview', 'common.nextPage', 'common.prevPage', 'common.selected', 'common.zoom', 'editText.xLabel', 'editText.yLabel', 'imagesToPdf.pageSizes.a4', 'monetization.free.price', 'monetization.private_secure_fast', 'monetization.pro_badge', 'ocr.errors.limitReached', 'ocr.errors.limitReachedDesc']
+Interpolation mismatches (1):
+  editText.applyChanges: EN {'{s}', '{count}'} VS LOC {'{count}'}
+
+--- ru.json ---
+No missing keys.
+Untranslated keys (same as EN, 27): ['addText.defaultFileName', 'common.change', 'common.email', 'common.generatingPreview', 'common.nextPage', 'common.prevPage', 'common.selected', 'editText.xLabel', 'editText.yLabel', 'imagesToPdf.pageSizes.a4', 'imagesToPdf.pageSizes.letter', 'monetization.free.price', 'monetization.pro_badge', 'ocr.outputFormat.hocr', 'ocr.outputFormat.hocrShort', 'ocr.outputFormat.tsv', 'sign.errors.signFailed', 'tools.ocr-pdf.name', 'tools.unlock-pdf.description', 'tools.unlock-pdf.name']
+Interpolation mismatches (2):
+  upload.errors.fileTooLargeFree: EN {'{max}'} VS LOC set()
+  editText.applyChanges: EN {'{s}', '{count}'} VS LOC {'{count}'}
+
+--- zh.json ---
+No missing keys.
+Untranslated keys (same as EN, 62): ['addFormFields.panel.defaultOptions', 'addText.defaultFileName', 'common.change', 'common.downloadAll', 'common.generatingPreview', 'common.nextPage', 'common.prevPage', 'common.selectFiles', 'common.selected', 'editText.xLabel', 'editText.yLabel', 'imagesToPdf.pageSizes.a4', 'monetization.free.price', 'monetization.private_secure_fast', 'monetization.pro_badge', 'ocr.errors.limitReached', 'ocr.errors.limitReachedDesc', 'ocr.outputFormat.hocr', 'ocr.outputFormat.hocrShort', 'ocr.outputFormat.tsv']
+Interpolation mismatches (1):
+  editText.applyChanges: EN {'{s}', '{count}'} VS LOC {'{count}'}

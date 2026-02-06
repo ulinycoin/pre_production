@@ -1,0 +1,92 @@
+--- src/App.tsx ---
+  Tag text: 'Loading tool...'
+  Tag text: 'LocalPDF'
+  Tag text: 'Sanctuary'
+  Tag text: 'Tool Not Implemented'
+  Tag text: 'This tool is coming soon.'
+  Tag text: 'Tool implementation coming soon...'
+  Prop text: 'LocalPDF'
+--- src/components/WelcomeScreen.tsx ---
+  Tag text: 'Loading preview...'
+  Tag text: 'No preview'
+  Tag text: 'Select a tool to begin'
+  Tag text: 'Choose a compatible tool and your files will transfer instantly.'
+--- src/components/ui/dialog.tsx ---
+  Tag text: 'Close'
+--- src/components/tools/DeletePagesPDF.tsx ---
+  Prop text: 'Zoomed page'
+--- src/components/tools/OCRPDF.tsx ---
+  Tag text: 'OCR Results'
+  Tag text: 'Copy Text'
+  Prop text: 'Preview'
+--- src/components/tools/MergePDF.tsx ---
+  Tag text: 'Remove'
+  Tag text: 'Add File'
+--- src/components/tools/ExtractPagesPDF.tsx ---
+  Prop text: 'Zoomed page'
+--- src/components/tools/PDFToWord.tsx ---
+  Prop text: 'PDF Preview'
+--- src/components/tools/SignPDF.tsx ---
+  Tag text: 'Reset'
+  Prop text: 'Your Name'
+  Prop text: 'PDF Preview'
+--- src/components/tools/PDFToImages.tsx ---
+  Tag text: 'PNG'
+  Tag text: 'JPEG'
+  Prop text: 'From'
+  Prop text: 'To'
+  Prop text: 'Zoomed page'
+--- src/components/tools/WatermarkPDF.tsx ---
+  Prop text: 'PDF Preview'
+  Prop text: 'Watermark'
+  Prop text: 'Selected'
+--- src/components/tools/ImagesToPDF.tsx ---
+  Tag text: 'Show All'
+  Tag text: 'Auto Orientation'
+  Tag text: 'Add More'
+--- src/components/layout/Sidebar.tsx ---
+  Tag text: 'TOOL_GROUPS[selectedGroup].includes(tool.id)
+  );
+
+  return ('
+  Tag text: 'Pro Status'
+  Tag text: 'Active subscription'
+  Tag text: 'Upgrade to Pro'
+  Tag text: 'Unlock all tools & limits'
+  Tag text: 'Resources'
+  Prop text: 'Copy ID'
+--- src/components/smart/SmartCompressionPanel.tsx ---
+  Tag text: 'AI'
+--- src/components/smart/SmartImageFilterPanel.tsx ---
+  Tag text: 'AI'
+  Tag text: 'AI'
+--- src/components/smart/SmartMergePanel.tsx ---
+  Tag text: 'AI'
+  Tag text: 'AI'
+--- src/components/smart/SmartOrganizePanel.tsx ---
+  Tag text: 'AI'
+  Tag text: 'AI'
+--- src/components/modals/SubscriptionModal.tsx ---
+  Tag text: 'LocalPDF PRO'
+  Tag text: 'Privacy Sanctuary'
+  Tag text: 'All processing stays local. Your subscription key is verified anonymously.'
+  Prop text: 'LS-XXXX-XXXX-XXXX-XXXX'
+--- src/components/common/PDFPreview.tsx ---
+  Tag text: 'Loading...'
+  Tag text: 'Failed to load'
+--- src/components/common/FeedbackDialog.tsx ---
+  Tag text: 'Support ID:'
+--- src/components/common/PDFMultiPagePreview.tsx ---
+  Tag text: 'Loading document...'
+  Tag text: 'Failed to load preview'
+  Tag text: 'Rendering...'
+--- src/components/common/preview/PreviewImage.tsx ---
+  Tag text: 'Loading preview...'
+  Tag text: 'Failed to load preview'
+--- src/components/common/preview/PreviewFrame.tsx ---
+  Tag text: 'Rendering pages...'
+--- src/components/common/preview/PreviewCanvas.tsx ---
+  Tag text: 'Loading preview...'
+  Tag text: 'Failed to load preview'
+--- src/hooks/usePDFThumbnails.tsx ---
+  Tag text: 'Promise'

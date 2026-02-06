@@ -125,6 +125,7 @@ const localizedPages = [
   '/legal-privacy-pdf', '/finance-privacy-pdf', '/medical-privacy-pdf', '/extension'
 ];
 const isLocalizedPath = localizedPages.includes(basePath);
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <!DOCTYPE html>
@@ -187,14 +188,14 @@ const isLocalizedPath = localizedPages.includes(basePath);
   <meta name="apple-mobile-web-app-title" content={siteName}>
 
   <!-- Favicons and Icons -->
-  <link rel="icon" type="image/png" sizes="16x16" href="/logos/localpdf-favicon-16x16.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/logos/localpdf-header-32x32.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/logos/localpdf-apple-180x180.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="/logos/localpdf-pwa-192x192.png">
-  <link rel="icon" type="image/png" sizes="512x512" href="/logos/localpdf-pwa-512x512.png">
+  <link rel="icon" type="image/png" sizes="16x16" href={`${base}/logos/localpdf-favicon-16x16.png`}>
+  <link rel="icon" type="image/png" sizes="32x32" href={`${base}/logos/localpdf-header-32x32.png`}>
+  <link rel="apple-touch-icon" sizes="180x180" href={`${base}/logos/localpdf-apple-180x180.png`}>
+  <link rel="icon" type="image/png" sizes="192x192" href={`${base}/logos/localpdf-pwa-192x192.png`}>
+  <link rel="icon" type="image/png" sizes="512x512" href={`${base}/logos/localpdf-pwa-512x512.png`}>
 
   <!-- PWA Manifest -->
-  <link rel="manifest" href="/manifest.json">
+  <link rel="manifest" href={`${base}/manifest.json`}>
 
   <script type="application/ld+json" set:html={JSON.stringify(softwareSchema)} />
   <slot name="head" />
@@ -237,7 +238,7 @@ const isLocalizedPath = localizedPages.includes(basePath);
     // Register Service Worker for PWA
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js').then(registration => {
+        navigator.serviceWorker.register(`${base}/sw.js`).then(registration => {
           console.log('SW registered: ', registration);
         }).catch(registrationError => {
           console.log('SW registration failed: ', registrationError);
@@ -396,36 +397,36 @@ const isLocalizedPath = localizedPages.includes(basePath);
   <footer>
     <div class="footer-content">
       <div class="footer-grid">
-        <div class="footer-section">
           <strong>{footerLabels.resources}</strong>
-          <a href="/learn">{footerLabels.learn}</a>
-          <a href="/blog">{footerLabels.blog}</a>
-          <a href="/about">{footerLabels.about}</a>
-          <a href="/comparison">{footerLabels.compare}</a>
-          <a href={(lang === 'en') ? '/extension' : `/${lang}/extension`}>{footerLabels.extension}</a>
+          <a href={`${base}/learn`}>{footerLabels.learn}</a>
+          <a href={`${base}/blog`}>{footerLabels.blog}</a>
+          <a href={`${base}/about`}>{footerLabels.about}</a>
+          <a href={`${base}/comparison`}>{footerLabels.compare}</a>
+          <a href={(lang === 'en') ? `${base}/extension` : `${base}/${lang}/extension`}>{footerLabels.extension}</a>
         </div>
         <div class="footer-section">
           <strong>{footerLabels.solutions}</strong>
-          <a href={(lang === 'en') ? '/legal-privacy-pdf' : `/${lang}/legal-privacy-pdf`}>{footerLabels.legalSolutions}</a>
-          <a href={(lang === 'en') ? '/finance-privacy-pdf' : `/${lang}/finance-privacy-pdf`}>{footerLabels.financeSolutions}</a>
-          <a href={(lang === 'en') ? '/medical-privacy-pdf' : `/${lang}/medical-privacy-pdf`}>{footerLabels.medicalSolutions}</a>
+          <a href={(lang === 'en') ? `${base}/legal-privacy-pdf` : `${base}/${lang}/legal-privacy-pdf`}>{footerLabels.legalSolutions}</a>
+          <a href={(lang === 'en') ? `${base}/finance-privacy-pdf` : `${base}/${lang}/finance-privacy-pdf`}>{footerLabels.financeSolutions}</a>
+          <a href={(lang === 'en') ? `${base}/medical-privacy-pdf` : `${base}/${lang}/medical-privacy-pdf`}>{footerLabels.medicalSolutions}</a>
         </div>
         {currentCategories.map(cat => (
           <div class="footer-section">
             <strong>{cat.name}</strong>
-            {cat.tools.map(tool => {
+          {cat.tools.map(tool => {
               const toolSlug = `/${tool.id}`;
               const isToolLocalized = localizedPages.includes(toolSlug);
+              const toolHref = (isToolLocalized && lang !== 'en') ? `${base}/${lang}${toolSlug}` : `${base}${toolSlug}`;
               return (
-                <a href={(isToolLocalized && lang !== 'en') ? `/${lang}${toolSlug}` : toolSlug}>{tool.name}</a>
+                <a href={toolHref}>{tool.name}</a>
               );
             })}
           </div>
         ))}
         <div class="footer-section">
           <strong>{footerLabels.legal}</strong>
-          <a href="/privacy">{footerLabels.privacy}</a>
-          <a href="/terms">{footerLabels.terms}</a>
+          <a href={`${base}/privacy`}>{footerLabels.privacy}</a>
+          <a href={`${base}/terms`}>{footerLabels.terms}</a>
         </div>
       </div>
       

@@ -9,28 +9,29 @@ const navLabels = {
   de: { tools: 'Tools', blog: 'Blog', learn: 'Lernen', compare: 'Vergleichen', about: 'Über uns', extension: 'Erweiterung' },
   ja: { tools: 'ツール', blog: 'ブログ', learn: '学ぶ', compare: '比較', about: 'ツールについて', extension: '拡張機能' }
 }[lang] || { tools: 'Tools', blog: 'Blog', learn: 'Learn', compare: 'Compare', about: 'About', extension: 'Extension' };
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 <header>
-  <a href={langPrefix || "/"} class="logo">
-    <img src="/logos/localpdf-header-64x64.png" alt="LocalPDF" class="logo-image" width="40" height="40" />
+  <a href={langPrefix ? `${base}${langPrefix}` : `${base}/`} class="logo">
+    <img src={`${base}/logos/localpdf-header-64x64.png`} alt="LocalPDF" class="logo-image" width="40" height="40" />
     <div class="logo-text">
       <div class="logo-title">LocalPDF</div>
       <div class="logo-subtitle">Sanctuary</div>
     </div>
   </a>
   <nav>
-    <a href={langPrefix || "/"}>{navLabels.tools}</a>
-    <a href="/blog">{navLabels.blog}</a>
-    <a href="/learn">{navLabels.learn}</a>
-    <a href="/comparison">{navLabels.compare}</a>
-    <a href="/about">{navLabels.about}</a>
-    <a href={(langPrefix || "") + "/extension"}>{navLabels.extension}</a>
+    <a href={langPrefix ? `${base}${langPrefix}` : `${base}/`}>{navLabels.tools}</a>
+    <a href={`${base}/blog`}>{navLabels.blog}</a>
+    <a href={`${base}/learn`}>{navLabels.learn}</a>
+    <a href={`${base}/comparison`}>{navLabels.compare}</a>
+    <a href={`${base}/about`}>{navLabels.about}</a>
+    <a href={`${base}${langPrefix || ""}/extension`}>{navLabels.extension}</a>
     <LanguagePicker lang={lang} />
   </nav>
   
   <!-- Mobile actions (Visible only on mobile) -->
   <div class="mobile-actions">
-    <a href={(langPrefix || "") + "/extension"} class="mobile-extension-cta">
+    <a href={`${base}${langPrefix || ""}/extension`} class="mobile-extension-cta">
       {navLabels.extension}
     </a>
     <div class="mobile-lang-picker">
