@@ -1,4 +1,17 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
+import { createClient } from '@vercel/kv';
+
+const kv = process.env.KV_REST_API_URL && process.env.KV_REST_API_TOKEN
+  ? createClient({
+      url: process.env.KV_REST_API_URL,
+      token: process.env.KV_REST_API_TOKEN,
+    })
+  : null;
+
+const isValidEmail = (value: string) => /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(value);
+
+const escapeMarkdown = (value: string) =>
+  value.replace(/[_*\\[\\]()~`>#+\\-=|{}.!]/g, '\\\\$&');
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
     if (req.method !== 'POST') {
@@ -6,6 +19,40 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     }
 
     const { rating, comment, email, supportId, tool } = req.body;
+
+    if (kv) {
+        const ip = req.headers['x-forwarded-for'] || 'anonymous';
+        const limitKey = `ratelimit:feedback:${ip}`;
+        const currentRequests = await kv.get<number>(limitKey) || 0;
+
+        if (currentRequests >= 5) {
+            return res.status(429).json({ error: 'Too many feedback attempts. Please try again later.' });
+        }
+
+        await kv.set(limitKey, currentRequests + 1, { ex: 3600 });
+    }
+
+    const parsedRating = Number(rating);
+    if (!Number.isInteger(parsedRating) || parsedRating < 1 || parsedRating > 5) {
+        return res.status(400).json({ error: 'Rating must be between 1 and 5' });
+    }
+    if (comment && typeof comment !== 'string') {
+        return res.status(400).json({ error: 'Comment must be a string' });
+    }
+    if (email && (typeof email !== 'string' || !isValidEmail(email))) {
+        return res.status(400).json({ error: 'Invalid email format' });
+    }
+    if (!supportId || typeof supportId !== 'string' || supportId.length > 64) {
+        return res.status(400).json({ error: 'Invalid support ID' });
+    }
+    if (tool && (typeof tool !== 'string' || tool.length > 64)) {
+        return res.status(400).json({ error: 'Invalid tool value' });
+    }
+
+    const safeComment = escapeMarkdown(comment || 'No comment').slice(0, 2000);
+    const safeEmail = escapeMarkdown(email || 'Anonymous').slice(0, 256);
+    const safeTool = escapeMarkdown(tool || 'N/A').slice(0, 64);
+    const safeSupportId = escapeMarkdown(supportId).slice(0, 64);
 
     const botToken = process.env.TELEGRAM_BOT_TOKEN;
     const chatId = process.env.TELEGRAM_CHAT_ID;
@@ -15,16 +62,16 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         return res.status(500).json({ error: 'Feedback system not configured' });
     }
 
-    const emojiRating = ['⭐', '⭐⭐', '⭐⭐⭐', '⭐⭐⭐⭐', '⭐⭐⭐⭐⭐'][rating - 1] || rating;
+    const emojiRating = ['⭐', '⭐⭐', '⭐⭐⭐', '⭐⭐⭐⭐', '⭐⭐⭐⭐⭐'][parsedRating - 1] || parsedRating;
 
     const message = `
 🌟 *New Feedback Received*
 
 *Rating:* ${emojiRating}
-*Tool:* ${tool || 'N/A'}
-*Comment:* ${comment || 'No comment'}
-*Email:* ${email || 'Anonymous'}
-*Support ID:* \`${supportId}\`
+*Tool:* ${safeTool}
+*Comment:* ${safeComment}
+*Email:* ${safeEmail}
+*Support ID:* \`${safeSupportId}\`
   `.trim();
 
     try {

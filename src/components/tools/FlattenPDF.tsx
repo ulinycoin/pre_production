@@ -3,12 +3,15 @@ import { ToolLayout } from '@/components/common/ToolLayout';
 import { useI18n } from '@/hooks/useI18n';
 import { useSharedFile } from '@/hooks/useSharedFile';
 import pdfService from '@/services/pdfService';
+import { useSubscription } from '@/hooks/useSubscription';
 import type { UploadedFile } from '@/types/pdf';
 import { Button } from '@/components/ui/button';
-import { CheckCircle2, Layers } from 'lucide-react';
+import { DownloadGate } from '@/components/common/DownloadGate';
+import { CheckCircle2, Layers, RefreshCw } from 'lucide-react';
 
 export const FlattenPDF: React.FC = () => {
   const { t } = useI18n();
+  const { isPremium } = useSubscription();
   const { sharedFile, clearSharedFile } = useSharedFile();
   const [file, setFile] = useState<UploadedFile | null>(null);
   const [isProcessing, setIsProcessing] = useState(false);
@@ -43,7 +46,7 @@ export const FlattenPDF: React.FC = () => {
     try {
       const res = await pdfService.flattenPDF(file.file, () => { });
       if (res.success && res.data) {
-        setResult({ blob: res.data, metadata: res.metadata });
+        setResult({ blob: res.data, metadata: res.metadata || {} });
       } else {
         alert(res.error?.message || 'Flattening failed');
       }
@@ -54,9 +57,23 @@ export const FlattenPDF: React.FC = () => {
     }
   };
 
-  const handleDownload = () => {
+  const handleDownload = async (watermarked: boolean) => {
     if (!result) return;
-    pdfService.downloadFile(result.blob, file?.name.replace('.pdf', '_flattened.pdf') || 'flattened.pdf');
+
+    let blobToDownload = result.blob;
+
+    // Apply watermark if requested
+    if (!isPremium && watermarked) {
+      try {
+        const arrayBuffer = await result.blob.arrayBuffer();
+        const watermarkedBytes = await pdfService.applyWatermark(new Uint8Array(arrayBuffer));
+        blobToDownload = new Blob([new Uint8Array(watermarkedBytes)], { type: 'application/pdf' });
+      } catch (err) {
+        console.error('Failed to apply watermark:', err);
+      }
+    }
+
+    pdfService.downloadFile(blobToDownload, file?.name.replace('.pdf', '_flattened.pdf') || 'flattened.pdf');
   };
 
   const handleReset = () => {
@@ -67,6 +84,9 @@ export const FlattenPDF: React.FC = () => {
   const renderContent = () => {
     if (!file) return null;
     if (result) {
+      const originalSize = typeof result.metadata.originalSize === 'number' ? result.metadata.originalSize : 0;
+      const processedSize = typeof result.metadata.processedSize === 'number' ? result.metadata.processedSize : 0;
+
       return (
         <div className="text-center space-y-6">
           <div className="w-20 h-20 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mx-auto text-green-600">
@@ -74,12 +94,19 @@ export const FlattenPDF: React.FC = () => {
           </div>
           <h2 className="text-2xl font-bold">{t('flatten.success.title')}</h2>
           <div className="text-gray-500 space-y-1">
-            <p>{t('flatten.success.originalSize')}: {pdfService.formatFileSize(result.metadata.originalSize)}</p>
-            <p>{t('flatten.success.processedSize')}: {pdfService.formatFileSize(result.metadata.processedSize)}</p>
+            <p>{t('flatten.success.originalSize')}: {pdfService.formatFileSize(originalSize)}</p>
+            <p>{t('flatten.success.processedSize')}: {pdfService.formatFileSize(processedSize)}</p>
           </div>
           <div className="flex justify-center gap-4">
-            <Button onClick={handleDownload} size="lg" className="bg-green-600 hover:bg-green-700">{t('common.download')}</Button>
-            <Button onClick={handleReset} variant="outline" size="lg">{t('flatten.flattenAnother')}</Button>
+            <DownloadGate
+              toolId="flatten-pdf"
+              onDownload={handleDownload}
+              showWatermarkLabel={!isPremium}
+            />
+            <Button onClick={handleReset} variant="outline" className="h-11 px-8 rounded-xl font-bold border-2">
+              <RefreshCw className="mr-2 h-4 w-4" />
+              {t('flatten.flattenAnother')}
+            </Button>
           </div>
         </div>
       );
@@ -117,7 +144,6 @@ export const FlattenPDF: React.FC = () => {
       maxFiles={1}
       uploadTitle={t('common.selectFile')}
       uploadDescription={t('upload.singleFileAllowed')}
-      accept=".pdf"
       actions={!result && file ? renderActions() : null}
     >
       {renderContent()}

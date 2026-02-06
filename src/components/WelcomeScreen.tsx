@@ -410,13 +410,13 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onToolSelect }) =>
                           {uploadedFile.type === 'word' && !uploadedFile.previewHtml && (
                             <div className="flex flex-col items-center justify-center gap-2 text-gray-500">
                               <div className="h-6 w-6 animate-spin rounded-full border-2 border-ocean-500 border-t-transparent" />
-                              <div className="text-xs font-medium">Loading preview...</div>
+                              <div className="text-xs font-medium">{t('common.loadingPreview')}</div>
                             </div>
                           )}
                           {uploadedFile.type === 'unknown' && (
                             <div className="flex flex-col items-center gap-2 text-gray-400">
                               <FileType className="w-6 h-6" />
-                              <span className="text-xs">No preview</span>
+                              <span className="text-xs">{t('common.noPreview')}</span>
                             </div>
                           )}
                         </PreviewFrame>
@@ -446,10 +446,10 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onToolSelect }) =>
                   </div>
                   <div>
                     <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-1">
-                      Select a tool to begin
+                      {t('welcome.selectToolToBegin')}
                     </h4>
                     <p className="text-gray-600 dark:text-gray-300 text-lg">
-                      Choose a compatible tool and your files will transfer instantly.
+                      {t('welcome.chooseToolDescription')}
                     </p>
                   </div>
                 </div>

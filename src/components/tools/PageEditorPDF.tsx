@@ -18,11 +18,13 @@ import {
 import { CSS } from '@dnd-kit/utilities';
 import { ToolLayout } from '@/components/common/ToolLayout';
 import { Button } from '@/components/ui/button';
+import { DownloadGate } from '@/components/common/DownloadGate';
 import { Card } from '@/components/ui/card';
 import { Checkbox } from '@/components/ui/checkbox';
 import { useI18n } from '@/hooks/useI18n';
 import { useSharedFile } from '@/hooks/useSharedFile';
 import { usePDFThumbnails, type PageThumbnail } from '@/hooks/usePDFThumbnails';
+import { useSubscription } from '@/hooks/useSubscription';
 import pdfService from '@/services/pdfService';
 import { SmartOrganizePanel } from '@/components/smart/SmartOrganizePanel';
 import type { UploadedFile } from '@/types/pdf';
@@ -33,6 +35,7 @@ import {
   RotateCw,
   Trash2,
   Download,
+  RefreshCw,
   RefreshCcw,
   CheckCircle2,
   Minimize2,
@@ -202,6 +205,8 @@ const SortablePage: React.FC<{
 
 export const PageEditorPDF: React.FC = () => {
   const { t } = useI18n();
+  const { status } = useSubscription();
+  const isPremium = status === 'pro' || status === 'lifetime';
   const { sharedFile, clearSharedFile, setSharedFile: saveSharedFile } = useSharedFile();
   const [file, setFile] = useState<UploadedFile | null>(null);
   const [pages, setPages] = useState<PageItem[]>([]);
@@ -446,7 +451,7 @@ export const PageEditorPDF: React.FC = () => {
     toast.success(`${selectedPages.size} ${t('pageEditor.pagesDeleted') || 'pages deleted'}`);
   };
 
-  const handleExtractSelected = async () => {
+  const handleExtractSelected = async (watermarked: boolean) => {
     if (!file?.file || selectedPages.size === 0) return;
 
     setIsProcessing(true);
@@ -471,9 +476,22 @@ export const PageEditorPDF: React.FC = () => {
       );
 
       if (result.success && result.data && result.data[0]) {
-        // Download immediately
+        let blobToDownload = result.data[0];
+
+        // Apply watermark if requested
+        if (!isPremium && watermarked) {
+          try {
+            const arrayBuffer = await blobToDownload.arrayBuffer();
+            const watermarkedBytes = await pdfService.applyWatermark(new Uint8Array(arrayBuffer));
+            blobToDownload = new Blob([new Uint8Array(watermarkedBytes)], { type: 'application/pdf' });
+          } catch (err) {
+            console.error('Failed to apply watermark:', err);
+          }
+        }
+
+        // Download
         const fileName = file.name.replace(/\.pdf$/i, '_extracted.pdf');
-        pdfService.downloadFile(result.data[0], fileName);
+        pdfService.downloadFile(blobToDownload, fileName);
         toast.success(t('pageEditor.extractSuccess') || 'Pages extracted successfully');
       } else {
         toast.error(t('pageEditor.extractError') || 'Failed to extract pages');
@@ -487,6 +505,8 @@ export const PageEditorPDF: React.FC = () => {
       setProgressMessage('');
     }
   };
+
+  const handleExtractSelectedWrapped = (watermarked: boolean) => handleExtractSelected(watermarked);
 
   const handleSmartReorder = (newOrder: number[]) => {
     setPages((items) => {
@@ -562,10 +582,10 @@ export const PageEditorPDF: React.FC = () => {
     setProgress(0);
     setProgressMessage('Processing pages...');
     try {
-      const pageOperations = activePages.map((page) => ({
+      const pageOperations = activePages.map((page, index) => ({
         originalPageNumber: page.pageNumber,
+        newPosition: index + 1,
         rotation: page.rotation,
-        sourceFile: page.sourceFile
       }));
       const result = await pdfService.organizePDF(
         file.file,
@@ -590,10 +610,23 @@ export const PageEditorPDF: React.FC = () => {
     }
   };
 
-  const handleDownload = () => {
+  const handleDownload = async (watermarked: boolean) => {
     if (result?.blob) {
+      let blobToDownload = result.blob;
+
+      // Apply watermark if requested
+      if (!isPremium && watermarked) {
+        try {
+          const arrayBuffer = await result.blob.arrayBuffer();
+          const watermarkedBytes = await pdfService.applyWatermark(new Uint8Array(arrayBuffer));
+          blobToDownload = new Blob([new Uint8Array(watermarkedBytes)], { type: 'application/pdf' });
+        } catch (err) {
+          console.error('Failed to apply watermark:', err);
+        }
+      }
+
       const fileName = file?.name.replace(/\.pdf$/i, '_organized.pdf') || 'organized.pdf';
-      pdfService.downloadFile(result.blob, fileName);
+      pdfService.downloadFile(blobToDownload, fileName);
     }
   };
 
@@ -650,8 +683,19 @@ export const PageEditorPDF: React.FC = () => {
             </div>
           </div>
           <div className="flex justify-center gap-4">
-            <Button onClick={handleDownload} size="lg" className="bg-green-600 hover:bg-green-700 shadow-lg shadow-green-500/20">{t('common.download')}</Button>
-            <Button onClick={handleReset} variant="outline" size="lg">{t('common.convertAnother')}</Button>
+            <DownloadGate
+              toolId="organize-pdf"
+              onDownload={handleDownload}
+              showWatermarkLabel={!isPremium}
+            />
+            <Button
+              onClick={handleReset}
+              variant="outline"
+              className="h-11 px-8 rounded-xl font-bold border-2"
+            >
+              <RefreshCw className="mr-2 h-4 w-4" />
+              {t('common.processAnother')}
+            </Button>
           </div>
           <div className="grid grid-cols-2 gap-4 mt-8">
             <Button onClick={() => handleQuickAction('compress-pdf')} variant="ghost" className="h-auto py-3 flex flex-col gap-1 border hover:border-ocean-300 hover:bg-ocean-50 dark:hover:bg-ocean-900/10">
@@ -695,14 +739,20 @@ export const PageEditorPDF: React.FC = () => {
           <div className="flex gap-2 items-center">
             {selectedPages.size > 0 && (
               <>
-                <Button
-                  size="sm"
-                  onClick={handleExtractSelected}
-                  className="h-8 px-3 gap-2 bg-ocean-500 hover:bg-ocean-600 text-white shadow-sm animate-in fade-in slide-in-from-right-4"
+                <DownloadGate
+                  toolId="organize-pdf"
+                  onDownload={handleExtractSelectedWrapped}
+                  className="h-8"
+                  showWatermarkLabel={!isPremium}
                 >
-                  <Download className="w-4 h-4" />
-                  {t('pageEditor.extract') || 'Extract'}
-                </Button>
+                  <Button
+                    size="sm"
+                    className="h-8 px-3 gap-2 bg-ocean-500 hover:bg-ocean-600 text-white shadow-sm"
+                  >
+                    <Download className="w-4 h-4" />
+                    {t('pageEditor.extract') || 'Extract'}
+                  </Button>
+                </DownloadGate>
                 <Button
                   size="sm"
                   variant="destructive"

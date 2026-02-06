@@ -8,6 +8,8 @@
     "title": "您的私人",
     "titleSuffix": "PDF Sanctuary.",
     "subtitle": "唯一 100% 在浏览器中运行的 PDF 工具包。无需上传，无需服务器，不留痕迹。由您的设备驱动的专业工具。",
+    "selectToolToBegin": "Select a tool to begin",
+    "chooseToolDescription": "Choose a compatible tool and your files will transfer instantly.",
     "firstTimeBanner": "欢迎！所有处理都在您的浏览器中进行 - 您的文件从未离开您的设备。",
     "selectTool": "从侧边栏选择工具或在下方选择"
   },
@@ -112,12 +114,16 @@
     "tables-pdf": {
       "name": "PDF表格",
       "description": "在您的PDF中添加、编辑和设置表格样式"
+    },
+    "unlock-pdf": {
+      "name": "Unlock PDF",
+      "description": "Remove passwords from PDF files"
     }
   },
   "common": {
     "upload": "上传文件",
-    "uploadDescription": "拖放或点击上传",
     "selectFile": "选择文件",
+    "selectFiles": "Select files",
     "uploadFile": "上传文件",
     "supportId": "支持ID",
     "feedback": "分享反馈",
@@ -133,7 +139,9 @@
     "sending": "正在发送...",
     "feedbackSuccess": "感谢您的反馈！",
     "feedbackError": "反馈发送失败。请稍后再试。",
+    "uploadDescription": "拖放或点击上传",
     "download": "下载",
+    "downloadAll": "Download All (ZIP)",
     "supportDeveloper": "支持开发者",
     "processing": "处理中...",
     "searching": "搜索中...",
@@ -175,7 +183,16 @@
     "convert": "转换",
     "hide": "隐藏",
     "loading": "加载中...",
+    "loadingTool": "Loading tool...",
+    "loadingPreview": "Loading preview...",
+    "noPreview": "No preview",
+    "expandSidebar": "Expand sidebar",
+    "collapseSidebar": "Collapse sidebar",
+    "toggleTheme": "Toggle theme",
+    "resources": "Resources",
+    "all": "All",
     "previous": "上一个",
+    "failedToLoad": "Failed to load",
     "extensionPromptTitle": "获取 LocalPDF Chrome 扩展",
     "extensionPromptBody": "每次下载后，一键更快打开 LocalPDF。",
     "extensionPromptCta": "获取 Chrome 扩展",
@@ -188,7 +205,12 @@
     "addFiles": "添加更多文件",
     "errors": {
       "previewFailed": "无法加载预览"
-    }
+    },
+    "change": "Change",
+    "generatingPreview": "Generating preview...",
+    "nextPage": "Next page",
+    "prevPage": "Previous page",
+    "selected": "Selected"
   },
   "upload": {
     "selectFiles": "选择文件",
@@ -202,8 +224,12 @@
     "acceptedTypes": "接受的类型",
     "errors": {
       "tooManyFiles": "文件太多。最大值：{max}",
+      "tooManyFilesFree": "免费版文件数量超限。最大：{max}。升级以处理更多文件。",
+      "tooManyFilesPro": "文件数量过多。最大：{max}",
       "invalidFileType": "无效的文件类型。请仅选择 PDF 文件。",
-      "fileTooLarge": "文件太大。最大大小：{max} MB"
+      "fileTooLarge": "文件太大。最大大小：{max} MB",
+      "fileTooLargeFree": "免费版文件大小超限。最大：{max} MB。升级以处理更大文件。",
+      "fileTooLargePro": "文件过大。最大：{max} MB"
     },
     "readyToProcess": "私人庇护所",
     "filesReadySingle": "{count} 个文件已就绪",
@@ -552,6 +578,17 @@
     }
   },
   "ocr": {
+    "errors": {
+      "limitReached": "OCR Limit Reached",
+      "limitReachedDesc": "You reached your monthly limit of {limit} pages for {plan} plan.",
+      "noFile": "请先选择文件",
+      "processingFailed": "OCR 处理失败。请重试。",
+      "unsupportedFileType": "OCR 仅支持 PDF 和图片文件 (JPG, PNG)。不支持您的文件类型 (.{ext})。",
+      "hocrEmpty": "hOCR 数据为空。请尝试重新运行 OCR。",
+      "tsvEmpty": "TSV 数据为空。请尝试重新运行 OCR。",
+      "searchablePdfFailed": "创建可搜索 PDF 失败：{error}",
+      "downloadFailed": "生成文件失败。请重试。"
+    },
     "filePreview": "要处理的文件",
     "recognitionLanguage": "识别语言",
     "languageHint": "选择文档中的文本语言",
@@ -564,8 +601,6 @@
     "firstPageOnly": "仅第一页",
     "allPages": "所有页面",
     "pageRange": "页面范围",
-    "page": "页",
-    "pages": "页",
     "processed": "已处理",
     "processingPage": "正在处理第 {current} 页，共 {total} 页...",
     "startOCR": "开始 OCR",
@@ -582,11 +617,6 @@
     "confidence": "置信度",
     "extractedText": "提取的文本",
     "copyText": "复制文本",
-    "downloadTXT": "下载 TXT",
-    "textCopied": "文本已复制到剪贴板！",
-    "remove": "移除",
-    "newFile": "新文件",
-    "preview": "预览",
     "view": "查看",
     "edit": "编辑",
     "editPlaceholder": "在此处编辑提取的文本...",
@@ -594,13 +624,34 @@
     "words": "词",
     "lines": "行",
     "characters": "字符",
-    "languageDetection": {
-      "highConfidence": "高置信度",
-      "mediumConfidence": "中等置信度",
-      "lowConfidence": "低置信度",
-      "verifyLanguage": "验证语言选择以获得更好的 OCR 准确性"
-    },
+    "page": "页",
+    "pages": "页",
+    "textCopied": "文本已复制到剪贴板！",
+    "remove": "移除",
+    "newFile": "新文件",
+    "preview": "预览",
     "startOver": "重新开始",
+    "downloadTXT": "下载 TXT",
+    "download": {
+      "createSearchablePdf": "创建可搜索 PDF",
+      "downloadHocr": "下载 hOCR (.html)",
+      "downloadTsv": "下载 TSV (.tsv)",
+      "downloadTxt": "下载 TXT",
+      "searchablePdfReady": "准备好创建可搜索 PDF！",
+      "searchablePdfDownloaded": "可搜索 PDF 已下载！"
+    },
+    "results": {
+      "title": "OCR 结果",
+      "extractedText": "提取的文本",
+      "resultReady": "结果就绪",
+      "successMessage": "您的文档已成功处理。您现在可以从侧边栏下载结果。",
+      "textReady": "识别的文本",
+      "searchablePdfReady": "准备创建可搜索 PDF",
+      "hocrReady": "hOCR 数据就绪",
+      "tsvReady": "TSV 数据就绪",
+      "pagesWillProcess": "{count} {pages} 将使用 OCR 处理",
+      "confidenceAndPages": "置信度：{confidence}% • 已处理 {count} {pages}"
+    },
     "languages": {
       "eng": "英语",
       "rus": "俄语",
@@ -629,15 +680,6 @@
       "tsvShort": "TSV (数据)",
       "tsvDesc": "带有边界框的制表符分隔值 - 易于解析以进行数据分析"
     },
-    "results": {
-      "textReady": "识别的文本",
-      "searchablePdfReady": "准备创建可搜索 PDF",
-      "hocrReady": "hOCR 数据就绪",
-      "tsvReady": "TSV 数据就绪",
-      "pagesWillProcess": "{count} {pages} 将使用 OCR 处理",
-      "confidenceAndPages": "置信度：{confidence}% • 已处理 {count} {pages}",
-      "successMessage": "您的文档已成功处理。您现在可以从侧边栏下载结果。"
-    },
     "infoPanel": {
       "searchablePdfTitle": "带有不可见文本层的可搜索 PDF",
       "searchablePdfDesc": "原始文档图片将完全保留。OCR 文本将作为不可见层添加，使 PDF 完全可搜索并允许文本选择，同时保持原始视觉外观。",
@@ -646,39 +688,22 @@
       "tsvTitle": "TSV 格式（制表符分隔值）",
       "tsvDesc": "带有边界框坐标和置信度分数的电子表格兼容格式。易于导入 Excel、Google Sheets 或 Python/Pandas 等数据分析工具。每行包含层级、页码、块、段落、行、词、位置和文本。"
     },
-    "download": {
-      "createSearchablePdf": "创建可搜索 PDF",
-      "downloadHocr": "下载 hOCR (.html)",
-      "downloadTsv": "下载 TSV (.tsv)",
-      "downloadTxt": "下载 TXT",
-      "searchablePdfReady": "准备好创建可搜索 PDF！",
-      "searchablePdfDownloaded": "可搜索 PDF 已下载！"
-    },
     "infoTitle": "关于 OCR",
     "info1": "支持 PDF 文档和图片 (JPG, PNG)",
     "info2": "5 种语言识别：EN, RU, DE, FR, ES",
     "info3": "支持多页 PDF 和页面范围选择",
-    "info4": "所有处理都在您的浏览器中进行 - 文件保持私密",
-    "errors": {
-      "noFile": "请先选择文件",
-      "processingFailed": "OCR 处理失败。请重试。",
-      "unsupportedFileType": "OCR 仅支持 PDF 和图片文件 (JPG, PNG)。不支持您的文件类型 (.{ext})。",
-      "hocrEmpty": "hOCR 数据为空。请尝试重新运行 OCR。",
-      "tsvEmpty": "TSV 数据为空。请尝试重新运行 OCR。",
-      "searchablePdfFailed": "创建可搜索 PDF 失败：{error}",
-      "downloadFailed": "生成文件失败。请重试。"
-    }
+    "info4": "所有处理都在您的浏览器中进行 - 文件保持私密"
   },
   "watermark": {
-    "mode": "模式",
-    "textMode": "文本",
-    "imageMode": "图片",
-    "chooseImage": "选择图片",
     "filePreview": "添加水印文件",
     "settings": "水印设置",
     "text": "水印文本",
     "watermarkText": "水印文本",
     "watermarkPlaceholder": "输入水印文本",
+    "mode": "模式",
+    "textMode": "文本",
+    "imageMode": "图片",
+    "chooseImage": "选择图片",
     "image": "图片",
     "imageScale": "图片缩放",
     "position": "位置",
@@ -713,13 +738,15 @@
       "noText": "请输入水印文本",
       "noImage": "请先选择一张图片",
       "failed": "添加水印失败",
-      "cyrillicNotSupported": "所选字体可能不支持西里尔字符"
+      "cyrillicNotSupported": "所选字体可能不支持西里尔字符",
+      "textRequired": "Please enter watermark text"
     },
     "success": {
       "title": "水印添加成功",
       "watermarkApplied": "水印",
       "pages": "已处理页面",
-      "size": "文件大小"
+      "size": "文件大小",
+      "time": "Processing time"
     },
     "quickActions": {
       "title": "接下来做什么？",
@@ -732,11 +759,19 @@
     "infoTitle": "关于水印",
     "info1": "支持完全支持西里尔和拉丁字符的文本水印",
     "info2": "6 个位置选项：对角线、居中和 4 个角落",
-    "info3": "所有处理都在您的浏览器中进行 - 文件保持私密"
+    "info3": "所有处理都在您的浏览器中进行 - 文件保持私密",
+    "applyAnother": "Apply another watermark",
+    "applyButton": "Apply watermark",
+    "autoLoaded": {
+      "title": "Watermark loaded",
+      "description": "Your file was loaded from the previous tool"
+    }
   },
   "rotate": {
     "settings": "旋转设置",
     "applyToAll": "应用到所有文件",
+    "nextPage": "Next page",
+    "prevPage": "Previous page",
     "selectAngle": "选择旋转角度",
     "clockwise": "顺时针",
     "upsideDown": "倒置",
@@ -745,7 +780,7 @@
     "allPages": "所有页面",
     "rotateAllPages": "旋转文档中的所有页面",
     "specificPages": "特定页面",
-    "choosePages": "选择要旋转的页面",
+    "chooseWhichPages": "Choose which pages to rotate",
     "pageNumbers": "页码",
     "pageNumbersHint": "示例：1,3,5-7,10（总页数：{total}）",
     "rotateButton": "旋转 PDF",
@@ -904,20 +939,43 @@
     "conversionComplete": "转换完成"
   },
   "sign": {
+    "signatureType": "签名类型",
+    "drawSignature": "绘制签名",
+    "uploadImage": "上传图片",
+    "signatureText": "签名文本",
+    "position": "位置",
+    "positions": {
+      "bottomRight": "右下角",
+      "bottomLeft": "左下角",
+      "topRight": "右上角",
+      "topLeft": "左上角",
+      "custom": "手动 (拖放)"
+    },
+    "dragToMove": "拖动以重新定位",
+    "applyToPages": "应用于页面",
+    "allPages": "所有页面",
+    "pageNumber": "第 {number} 页",
+    "pagesSigned": "已签名页面",
+    "fileSize": "文件大小",
+    "yourName": "您的姓名",
+    "loadingHighQuality": "正在加载高质量预览...",
+    "generatingPreview": "正在生成预览...",
     "nextPage": "下一页",
     "prevPage": "上一页",
     "zoom": "缩放",
     "zoomIn": "放大",
     "zoomOut": "缩小",
-    "generatingPreview": "正在生成预览...",
+    "saving": "正在保存...",
+    "addingSignature": "正在添加签名...",
+    "signingPage": "正在签名第 {current} 页，共 {total} 页...",
     "successTitle": "PDF签署成功！",
     "modeDraw": "手写",
     "modeUpload": "上传",
     "modeText": "文本",
     "clearSignature": "清除签名",
-    "drawSignature": "绘制签名",
-    "uploadImage": "上传图片",
-    "signatureText": "签名文本",
+    "noFile": "Please upload a PDF file",
+    "enterText": "Please enter signature text",
+    "provideSignature": "Please draw or upload a signature",
     "textSize": "文本大小",
     "signatureSize": "签名大小",
     "includeName": "包含印刷姓名",
@@ -927,6 +985,7 @@
     "color": "颜色",
     "width": "宽度",
     "height": "高度",
+    "addSignature": "Place on Page",
     "apply": "应用",
     "finishAndSave": "保存已签署的PDF",
     "quickActions": {
@@ -936,6 +995,9 @@
       "compress": "减小文件大小",
       "watermark": "添加水印",
       "merge": "与他人合并"
+    },
+    "errors": {
+      "signFailed": "Failed to sign PDF"
     }
   },
   "pageEditor": {
@@ -967,20 +1029,27 @@
     "extract": "提取",
     "delete": "删除",
     "extracting": "正在提取页面...",
+    "pageSelection": "Page Selection",
+    "results": {
+      "successMessage": "Your document has been processed successfully. You can now download the result from the sidebar."
+    },
+    "copyText": "Copy Text",
+    "view": "View",
     "pagesDeleted": "页面已删除",
     "extractSuccess": "页面提取成功",
     "extractError": "无法提取页面",
-    "addPDF": "添加 PDF",
-    "appendPages": "追加页面",
     "tips": {
       "title": "提示",
       "drag": "拖动页面以重新排序",
       "select": "使用复选框或点击以选择多个",
       "rotateDelete": "将鼠标悬停在页面上以旋转或删除",
       "extract": "使用工具栏提取选定的页面"
-    }
+    },
+    "addPDF": "添加 PDF",
+    "appendPages": "追加页面"
   },
   "addText": {
+    "title": "添加文本",
     "clickToEdit": "点击编辑",
     "addedCount": "已添加文本元素：{count}",
     "originalSize": "原始大小",
@@ -993,7 +1062,6 @@
     "zoom": "缩放：{scale}%",
     "pageOf": "第 {current} 页，共 {total} 页",
     "defaultFileName": "document_with_text.pdf",
-    "title": "添加文本",
     "toolbar": {
       "addText": "添加文本",
       "select": "选择",
@@ -1066,6 +1134,7 @@
       "value": "值",
       "selectedByDefault": "默认选中",
       "options": "选项（每行一个）",
+      "defaultOptions": "Option 1\nOption 2\nOption 3",
       "allowMultiSelect": "允许允许多选",
       "requiredField": "必填字段",
       "readOnlyField": "只读字段",
@@ -1077,9 +1146,13 @@
       "multiline": "多行文本",
       "checkbox": "复选框",
       "radio": "单选按钮",
-      "dropdown": "下拉菜单"
+      "dropdown": "下拉菜单",
+      "unknown": "Unknown"
     }
   },
+  "toolNotImplemented": "Tool Not Implemented",
+  "toolComingSoon": "This tool is coming soon.",
+  "toolImplementationSoon": "Tool implementation coming soon...",
   "editText": {
     "rasterizationWarning": "注意：编辑的页面将转换为图片。编辑后这些页面上的文本将不可选择。",
     "selectPage": "选择页面",
@@ -1120,7 +1193,7 @@
     "replacementText": "替换文本",
     "enterReplacementText": "输入替换文本 (支持多行)...",
     "latinCharactersOnly": "⚠️ 仅支持拉丁字符 (A-Z, 0-9)",
-    "applyChanges": "应用 {count} 个更改",
+    "applyChanges": "应用 {count} 个更改{s}",
     "applyAllHint": "所有选择将应用到 PDF",
     "cover": "覆盖",
     "replace": "替换",
@@ -1195,14 +1268,21 @@
   "tables": {
     "title": "PDF 表格",
     "description": "直接在文档中创建专业表格",
+    "addTable": "Add Table",
+    "importExcel": "Import Excel/CSV",
     "selectTabs": "选择工作表",
     "selectedTabs": "已选择 {count} 个工作表",
     "noTabsSelected": "请至少选择一个工作表",
     "rows": "行",
     "cols": "列",
+    "generate": "生成 PDF",
+    "generateWithWatermark": "生成带水印的 PDF",
     "style": {
+      "title": "Table Style",
       "header": "表头颜色",
       "stripes": "斑马纹",
+      "border": "Borders",
+      "font": "Font Settings",
       "orientation": "页面方向",
       "orientations": {
         "portrait": "纵向",
@@ -1211,6 +1291,8 @@
       }
     },
     "actions": {
+      "insertPage": "Insert after page",
+      "float": "Floating on page",
       "generate": "生成 PDF"
     },
     "errors": {
@@ -1218,5 +1300,60 @@
       "generateFailed": "PDF 生成失败",
       "noData": "在选择的工作表中未找到数据"
     }
+  },
+  "monetization": {
+    "upgrade_now": "升级到 PRO",
+    "upgrade": "升级",
+    "upgradeTitle": "Upgrade to Pro",
+    "upgradeSubtitle": "Unlock all tools & limits",
+    "proStatus": "Pro Status",
+    "activeSubscription": "Active subscription",
+    "pro_badge": "PRO",
+    "restore": "恢复",
+    "restore_hint": "输入您的 LemonSqueezy 许可证密钥",
+    "restore_button": "恢复购买",
+    "restore_description": "订阅会自动与您的支持 ID 同步。仅当您使用新设备时，才使用此表单。",
+    "choose_plan": "选择方案",
+    "secure_checkout": "100% 安全结账",
+    "status": "订阅状态",
+    "expires": "过期时间",
+    "never": "永不过期",
+    "refresh_access": "刷新访问权限",
+    "once": "一次性",
+    "intervals": {
+      "month": "月"
+    },
+    "free": {
+      "name": "免费方案",
+      "price": "0",
+      "interval": "永久",
+      "cta": "当前方案",
+      "description": "基础工具和限制"
+    },
+    "pro": {
+      "name": "Pro 订阅",
+      "cta": "加入 PRO",
+      "description": "移除所有限制，获得优先支持和高级工具。"
+    },
+    "lifetime": {
+      "name": "Pro 终身版",
+      "cta": "最佳价值",
+      "description": "一次付费，永久享有。包含所有 Pro 功能。"
+    },
+    "features": {
+      "no_limits": "无文件限制",
+      "batch": "批量处理 (20+)",
+      "tier3": "所有工具 (OCR, 签名)",
+      "support": "优先支持",
+      "unlimited": "无限"
+    },
+    "premium_feature": "尊享功能",
+    "premium_description": "免费使用带水印的 PRO 工具！升级以移除水印、增加文件大小限制并享受无限次每日下载。",
+    "download_with_watermark": "下载带水印的文件",
+    "download_pro_clean": "下载 PRO (无水印)",
+    "daily_limit_reached": "已达到该工具的每日限制",
+    "daily_free_downloads_left": "剩余免费下载次数: {count}",
+    "upgrade_to_download": "升级以进行下载",
+    "private_secure_fast": "Private. Secure. Local."
   }
 }

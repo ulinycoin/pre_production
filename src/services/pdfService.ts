@@ -1,4 +1,4 @@
-import { PDFDocument, rgb, StandardFonts } from 'pdf-lib';
+import { PDFDocument, rgb, StandardFonts, degrees } from 'pdf-lib';
 import fontkit from '@pdf-lib/fontkit';
 import JSZip from 'jszip';
 import * as pdfjsLib from 'pdfjs-dist';
@@ -2694,9 +2694,6 @@ export class PDFService {
   }
 
   /**
-   * Organize PDF pages - reorder, rotate, and delete pages
-   */
-  /**
    * Organize PDF pages - reorder, rotate, delete, and insert pages from other files
    */
   async organizePDF(
@@ -2709,6 +2706,59 @@ export class PDFService {
     onProgress?: ProgressCallback
   ): Promise<PDFProcessingResult> {
     return pageManipulationService.organizePDF(file, pageOperations, onProgress);
+  }
+
+  /**
+   * Apply watermark to PDF
+   */
+  async applyWatermark(
+    pdfBytes: Uint8Array,
+    text: string = 'LocalPDF.online PRO',
+    options: {
+      fontSize?: number;
+      opacity?: number;
+      color?: { r: number; g: number; b: number };
+    } = {}
+  ): Promise<Uint8Array> {
+    try {
+      const pdfDoc = await PDFDocument.load(pdfBytes);
+      const helveticaFont = await pdfDoc.embedFont(StandardFonts.HelveticaBold);
+      const pages = pdfDoc.getPages();
+
+      const {
+        fontSize = 40,
+        opacity = 0.2,
+        color = { r: 128, g: 128, b: 128 }
+      } = options;
+
+      // Normalize color to 0-1 range
+      const r = color.r / 255;
+      const g = color.g / 255;
+      const b = color.b / 255;
+
+      for (const page of pages) {
+        const { width, height } = page.getSize();
+
+        // Draw diagonal watermarks in a grid for full coverage
+        const count = 3;
+        for (let i = 1; i <= count; i++) {
+          page.drawText(text, {
+            x: (width / (count + 1)) * i - 100,
+            y: (height / (count + 1)) * i,
+            size: fontSize,
+            font: helveticaFont,
+            color: rgb(r, g, b),
+            rotate: degrees(45),
+            opacity: opacity,
+          });
+        }
+      }
+
+      return await pdfDoc.save();
+    } catch (error) {
+      console.error('Failed to apply watermark:', error);
+      return pdfBytes; // Return original if fails
+    }
   }
 }
 
@@ -2791,3 +2841,13 @@ export const organizePDF = (
   }>,
   onProgress?: ProgressCallback
 ) => pdfService.organizePDF(file, pageOperations, onProgress);
+
+export const applyWatermark = (
+  pdfBytes: Uint8Array,
+  text?: string,
+  options?: {
+    fontSize?: number;
+    opacity?: number;
+    color?: { r: number; g: number; b: number };
+  }
+) => pdfService.applyWatermark(pdfBytes, text, options);

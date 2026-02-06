@@ -21,7 +21,33 @@ export const useSubscription = (): UseSubscriptionReturn => {
         setIsLoading(true);
         try {
             await StorageService.init();
-            const info = await SubscriptionService.checkSubscription();
+            let info = await SubscriptionService.checkSubscription();
+
+            // Auto-refresh logic: 
+            // 1. If premium but token is close to expiry (e.g., within 7 days)
+            // 2. If free but we have a license key (token might have expired)
+            const isPremium = info.status === 'pro' || info.status === 'lifetime';
+            const licenseKey = await StorageService.getLicenseKey();
+
+            let shouldRefresh = false;
+            if (isPremium && info.expiresAt) {
+                const now = Math.floor(Date.now() / 1000);
+                const sevenDays = 7 * 24 * 60 * 60;
+                if (info.expiresAt - now < sevenDays) {
+                    shouldRefresh = true;
+                }
+            } else if (!isPremium && licenseKey) {
+                shouldRefresh = true;
+            }
+
+            if (shouldRefresh) {
+                console.log('Attempting sub refresh/re-exchange...');
+                const success = await SubscriptionService.reExchange();
+                if (success) {
+                    info = await SubscriptionService.checkSubscription();
+                }
+            }
+
             setSubInfo(info);
         } catch (e) {
             console.error('Subscription refresh failed:', e);

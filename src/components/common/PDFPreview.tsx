@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as pdfjsLib from 'pdfjs-dist';
 import pdfjsWorker from 'pdfjs-dist/build/pdf.worker.min.mjs?url';
+import { useI18n } from '@/hooks/useI18n';
 
 // Configure worker - use local worker from node_modules
 pdfjsLib.GlobalWorkerOptions.workerSrc = pdfjsWorker;
@@ -29,6 +30,7 @@ export const PDFPreview: React.FC<PDFPreviewProps> = ({
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const { t } = useI18n();
 
   useEffect(() => {
     let isMounted = true;
@@ -115,7 +117,7 @@ export const PDFPreview: React.FC<PDFPreviewProps> = ({
       {isLoading && (
         <div className="absolute inset-0 flex items-center justify-center bg-gray-100 dark:bg-privacy-800">
           <div className="text-sm text-gray-500 dark:text-gray-400">
-            Loading...
+            {t('common.loading')}
           </div>
         </div>
       )}
@@ -123,7 +125,7 @@ export const PDFPreview: React.FC<PDFPreviewProps> = ({
       {error && (
         <div className="absolute inset-0 flex items-center justify-center bg-error-50 dark:bg-error-900/20">
           <div className="text-xs text-error-600 dark:text-error-400 p-2 text-center">
-            Failed to load
+            {t('common.failedToLoad')}
           </div>
         </div>
       )}

@@ -3,13 +3,18 @@ import { useI18n } from '@/hooks/useI18n';
 import { Button } from '@/components/ui/button';
 import { FileUpload } from '@/components/common/FileUpload';
 import { type UploadedFile } from '@/types/pdf';
-import { Table, Download, Loader2, ArrowLeft } from 'lucide-react';
+import { Table, ArrowLeft } from 'lucide-react';
 import { tableService, type TableData, type TableStyle } from '@/services/tableService';
 import { ExcelTabSelector } from './ExcelTabSelector';
 import { toast } from 'sonner';
+import { DownloadGate } from '@/components/common/DownloadGate';
+import { useSubscription } from '@/hooks/useSubscription';
+import pdfService from '@/services/pdfService';
 
 export const TablesPDF: React.FC = () => {
     const { t } = useI18n();
+    const { status } = useSubscription();
+    const isPremium = status === 'pro' || status === 'lifetime';
     const [files, setFiles] = useState<UploadedFile[]>([]);
     const [isProcessing, setIsProcessing] = useState(false);
     const [parsedTabs, setParsedTabs] = useState<TableData[]>([]);
@@ -81,7 +86,8 @@ export const TablesPDF: React.FC = () => {
         setShowTabSelector(false);
     };
 
-    const handleGenerate = async () => {
+    const handleGenerate = async (watermarked: boolean) => {
+        if (isProcessing) return;
         setIsProcessing(true);
         try {
             const isBasePdf = files[0]?.file.name.endsWith('.pdf');
@@ -90,7 +96,15 @@ export const TablesPDF: React.FC = () => {
                 style,
                 isBasePdf ? files[0].file : undefined
             );
-            const blob = new Blob([pdfBytes as unknown as BlobPart], { type: 'application/pdf' });
+
+            let finalBytes = pdfBytes as unknown as Uint8Array;
+
+            // Apply watermark for free users if selected
+            if (!isPremium && watermarked) {
+                finalBytes = await pdfService.applyWatermark(finalBytes);
+            }
+
+            const blob = new Blob([finalBytes as BlobPart], { type: 'application/pdf' });
             const url = URL.createObjectURL(blob);
             const link = document.createElement('a');
             link.href = url;
@@ -165,7 +179,7 @@ export const TablesPDF: React.FC = () => {
                     <div className="lg:col-span-3 card p-0 overflow-hidden flex flex-col bg-white dark:bg-privacy-800 border-gray-200 dark:border-privacy-700 shadow-xl rounded-2xl">
                         <div className="p-4 border-b dark:border-privacy-700 flex justify-between items-center bg-gray-50/50 dark:bg-privacy-900/50">
                             <span className="text-sm font-medium">{t('common.selectedFile')}: {files[0]?.file.name}</span>
-                            <Button variant="ghost" size="sm" onClick={reset}>
+                            <Button variant="ghost" className="h-10 rounded-xl" size="sm" onClick={reset}>
                                 <ArrowLeft size={16} className="mr-2" />
                                 {t('common.changeFile')}
                             </Button>
@@ -268,18 +282,13 @@ export const TablesPDF: React.FC = () => {
                             </div>
 
                             <div className="pt-6 border-t dark:border-privacy-700">
-                                <Button
-                                    className="w-full py-6 text-lg font-semibold bg-ocean-600 hover:bg-ocean-700 text-white rounded-xl shadow-lg transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
-                                    disabled={isProcessing}
-                                    onClick={handleGenerate}
-                                >
-                                    {isProcessing ? (
-                                        <Loader2 className="mr-2 animate-spin" size={20} />
-                                    ) : (
-                                        <Download className="mr-2" size={20} />
-                                    )}
-                                    {t('tables.actions.generate')}
-                                </Button>
+                                <DownloadGate
+                                    toolId="tables-pdf"
+                                    onDownload={handleGenerate}
+                                    showWatermarkLabel={!isPremium}
+                                    label={t('tables.generate')}
+                                    watermarkLabel={t('tables.generateWithWatermark')}
+                                />
                             </div>
                         </div>
                     </div>

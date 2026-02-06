@@ -3,6 +3,8 @@ import { Card, CardContent } from '@/components/ui/card';
 import { FileUpload } from '@/components/common/FileUpload';
 import { useI18n } from '@/hooks/useI18n';
 import { Loader2 } from 'lucide-react';
+import { useSubscription } from '@/hooks/useSubscription';
+import LimitService from '@/services/limitService';
 
 interface ToolLayoutProps {
     /** Tool title (e.g., "Merge PDF") */
@@ -60,6 +62,11 @@ export const ToolLayout: React.FC<ToolLayoutProps> = ({
     progressMessage,
 }) => {
     const { t } = useI18n();
+    const { status } = useSubscription();
+
+    const limits = LimitService.getLimits(status);
+    const finalMaxFiles = maxFiles ?? limits.MAX_BATCH_FILES;
+    const finalMaxSizeMB = limits.MAX_FILE_SIZE_MB;
 
     return (
         <main id="main-content" className="tool-layout space-y-6 w-full max-w-[98%] mx-auto px-4 md:px-6 py-8 animate-fade-in" role="main">
@@ -82,10 +89,11 @@ export const ToolLayout: React.FC<ToolLayoutProps> = ({
                             <FileUpload
                                 onFilesSelected={(files) => onUpload(files)}
                                 disabled={isProcessing}
-                                multiple={maxFiles !== 1}
+                                multiple={finalMaxFiles !== 1}
                                 title={uploadTitle}
                                 description={uploadDescription}
-                                maxFiles={maxFiles}
+                                maxFiles={finalMaxFiles}
+                                maxSizeMB={finalMaxSizeMB}
                                 accept={acceptedTypes}
                             />
                         )

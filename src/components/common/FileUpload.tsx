@@ -1,6 +1,8 @@
 import React, { useRef, useState } from 'react';
 import { useI18n } from '@/hooks/useI18n';
 import { UploadCloud, Lightbulb, AlertCircle } from 'lucide-react';
+import { useSubscription } from '@/hooks/useSubscription';
+import LimitService from '@/services/limitService';
 
 interface FileUploadProps {
   accept?: string;
@@ -24,6 +26,7 @@ export const FileUpload: React.FC<FileUploadProps> = ({
   description,
 }) => {
   const { t } = useI18n();
+  const { status } = useSubscription();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -32,8 +35,12 @@ export const FileUpload: React.FC<FileUploadProps> = ({
     setError(null);
 
     // Check file count
-    if (maxFiles && files.length > maxFiles) {
-      setError(t('upload.errors.tooManyFiles').replace('{max}', maxFiles.toString()));
+    const batchCheck = LimitService.canBatchProcess(files.length, status, maxFiles);
+    if (!batchCheck.can) {
+      // Use the actual limit from LimitService logic (which now considers overrides)
+      const isPremium = status === 'pro' || status === 'lifetime';
+      const effectiveLimit = maxFiles ?? (isPremium ? 50 : 2); // Fallback to service defaults if not provided
+      setError(t(batchCheck.reason!, { max: effectiveLimit }));
       return null;
     }
 
@@ -62,12 +69,14 @@ export const FileUpload: React.FC<FileUploadProps> = ({
     }
 
     // Check file sizes
-    const maxSizeBytes = maxSizeMB * 1024 * 1024;
-    const oversizedFiles = files.filter(file => file.size > maxSizeBytes);
-
-    if (oversizedFiles.length > 0) {
-      setError(t('upload.errors.fileTooLarge').replace('{max}', maxSizeMB.toString()));
-      return null;
+    for (const file of files) {
+      const fileCheck = LimitService.canProcessFile(file, status, maxSizeMB);
+      if (!fileCheck.can) {
+        const isPremium = status === 'pro' || status === 'lifetime';
+        const effectiveLimit = maxSizeMB ?? (isPremium ? 2000 : 50);
+        setError(t(fileCheck.reason!, { max: effectiveLimit }));
+        return null;
+      }
     }
 
     return files;

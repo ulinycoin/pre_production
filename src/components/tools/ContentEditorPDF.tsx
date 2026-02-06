@@ -11,8 +11,11 @@ import { FormatPanel } from './ContentEditorPDF/FormatPanel';
 import { FloatingToolbar } from './ContentEditorPDF/FloatingToolbar';
 import type { UploadedFile } from '@/types/pdf';
 import type { TextElement } from '@/types/contentEditor';
-import { CheckCircle2, ChevronUp, ChevronDown } from 'lucide-react';
+import { CheckCircle2, ChevronUp, ChevronDown, RefreshCw } from 'lucide-react';
+import { DownloadGate } from '@/components/common/DownloadGate';
 import * as pdfjsLib from 'pdfjs-dist';
+import { useSubscription } from '@/hooks/useSubscription';
+import pdfService from '@/services/pdfService';
 import pdfjsWorker from 'pdfjs-dist/build/pdf.worker.min.mjs?url';
 
 // Configure PDF.js worker
@@ -20,6 +23,8 @@ pdfjsLib.GlobalWorkerOptions.workerSrc = pdfjsWorker;
 
 export const ContentEditorPDF: React.FC = () => {
     const { t } = useI18n();
+    const { status } = useSubscription();
+    const isPremium = status === 'pro' || status === 'lifetime';
     const { currentTool } = useHashRouter();
     const { sharedFile, clearSharedFile, setSharedFile } = useSharedFile();
     const [file, setFile] = useState<UploadedFile | null>(null);
@@ -220,7 +225,7 @@ export const ContentEditorPDF: React.FC = () => {
     const handleSave = useCallback(async () => {
         if (!file?.file) return;
         try {
-            const resultBlob = await savePDF(file.file);
+            let resultBlob = await savePDF(file.file);
             setResult(resultBlob);
         } catch (error) {
             console.error('Error saving PDF:', error);
@@ -257,16 +262,32 @@ export const ContentEditorPDF: React.FC = () => {
                         <p className="text-gray-600 dark:text-gray-400">{t('addText.addedCount', { count: textElements.length })}</p>
                     </div>
                     <div className="flex gap-4 justify-center">
-                        <Button onClick={() => {
-                            const url = URL.createObjectURL(result);
-                            const a = document.createElement('a');
-                            a.href = url;
-                            a.download = file.name.replace('.pdf', '_edited.pdf');
-                            a.click();
-                        }} size="lg" className="h-14 px-8 bg-green-600 hover:bg-green-700 text-white rounded-2xl font-bold shadow-lg shadow-green-200 dark:shadow-none transition-all">
-                            {t('common.download')}
-                        </Button>
-                        <Button variant="outline" onClick={() => { setFile(null); setResult(null); clearSharedFile(); reset(); }} size="lg" className="h-14 px-8 rounded-2xl font-bold border-2">
+                        <DownloadGate
+                            toolId="edit-pdf"
+                            onDownload={async (watermarked) => {
+                                if (!result) return;
+                                let blobToDownload = result;
+                                if (!isPremium && watermarked) {
+                                    try {
+                                        const arrayBuffer = await result.arrayBuffer();
+                                        const watermarkedBytes = await pdfService.applyWatermark(new Uint8Array(arrayBuffer));
+                                        blobToDownload = new Blob([new Uint8Array(watermarkedBytes)], { type: 'application/pdf' });
+                                    } catch (err) {
+                                        console.error('Failed to apply watermark:', err);
+                                    }
+                                }
+                                const url = URL.createObjectURL(blobToDownload);
+                                const a = document.createElement('a');
+                                a.href = url;
+                                a.download = file.name.replace('.pdf', '_edited.pdf');
+                                a.click();
+                                URL.revokeObjectURL(url);
+                            }}
+                            className="flex-1"
+                            showWatermarkLabel={!isPremium}
+                        />
+                        <Button variant="outline" onClick={() => { setFile(null); setResult(null); clearSharedFile(); reset(); }} className="h-11 px-8 rounded-xl font-bold border-2">
+                            <RefreshCw className="mr-2 h-4 w-4" />
                             {t('common.processAnother')}
                         </Button>
                     </div>

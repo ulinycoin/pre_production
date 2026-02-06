@@ -6,7 +6,8 @@
             "features": [
                 "Basic PDF Tools",
                 "50MB File Limit",
-                "2 Files Batch"
+                "2 Files Batch",
+                "3 PRO Downloads / day"
             ],
             "tier": [
                 1,
@@ -21,8 +22,9 @@
             "features": [
                 "All Premium Tools",
                 "Unlimited File Size",
-                "20 Files Batch",
-                "Priority Support"
+                "50 Files Batch",
+                "Priority Support",
+                "Unlimited Downloads"
             ],
             "tier": [
                 1,
@@ -39,7 +41,9 @@
                 "All Premium Tools",
                 "Lifetime Updates",
                 "No Subscription",
-                "Priority Support"
+                "50 Files Batch",
+                "Priority Support",
+                "Unlimited Downloads"
             ],
             "tier": [
                 1,
@@ -47,5 +51,30 @@
                 3
             ]
         }
+    },
+    "limits": {
+        "DAILY_FREE_PRO_DOWNLOADS": 3,
+        "FREE_TOOLS": [
+            "merge-pdf",
+            "split-pdf",
+            "compress-pdf",
+            "watermark-pdf",
+            "rotate-pdf",
+            "delete-pages-pdf",
+            "extract-pages-pdf",
+            "pdf-to-images",
+            "extract-images-pdf"
+        ],
+        "PRO_TOOLS": [
+            "ocr-pdf",
+            "edit-pdf",
+            "add-form-fields-pdf",
+            "sign-pdf",
+            "tables-pdf",
+            "organize-pdf",
+            "pdf-to-word",
+            "word-to-pdf",
+            "flatten-pdf"
+        ]
     }
 }

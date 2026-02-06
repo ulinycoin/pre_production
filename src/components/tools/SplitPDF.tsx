@@ -12,6 +12,7 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
+  DialogDescription,
 } from "@/components/ui/dialog";
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Checkbox } from '@/components/ui/checkbox';
@@ -1142,6 +1143,9 @@ export const SplitPDF: React.FC = () => {
             <DialogTitle>
               {previewResult?.chapterTitle || t('split.previewTitle')}
             </DialogTitle>
+            <DialogDescription className="sr-only">
+              {t('split.pagePreview')}
+            </DialogDescription>
           </DialogHeader>
 
           <div className="flex flex-col items-center p-4 bg-gray-50 dark:bg-gray-900 rounded-lg">
@@ -1180,6 +1184,9 @@ export const SplitPDF: React.FC = () => {
             <DialogTitle>
               {t('split.pagePreview')} {zoomSourcePage}
             </DialogTitle>
+            <DialogDescription className="sr-only">
+              {t('split.pagePreview')}
+            </DialogDescription>
           </DialogHeader>
 
           <div className="flex flex-col items-center p-4 bg-gray-50 dark:bg-gray-900 rounded-lg">

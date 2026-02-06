@@ -5,14 +5,48 @@ import { useSharedFile } from '@/hooks/useSharedFile';
 import { PDFDocument, rgb } from 'pdf-lib';
 import fontkit from '@pdf-lib/fontkit';
 import * as pdfjsLib from 'pdfjs-dist';
-import { pdfService } from '@/services/pdfService';
+import pdfService from '@/services/pdfService';
 import type { UploadedFile } from '@/types/pdf';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { CheckCircle2 } from 'lucide-react';
 import { toast } from 'sonner';
+import { DownloadGate } from '@/components/common/DownloadGate';
+import { CheckCircle2, RefreshCw } from 'lucide-react';
+import { useSubscription } from '@/hooks/useSubscription';
+
+// Ensure Roboto is available for preview metrics
+const fontStyles = `
+  @font-face {
+    font-family: 'Roboto';
+    src: url('/fonts/Roboto-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Roboto';
+    src: url('/fonts/Roboto-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Roboto';
+    src: url('/fonts/Roboto-Italic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Roboto';
+    src: url('/fonts/Roboto-BoldItalic.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+  }
+`;
 
 type SignatureType = 'draw' | 'upload' | 'text';
 
@@ -49,6 +83,8 @@ interface SignatureSettings {
 
 export const SignPDF: React.FC = () => {
   const { t } = useI18n();
+  const { status } = useSubscription();
+  const isPremium = status === 'pro' || status === 'lifetime';
   const { sharedFile, setSharedFile, clearSharedFile } = useSharedFile();
   const [file, setFile] = useState<UploadedFile | null>(null);
   const [isProcessing, setIsProcessing] = useState(false);
@@ -90,11 +126,14 @@ export const SignPDF: React.FC = () => {
     };
   }, [previewUrl]);
 
-  // Load Roboto font for Cyrillic support
+  // Load Roboto font for Cyrillic support (local only)
   useEffect(() => {
     const loadFont = async () => {
       try {
-        const response = await fetch('https://raw.githubusercontent.com/googlefonts/roboto/main/src/hinted/Roboto-Regular.ttf');
+        const response = await fetch('/fonts/Roboto-Regular.ttf');
+        if (!response.ok) {
+          throw new Error(`Font fetch failed: ${response.status}`);
+        }
         const bytes = await response.arrayBuffer();
         setFontBytes(bytes);
       } catch (e) {
@@ -383,7 +422,8 @@ export const SignPDF: React.FC = () => {
         }
       }
 
-      const pdfBytes = await pdfDoc.save();
+      let pdfBytes = await pdfDoc.save();
+
       const blob = new Blob([pdfBytes as BlobPart], { type: 'application/pdf' });
 
       setResult({
@@ -403,8 +443,23 @@ export const SignPDF: React.FC = () => {
     }
   };
 
-  const handleDownload = () => {
-    if (result?.blob) pdfService.downloadFile(result.blob, file?.name.replace('.pdf', '_signed.pdf') || 'signed.pdf');
+  const handleDownload = async (watermarked: boolean) => {
+    if (!result?.blob) return;
+
+    let blobToDownload = result.blob;
+
+    // Apply watermark for free users if selected
+    if (!isPremium && watermarked) {
+      try {
+        const arrayBuffer = await result.blob.arrayBuffer();
+        const watermarkedBytes = await pdfService.applyWatermark(new Uint8Array(arrayBuffer));
+        blobToDownload = new Blob([new Uint8Array(watermarkedBytes)], { type: 'application/pdf' });
+      } catch (err) {
+        console.error('Failed to apply watermark:', err);
+      }
+    }
+
+    pdfService.downloadFile(blobToDownload, file?.name.replace('.pdf', '_signed.pdf') || 'signed.pdf');
   };
 
   const handleReset = () => {
@@ -597,7 +652,7 @@ export const SignPDF: React.FC = () => {
       {settings.type === 'text' && (
         <div className="space-y-3">
           <Label>{t('sign.signatureText')}</Label>
-          <Input value={settings.text} onChange={e => setSettings({ ...settings, text: e.target.value })} placeholder="Your Name" />
+          <Input value={settings.text} onChange={e => setSettings({ ...settings, text: e.target.value })} placeholder={t('sign.placeholderName')} />
           <Label>{t('sign.textSize')}: {settings.textSize}pt</Label>
           <Input type="range" min={8} max={72} value={settings.textSize} onChange={e => setSettings({ ...settings, textSize: parseInt(e.target.value) })} />
           <Button onClick={handleAddSignature} disabled={!settings.text} className="w-full mt-2 bg-blue-600 hover:bg-blue-700 h-9 text-xs">
@@ -633,8 +688,15 @@ export const SignPDF: React.FC = () => {
           <h2 className="text-2xl font-bold">{t('sign.successTitle')}</h2>
 
           <div className="flex justify-center gap-4">
-            <Button onClick={handleDownload} size="lg" className="bg-green-600 hover:bg-green-700">{t('common.download')}</Button>
-            <Button onClick={handleReset} variant="outline" size="lg">{t('common.convertAnother')}</Button>
+            <DownloadGate
+              toolId="sign-pdf"
+              onDownload={handleDownload}
+              showWatermarkLabel={!isPremium}
+            />
+            <Button onClick={handleReset} variant="outline" className="h-11 rounded-xl px-8 border-2 font-bold">
+              <RefreshCw className="mr-2 h-4 w-4" />
+              {t('common.convertAnother')}
+            </Button>
           </div>
         </div>
       );
@@ -660,7 +722,7 @@ export const SignPDF: React.FC = () => {
             <Button variant="ghost" size="sm" className="h-8 w-8 p-0" onClick={() => setZoom(prev => Math.max(0.5, prev - 0.1))}>-</Button>
             <span className="text-xs font-mono min-w-[40px] text-center">{Math.round(zoom * 100)}%</span>
             <Button variant="ghost" size="sm" className="h-8 w-8 p-0" onClick={() => setZoom(prev => Math.min(3.0, prev + 0.1))}>+</Button>
-            <Button variant="ghost" size="sm" className="h-8 px-2 text-[10px]" onClick={() => setZoom(1.0)}>Reset</Button>
+            <Button variant="ghost" size="sm" className="h-8 px-2 text-[10px]" onClick={() => setZoom(1.0)}>{t('common.reset')}</Button>
           </div>
         </div>
 
@@ -703,6 +765,7 @@ export const SignPDF: React.FC = () => {
       actions={!result ? renderActions() : null}
       sidebarWidth="w-80" // Slightly wider for signature canvas
     >
+      <style>{fontStyles}</style>
       {renderContent()}
     </ToolLayout>
   );

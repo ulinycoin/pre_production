@@ -4,10 +4,12 @@
     "subtitle": "Privacy-first PDF tools in your browser"
   },
   "welcome": {
-    "securePrefix": "Simple & Secure",
+    "securePrefix": "100% Private & Local",
     "title": "Your Private",
-    "titleSuffix": "PDF Sanctuary.",
-    "subtitle": "The only PDF toolkit that works 100% in your browser. No uploads, no servers, no traces. Just professional tools, powered by your device.",
+    "titleSuffix": "Privacy Sanctuary",
+    "subtitle": "Professional PDF tools that run entirely in your browser. Your files never leave your computer.",
+    "selectToolToBegin": "Select a tool to begin",
+    "chooseToolDescription": "Choose a compatible tool and your files will transfer instantly.",
     "firstTimeBanner": "Welcome! All processing happens in your browser - your files never leave your device.",
     "selectTool": "Select a tool from the sidebar or choose one below"
   },
@@ -112,6 +114,10 @@
     "tables-pdf": {
       "name": "Tables in PDF",
       "description": "Add, edit and style tables in your PDF"
+    },
+    "unlock-pdf": {
+      "name": "Unlock PDF",
+      "description": "Remove passwords from PDF files"
     }
   },
   "common": {
@@ -128,7 +134,7 @@
     "comment": "Comment",
     "commentPlaceholder": "What can we improve?",
     "email": "Email",
-    "optional": "optional",
+    "optional": "Optional",
     "sendFeedback": "Send Feedback",
     "sending": "Sending...",
     "feedbackSuccess": "Thank you for your feedback!",
@@ -177,7 +183,16 @@
     "convert": "Convert",
     "hide": "Hide",
     "loading": "Loading...",
+    "loadingTool": "Loading tool...",
+    "loadingPreview": "Loading preview...",
+    "noPreview": "No preview",
+    "expandSidebar": "Expand sidebar",
+    "collapseSidebar": "Collapse sidebar",
+    "toggleTheme": "Toggle theme",
+    "resources": "Resources",
+    "all": "All",
     "previous": "Previous",
+    "failedToLoad": "Failed to load",
     "extensionPromptTitle": "Get the LocalPDF Chrome Extension",
     "extensionPromptBody": "One click to open LocalPDF faster after each download.",
     "extensionPromptCta": "Get Chrome Extension",
@@ -190,7 +205,12 @@
     "addFiles": "Add More Files",
     "errors": {
       "previewFailed": "Failed to load preview"
-    }
+    },
+    "change": "Change",
+    "generatingPreview": "Generating preview...",
+    "nextPage": "Next page",
+    "prevPage": "Previous page",
+    "selected": "Selected"
   },
   "upload": {
     "selectFiles": "Select files",
@@ -204,8 +224,12 @@
     "acceptedTypes": "Accepted types",
     "errors": {
       "tooManyFiles": "Too many files. Maximum: {max}",
+      "tooManyFilesFree": "Too many files for Free plan. Maximum: {max}. Upgrade for more.",
+      "tooManyFilesPro": "Too many files. Maximum: {max}",
       "invalidFileType": "Invalid file type. Please select PDF or images (JPG, PNG).",
-      "fileTooLarge": "File too large. Maximum size: {max} MB"
+      "fileTooLarge": "File too large. Maximum size: {max} MB",
+      "fileTooLargeFree": "File too large for Free plan. Maximum: {max} MB. Upgrade for larger files.",
+      "fileTooLargePro": "File too large. Maximum: {max} MB"
     },
     "readyToProcess": "Private Sanctuary",
     "filesReadySingle": "{count} file ready",
@@ -348,7 +372,7 @@
       "title": "What's next?",
       "description": "Continue working with your compressed PDF:",
       "protect": "Add password",
-      "merge": "Merge with others",
+      "merge": "Combine with others",
       "split": "Extract pages",
       "watermark": "Add watermark"
     },
@@ -577,8 +601,6 @@
     "firstPageOnly": "First page only",
     "allPages": "All pages",
     "pageRange": "Page range",
-    "page": "page",
-    "pages": "pages",
     "processed": "processed",
     "processingPage": "Processing page {current} of {total}...",
     "startOCR": "Start OCR",
@@ -595,11 +617,6 @@
     "confidence": "Confidence",
     "extractedText": "Extracted text",
     "copyText": "Copy text",
-    "downloadTXT": "Download TXT",
-    "textCopied": "Text copied to clipboard!",
-    "remove": "Remove",
-    "newFile": "New file",
-    "preview": "Preview",
     "view": "View",
     "edit": "Edit",
     "editPlaceholder": "Edit your extracted text here...",
@@ -607,13 +624,34 @@
     "words": "words",
     "lines": "lines",
     "characters": "characters",
-    "languageDetection": {
-      "highConfidence": "High Confidence",
-      "mediumConfidence": "Medium Confidence",
-      "lowConfidence": "Low Confidence",
-      "verifyLanguage": "Verify language selection for better OCR accuracy"
-    },
+    "page": "page",
+    "pages": "pages",
+    "textCopied": "Text copied to clipboard!",
+    "remove": "Remove",
+    "newFile": "New file",
+    "preview": "Preview",
     "startOver": "Start Over",
+    "downloadTXT": "Download TXT",
+    "download": {
+      "createSearchablePdf": "Create Searchable PDF",
+      "downloadHocr": "Download hOCR (.html)",
+      "downloadTsv": "Download TSV (.tsv)",
+      "downloadTxt": "Download TXT",
+      "searchablePdfReady": "Ready to create searchable PDF!",
+      "searchablePdfDownloaded": "Searchable PDF downloaded!"
+    },
+    "results": {
+      "title": "OCR Results",
+      "extractedText": "Extracted Text",
+      "resultReady": "Result Ready",
+      "successMessage": "Your document was successfully processed. You can now download the result.",
+      "textReady": "Recognized Text",
+      "searchablePdfReady": "Ready to Create Searchable PDF",
+      "hocrReady": "hOCR Data Ready",
+      "tsvReady": "TSV Data Ready",
+      "pagesWillProcess": "{count} {pages} will be processed with OCR",
+      "confidenceAndPages": "Confidence: {confidence}% • {count} {pages} processed"
+    },
     "languages": {
       "eng": "English",
       "rus": "Russian",
@@ -642,14 +680,6 @@
       "tsvShort": "TSV (Data)",
       "tsvDesc": "Tab-separated values with bounding boxes - easy to parse for data analysis"
     },
-    "results": {
-      "textReady": "Recognized Text",
-      "searchablePdfReady": "Ready to Create Searchable PDF",
-      "hocrReady": "hOCR Data Ready",
-      "tsvReady": "TSV Data Ready",
-      "pagesWillProcess": "{count} {pages} will be processed with OCR",
-      "confidenceAndPages": "Confidence: {confidence}% • {count} {pages} processed"
-    },
     "infoPanel": {
       "searchablePdfTitle": "Searchable PDF with Invisible Text Layer",
       "searchablePdfDesc": "The original document images will be preserved exactly as they appear. OCR text will be added as an invisible layer, making the PDF fully searchable and allowing text selection while maintaining the original visual appearance.",
@@ -657,14 +687,6 @@
       "hocrDesc": "HTML document with precise bounding boxes and confidence scores for each word. Ideal for automated processing, NLP pipelines, and custom text extraction workflows. Contains structured data about text positioning, hierarchy, and recognition quality.",
       "tsvTitle": "TSV Format (Tab-Separated Values)",
       "tsvDesc": "Spreadsheet-compatible format with bounding box coordinates and confidence scores. Easy to import into Excel, Google Sheets, or data analysis tools like Python/Pandas. Each row contains level, page number, block, paragraph, line, word, position, and text."
-    },
-    "download": {
-      "createSearchablePdf": "Create Searchable PDF",
-      "downloadHocr": "Download hOCR (.html)",
-      "downloadTsv": "Download TSV (.tsv)",
-      "downloadTxt": "Download TXT",
-      "searchablePdfReady": "Ready to create searchable PDF!",
-      "searchablePdfDownloaded": "Searchable PDF downloaded!"
     },
     "infoTitle": "About OCR",
     "info1": "Supports PDF documents and images (JPG, PNG)",
@@ -716,13 +738,15 @@
       "noText": "Please enter watermark text",
       "noImage": "Please choose an image for the watermark",
       "failed": "Failed to add watermark",
-      "cyrillicNotSupported": "Cyrillic characters might not be supported by the selected font"
+      "cyrillicNotSupported": "Cyrillic characters might not be supported by the selected font",
+      "textRequired": "Please enter watermark text"
     },
     "success": {
       "title": "Watermark Added Successfully",
       "watermarkApplied": "Watermark",
       "pages": "Pages Processed",
-      "size": "File Size"
+      "size": "File Size",
+      "time": "Processing time"
     },
     "quickActions": {
       "title": "What's next?",
@@ -735,7 +759,13 @@
     "infoTitle": "About Watermark",
     "info1": "Supports text watermarks with full Cyrillic and Latin character support",
     "info2": "6 position options: diagonal, center, and 4 corners",
-    "info3": "All processing happens in your browser - files stay private"
+    "info3": "All processing happens in your browser - files stay private",
+    "applyAnother": "Apply another watermark",
+    "applyButton": "Apply watermark",
+    "autoLoaded": {
+      "title": "Watermark loaded",
+      "description": "Your file was loaded from the previous tool"
+    }
   },
   "rotate": {
     "settings": "Rotation settings",
@@ -750,7 +780,7 @@
     "allPages": "All pages",
     "rotateAllPages": "Rotate all pages in document",
     "specificPages": "Specific pages",
-    "choosePages": "Choose which pages to rotate",
+    "chooseWhichPages": "Choose which pages to rotate",
     "pageNumbers": "Page numbers",
     "pageNumbersHint": "Example: 1,3,5-7,10 (Total pages: {total})",
     "rotateButton": "Rotate PDF",
@@ -965,6 +995,9 @@
       "compress": "Reduce file size",
       "watermark": "Add watermark",
       "merge": "Combine with others"
+    },
+    "errors": {
+      "signFailed": "Failed to sign PDF"
     }
   },
   "pageEditor": {
@@ -996,6 +1029,12 @@
     "extract": "Extract",
     "delete": "Delete",
     "extracting": "Extracting pages...",
+    "pageSelection": "Page Selection",
+    "results": {
+      "successMessage": "Your document has been processed successfully. You can now download the result from the sidebar."
+    },
+    "copyText": "Copy Text",
+    "view": "View",
     "pagesDeleted": "pages deleted",
     "extractSuccess": "Pages extracted successfully",
     "extractError": "Failed to extract pages",
@@ -1107,9 +1146,13 @@
       "multiline": "Multiline",
       "checkbox": "Checkbox",
       "radio": "Radio",
-      "dropdown": "Dropdown"
+      "dropdown": "Dropdown",
+      "unknown": "Unknown"
     }
   },
+  "toolNotImplemented": "Tool Not Implemented",
+  "toolComingSoon": "This tool is coming soon.",
+  "toolImplementationSoon": "Tool implementation coming soon...",
   "editText": {
     "rasterizationWarning": "Note: Edited pages will be converted to images. Text on those pages will not be selectable after editing.",
     "selectPage": "Select Page",
@@ -1232,6 +1275,8 @@
     "noTabsSelected": "Please select at least one sheet",
     "rows": "Rows",
     "cols": "Columns",
+    "generate": "Generate PDF",
+    "generateWithWatermark": "Generate with Watermark",
     "style": {
       "title": "Table Style",
       "header": "Header Color",
@@ -1258,7 +1303,11 @@
   },
   "monetization": {
     "upgrade_now": "Upgrade to PRO",
-    "upgrade": "Upgrade",
+    "upgrade": "Upgrade to PRO",
+    "upgradeTitle": "Upgrade to Pro",
+    "upgradeSubtitle": "Unlock all tools & limits",
+    "proStatus": "Pro Status",
+    "activeSubscription": "Active subscription",
     "pro_badge": "PRO",
     "restore": "Restore",
     "restore_hint": "Enter your LemonSqueezy license key",
@@ -1266,6 +1315,14 @@
     "restore_description": "Subscriptions are synced with your Support ID automatically. Use this form only if you're on a new device.",
     "choose_plan": "Choose Plan",
     "secure_checkout": "100% Secure Checkout",
+    "status": "Subscription Status",
+    "expires": "Expires",
+    "never": "Never",
+    "refresh_access": "Refresh Access",
+    "once": "once",
+    "intervals": {
+      "month": "month"
+    },
     "free": {
       "name": "Free Plan",
       "price": "0",
@@ -1274,10 +1331,14 @@
       "description": "Basic tools and limits"
     },
     "pro": {
-      "cta": "Join PRO"
+      "name": "Pro Subscription",
+      "cta": "Join PRO",
+      "description": "Remove all limits, get priority support and advanced tools."
     },
     "lifetime": {
-      "cta": "Best Value"
+      "name": "Pro Lifetime",
+      "cta": "Best Value",
+      "description": "Pay once, enjoy forever. All Pro features included."
     },
     "features": {
       "no_limits": "No File Limits",
@@ -1287,6 +1348,12 @@
       "unlimited": "Unlimited"
     },
     "premium_feature": "Premium Feature",
-    "premium_description": "This tool is only available for PRO users. Join now to remove all limits and get access to advanced PDF processing features."
+    "premium_description": "Use PRO tools for free with a watermark! Upgrade to remove watermarks, increase file size limits, and enjoy unlimited daily downloads.",
+    "download_with_watermark": "Download with Watermark",
+    "download_pro_clean": "Download PRO (Clean)",
+    "daily_limit_reached": "Daily limit reached for this tool",
+    "daily_free_downloads_left": "Free downloads remaining: {count}",
+    "upgrade_to_download": "Upgrade to Download",
+    "private_secure_fast": "Private. Secure. Local."
   }
 }

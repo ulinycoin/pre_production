@@ -36,9 +36,9 @@ export interface I18nReturn {
   t: (key: string, params?: Record<string, string | number>) => string;
 }
 
-// Helper to get nested translation value
+// Helper to get nested translation value with existence check
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-function getNestedValue(obj: any, path: string): string {
+function getNestedValue(obj: any, path: string): { found: boolean; value: string } {
   const keys = path.split('.');
   let value = obj;
 
@@ -46,11 +46,13 @@ function getNestedValue(obj: any, path: string): string {
     if (value && typeof value === 'object' && key in value) {
       value = value[key];
     } else {
-      return path; // Return key if not found
+      return { found: false, value: path };
     }
   }
 
-  return typeof value === 'string' ? value : path;
+  return typeof value === 'string'
+    ? { found: true, value }
+    : { found: false, value: path };
 }
 
 const I18nContext = createContext<I18nReturn | undefined>(undefined);
@@ -111,7 +113,9 @@ export const I18nProvider = ({ children }: { children: ReactNode }) => {
   // Translation function with interpolation support
   const t = useCallback((key: string, params?: Record<string, string | number>): string => {
     const translation = translations[language];
-    let text = getNestedValue(translation, key);
+    const primary = getNestedValue(translation, key);
+    const fallback = language === 'en' ? primary : getNestedValue(translations.en, key);
+    let text = primary.found ? primary.value : fallback.found ? fallback.value : key;
 
     // Replace placeholders with actual values
     if (params) {

@@ -5,7 +5,8 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://localpdf.online',
+  site: process.env.GH_PAGES ? 'https://ulinycoin.github.io/pre_production' : 'https://localpdf.online',
+  base: process.env.GH_PAGES ? '/pre_production/' : '/',
   integrations: [
     tailwind(),
     mdx(),

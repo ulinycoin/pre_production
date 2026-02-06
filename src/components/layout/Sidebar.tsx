@@ -26,7 +26,8 @@ import {
   Layers,
   FileOutput as ExtractIcon,
   Table,
-  MessageSquare
+  MessageSquare,
+  Lock
 } from 'lucide-react';
 
 interface SidebarProps {
@@ -50,8 +51,8 @@ const TOOLS: Array<{ id: Tool; icon: React.ElementType; tier: number }> = [
 
   // Tier 2: Edit tools
   { id: 'watermark-pdf', icon: Stamp, tier: 2 },
-  { id: 'edit-pdf', icon: PenTool, tier: 2 },
-  { id: 'add-form-fields-pdf', icon: FileInput, tier: 2 },
+  { id: 'edit-pdf', icon: PenTool, tier: 3 },
+  { id: 'add-form-fields-pdf', icon: FileInput, tier: 3 },
   { id: 'rotate-pdf', icon: RotateCw, tier: 2 },
   { id: 'delete-pages-pdf', icon: Trash2, tier: 2 },
   { id: 'extract-pages-pdf', icon: FileStack, tier: 2 },
@@ -133,6 +134,9 @@ export const Sidebar: React.FC<SidebarProps> = ({
                         {t(`tools.${tool.id}.name`)}
                       </span>
                     )}
+                    {tool.tier === 3 && !isPremium && !collapsed && (
+                      <Lock size={12} className="relative z-10 text-amber-500/70 ml-2" />
+                    )}
                     {isActive && !collapsed && (
                       <span className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-6 rounded-r-full bg-accent-blue z-20 shadow-[0_0_10px_rgba(59,130,246,0.5)]"></span>
                     )}
@@ -149,8 +153,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 <Zap size={18} className="fill-green-500" />
                 {!collapsed && (
                   <div className="flex flex-col">
-                    <span className="text-xs font-bold uppercase tracking-wider">Pro Status</span>
-                    <span className="text-[10px] opacity-70">Active subscription</span>
+                    <span className="text-xs font-bold uppercase tracking-wider">{t('monetization.proStatus')}</span>
+                    <span className="text-[10px] opacity-70">{t('monetization.activeSubscription')}</span>
                   </div>
                 )}
               </div>
@@ -163,8 +167,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 <Zap size={18} className="fill-accent-blue animate-pulse-slow relative z-10" />
                 {!collapsed && (
                   <div className="flex flex-col items-start relative z-10 text-left">
-                    <span className="text-xs font-bold uppercase tracking-wider">Upgrade to Pro</span>
-                    <span className="text-[10px] opacity-70 italic line-clamp-1">Unlock all tools & limits</span>
+                    <span className="text-xs font-bold uppercase tracking-wider">{t('monetization.upgradeTitle')}</span>
+                    <span className="text-[10px] opacity-70 italic line-clamp-1">{t('monetization.upgradeSubtitle')}</span>
                   </div>
                 )}
               </button>
@@ -176,7 +180,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
             {!collapsed && (
               <div className="px-3 space-y-4">
                 <h3 className="text-[10px] uppercase tracking-[0.2em] font-bold text-gray-500/80">
-                  Resources
+                  {t('common.resources')}
                 </h3>
 
                 {/* Support ID Display */}

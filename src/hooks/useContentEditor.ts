@@ -330,31 +330,9 @@ export const useContentEditor = (): UseContentEditorReturn => {
         const fonts: Record<string, any> = {};
         const fontNames = ['Roboto-Regular', 'Roboto-Bold', 'Roboto-Italic', 'Roboto-BoldItalic'];
 
-        // Primary source: Local; Secondary: CDN (Google Fonts)
-        const getFontUrl = (name: string) => {
-            const cdnMap: Record<string, string> = {
-                'Roboto-Regular': 'https://raw.githubusercontent.com/google/fonts/main/apache/roboto/static/Roboto-Regular.ttf',
-                'Roboto-Bold': 'https://raw.githubusercontent.com/google/fonts/main/apache/roboto/static/Roboto-Bold.ttf',
-                'Roboto-Italic': 'https://raw.githubusercontent.com/google/fonts/main/apache/roboto/static/Roboto-Italic.ttf',
-                'Roboto-BoldItalic': 'https://raw.githubusercontent.com/google/fonts/main/apache/roboto/static/Roboto-BoldItalic.ttf',
-            };
-            return cdnMap[name];
-        };
-
         try {
             for (const name of fontNames) {
                 let response = await fetch(`/fonts/${name}.ttf`);
-                if (!response.ok) {
-                    const cdnUrl = getFontUrl(name);
-                    if (cdnUrl) {
-                        try {
-                            response = await fetch(cdnUrl);
-                        } catch (e) {
-                            console.warn(`Failed to fetch font ${name} from CDN:`, e);
-                        }
-                    }
-                }
-
                 if (response.ok) {
                     const contentType = response.headers.get('content-type') || '';
                     if (contentType.includes('text/html')) {

@@ -43,7 +43,7 @@ const ToolLoading = () => (
   <div className="flex items-center justify-center min-h-[400px]">
     <div className="text-center">
       <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-ocean-500 mx-auto mb-4"></div>
-      <p className="text-gray-600 dark:text-gray-300 text-lg">Loading tool...</p>
+      <p className="text-gray-600 dark:text-gray-300 text-lg">{useI18n().t('common.loadingTool')}</p>
     </div>
   </div>
 );
@@ -165,7 +165,7 @@ function App() {
               size="icon"
               onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
               className="hover:bg-black/5 dark:hover:bg-white/10"
-              aria-label={sidebarCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
+              aria-label={sidebarCollapsed ? t('common.expandSidebar') : t('common.collapseSidebar')}
             >
               <span className="text-2xl">☰</span>
             </Button>
@@ -255,7 +255,7 @@ function App() {
               size="icon"
               onClick={toggleTheme}
               className="hover:bg-black/5 dark:hover:bg-white/10"
-              aria-label="Toggle theme"
+              aria-label={t('common.toggleTheme')}
             >
               <span className="text-xl">{theme === 'dark' ? '☀️' : '🌙'}</span>
             </Button>
@@ -332,17 +332,17 @@ function App() {
               ) : (
                 <div className="card p-8">
                   <h2 className="text-3xl font-bold mb-4 text-gray-900 dark:text-white">
-                    Tool Not Implemented
+                    {t('errors.toolNotImplemented')}
                   </h2>
                   <p className="text-gray-600 dark:text-gray-400 mb-6">
-                    This tool is coming soon.
+                    {t('errors.toolComingSoon')}
                   </p>
                   <div className="bg-ocean-50 dark:bg-ocean-900/20 border border-ocean-200 dark:border-ocean-800 rounded-lg p-6">
                     <p className="text-center text-ocean-700 dark:text-ocean-300">
-                      Tool implementation coming soon...
+                      {t('errors.toolImplementationSoon')}
                     </p>
                     <p className="text-center text-sm text-gray-500 dark:text-gray-400 mt-2">
-                      Tool: {currentTool}
+                      {t('common.tool')}: {currentTool}
                     </p>
                   </div>
                 </div>

@@ -5,6 +5,7 @@
  */
 class StorageService {
     private static readonly TOKEN_KEY = 'lp_sub_token';
+    private static readonly LICENSE_KEY = 'lp_license_key';
     private static readonly DB_NAME = 'LocalPDF_Storage';
     private static readonly STORE_NAME = 'subscription';
 
@@ -13,13 +14,22 @@ class StorageService {
      */
     static async init(): Promise<void> {
         try {
-            const dbToken = await this.getFromIndexedDB();
+            const dbToken = await this.getFromIndexedDB('token');
             const lsToken = localStorage.getItem(this.TOKEN_KEY);
 
             if (lsToken && !dbToken) {
-                await this.saveToIndexedDB(lsToken);
+                await this.saveToIndexedDB('token', lsToken);
             } else if (!lsToken && dbToken) {
                 localStorage.setItem(this.TOKEN_KEY, dbToken);
+            }
+
+            const dbLicense = await this.getFromIndexedDB('licenseKey');
+            const lsLicense = localStorage.getItem(this.LICENSE_KEY);
+
+            if (lsLicense && !dbLicense) {
+                await this.saveToIndexedDB('licenseKey', lsLicense);
+            } else if (!lsLicense && dbLicense) {
+                localStorage.setItem(this.LICENSE_KEY, dbLicense);
             }
         } catch (e) {
             console.warn('StorageService init failed:', e);
@@ -28,7 +38,12 @@ class StorageService {
 
     static async setToken(token: string): Promise<void> {
         localStorage.setItem(this.TOKEN_KEY, token);
-        await this.saveToIndexedDB(token);
+        await this.saveToIndexedDB('token', token);
+    }
+
+    static async setLicenseKey(key: string): Promise<void> {
+        localStorage.setItem(this.LICENSE_KEY, key);
+        await this.saveToIndexedDB('licenseKey', key);
     }
 
     static async getToken(): Promise<string | null> {
@@ -37,7 +52,7 @@ class StorageService {
 
         // Fallback to secondary
         if (!token) {
-            token = await this.getFromIndexedDB();
+            token = await this.getFromIndexedDB('token');
             if (token) {
                 localStorage.setItem(this.TOKEN_KEY, token);
             }
@@ -46,9 +61,25 @@ class StorageService {
         return token;
     }
 
+    static async getLicenseKey(): Promise<string | null> {
+        let key = localStorage.getItem(this.LICENSE_KEY);
+        if (!key) {
+            key = await this.getFromIndexedDB('licenseKey');
+            if (key) {
+                localStorage.setItem(this.LICENSE_KEY, key);
+            }
+        }
+        return key;
+    }
+
     static async clearToken(): Promise<void> {
         localStorage.removeItem(this.TOKEN_KEY);
-        await this.removeFromIndexedDB();
+        await this.removeFromIndexedDB('token');
+    }
+
+    static async clearLicenseKey(): Promise<void> {
+        localStorage.removeItem(this.LICENSE_KEY);
+        await this.removeFromIndexedDB('licenseKey');
     }
 
     private static openDB(): Promise<IDBDatabase> {
@@ -65,22 +96,22 @@ class StorageService {
         });
     }
 
-    private static async saveToIndexedDB(token: string): Promise<void> {
+    private static async saveToIndexedDB(key: string, value: string): Promise<void> {
         try {
             const db = await this.openDB();
             const tx = db.transaction(this.STORE_NAME, 'readwrite');
-            tx.objectStore(this.STORE_NAME).put(token, 'token');
+            tx.objectStore(this.STORE_NAME).put(value, key);
             return new Promise((res) => { tx.oncomplete = () => res(); });
         } catch (e) {
             console.error('IndexedDB save error:', e);
         }
     }
 
-    private static async getFromIndexedDB(): Promise<string | null> {
+    private static async getFromIndexedDB(key: string): Promise<string | null> {
         try {
             const db = await this.openDB();
             const tx = db.transaction(this.STORE_NAME, 'readonly');
-            const request = tx.objectStore(this.STORE_NAME).get('token');
+            const request = tx.objectStore(this.STORE_NAME).get(key);
             return new Promise((res) => {
                 request.onsuccess = () => res(request.result || null);
                 request.onerror = () => res(null);
@@ -90,11 +121,11 @@ class StorageService {
         }
     }
 
-    private static async removeFromIndexedDB(): Promise<void> {
+    private static async removeFromIndexedDB(key: string): Promise<void> {
         try {
             const db = await this.openDB();
             const tx = db.transaction(this.STORE_NAME, 'readwrite');
-            tx.objectStore(this.STORE_NAME).delete('token');
+            tx.objectStore(this.STORE_NAME).delete(key);
         } catch (e) {
             // Ignore
         }

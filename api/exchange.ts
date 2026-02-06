@@ -1,5 +1,13 @@
 import { VercelRequest, VercelResponse } from '@vercel/node';
+import { createClient } from '@vercel/kv';
 import * as jose from 'jose';
+
+const kv = process.env.KV_REST_API_URL && process.env.KV_REST_API_TOKEN
+  ? createClient({
+      url: process.env.KV_REST_API_URL,
+      token: process.env.KV_REST_API_TOKEN,
+    })
+  : null;
 
 /**
  * Exchange a LemonSqueezy license key for a signed JWT token.
@@ -10,10 +18,25 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         return res.status(405).json({ error: 'Method not allowed' });
     }
 
-    const { licenseKey, tier } = req.body;
+    const { licenseKey } = req.body;
 
     if (!licenseKey) {
         return res.status(400).json({ error: 'License key is required' });
+    }
+    if (typeof licenseKey !== 'string' || licenseKey.length < 6 || licenseKey.length > 128) {
+        return res.status(400).json({ error: 'Invalid license key format' });
+    }
+
+    if (kv) {
+        const ip = req.headers['x-forwarded-for'] || 'anonymous';
+        const limitKey = `ratelimit:exchange:${ip}`;
+        const currentRequests = await kv.get<number>(limitKey) || 0;
+
+        if (currentRequests >= 10) {
+            return res.status(429).json({ error: 'Too many exchange attempts. Please try again later.' });
+        }
+
+        await kv.set(limitKey, currentRequests + 1, { ex: 3600 });
     }
 
     const LEMON_SQUEEZY_API_KEY = process.env.LEMON_SQUEEZY_API_KEY;
@@ -47,9 +70,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
             });
         }
 
-        // 2. Identify the tier based on the product/variant in LS data
-        // For simplicity, we trust the tier passed if valid, or derive from lsData
-        const productTier = tier || (lsData.meta?.variant_name?.toLowerCase().includes('lifetime') ? 'lifetime' : 'pro');
+        // 2. Identify the tier based on the product/variant in LS data (do not trust client input)
+        const variantName = (lsData.meta?.variant_name || '').toLowerCase();
+        const productTier = variantName.includes('lifetime') ? 'lifetime' : 'pro';
 
         // 3. Generate signed JWT using RS256
         const privateKey = await jose.importPKCS8(JWT_PRIVATE_KEY, 'RS256');

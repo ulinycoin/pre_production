@@ -8,6 +8,8 @@
     "title": "Votre",
     "titleSuffix": "PDF Sanctuary.",
     "subtitle": "La seule boîte à outils PDF qui fonctionne à 100 % dans votre navigateur. Pas de téléchargements, pas de serveurs, pas de traces. Juste des outils professionnels, optimisés par votre appareil.",
+    "selectToolToBegin": "Select a tool to begin",
+    "chooseToolDescription": "Choose a compatible tool and your files will transfer instantly.",
     "firstTimeBanner": "Bienvenue ! Tout le traitement se fait dans votre navigateur - vos fichiers ne quittent jamais votre appareil.",
     "selectTool": "Sélectionnez un outil dans la barre latérale ou choisissez-en un ci-dessous"
   },
@@ -77,10 +79,6 @@
       "name": "Extraire des pages",
       "description": "Extraire des pages spécifiques"
     },
-    "unlock-pdf": {
-      "name": "Déverrouiller PDF",
-      "description": "Supprimer le mot de passe PDF"
-    },
     "images-to-pdf": {
       "name": "Images vers PDF",
       "description": "Convertir des images en PDF"
@@ -105,17 +103,235 @@
       "name": "Aplatir PDF",
       "description": "Rendre les formulaires et annotations PDF non modifiables"
     },
-    "edit-pdf": {
-      "name": "Modifier PDF",
-      "description": "Modifier le contenu PDF"
-    },
     "extract-images-pdf": {
       "name": "Extraire/Supprimer images",
       "description": "Extraire toutes les images du PDF ou les supprimer"
     },
+    "edit-pdf": {
+      "name": "Modifier PDF",
+      "description": "Modifier le contenu PDF"
+    },
     "tables-pdf": {
       "name": "Tableaux en PDF",
       "description": "Ajouter, modifier et styliser des tableaux dans votre PDF"
+    },
+    "unlock-pdf": {
+      "name": "Déverrouiller PDF",
+      "description": "Supprimer le mot de passe PDF"
+    }
+  },
+  "common": {
+    "upload": "Télécharger des fichiers",
+    "selectFile": "Sélectionner un fichier",
+    "selectFiles": "Select files",
+    "uploadFile": "Télécharger le fichier",
+    "supportId": "ID de support",
+    "feedback": "Donner votre avis",
+    "feedbackTitle": "Nous apprécions votre avis",
+    "feedbackDescription": "Aidez-nous à améliorer LocalPDF. Vos commentaires sont anonymes sauf si vous fournissez un e-mail.",
+    "rating": "Évaluation",
+    "ratingRequired": "Veuillez sélectionner une évaluation",
+    "comment": "Commentaire",
+    "commentPlaceholder": "Que pouvons-nous améliorer ?",
+    "email": "E-mail",
+    "optional": "optionnel",
+    "sendFeedback": "Envoyer l'avis",
+    "sending": "Envoi en cours...",
+    "feedbackSuccess": "Merci pour votre avis !",
+    "feedbackError": "Échec de l'envoi de l'avis. Veuillez réessayer plus tard.",
+    "uploadDescription": "Glissez-déposez ou cliquez pour télécharger",
+    "download": "Télécharger",
+    "downloadAll": "Download All (ZIP)",
+    "supportDeveloper": "Soutenir le développeur",
+    "processing": "Traitement en cours...",
+    "searching": "Recherche...",
+    "error": "Erreur",
+    "success": "Succès",
+    "cancel": "Annuler",
+    "close": "Fermer",
+    "back": "Retour",
+    "next": "Suivant",
+    "done": "Terminé",
+    "remove": "Supprimer",
+    "newFile": "Nouveau fichier",
+    "filePreview": "Aperçu du fichier",
+    "totalPages": "Pages totales",
+    "page": "Page",
+    "pages": "pages",
+    "fileSize": "Taille du fichier",
+    "changeFile": "Changer de fichier",
+    "autoLoaded": "Fichier chargé depuis l'outil précédent",
+    "autoLoadedDescription": "Votre PDF a été chargé automatiquement",
+    "reset": "Réinitialiser",
+    "processAnother": "Traiter un autre",
+    "relatedTools": "Outils connexes",
+    "clickToEdit": "Cliquer pour modifier",
+    "convertAnother": "Convertir un autre",
+    "quickActions": "Actions rapides",
+    "preview": "Aperçu",
+    "clearAll": "Tout effacer",
+    "processingTime": "Temps de traitement",
+    "selectedFile": "Fichier sélectionné",
+    "originalSize": "Taille originale",
+    "newSize": "Nouvelle taille",
+    "useInOtherTools": "Utiliser dans d'autres outils",
+    "recommended": "Recommandé",
+    "generatingThumbnails": "Génération des vignettes...",
+    "whatsNext": "Et après ?",
+    "continueWorking": "Continuez avec ces outils :",
+    "selectAll": "Tout sélectionner",
+    "convert": "Convertir",
+    "hide": "Masquer",
+    "loading": "Chargement...",
+    "loadingTool": "Chargement de l'outil...",
+    "loadingPreview": "Chargement de l'aperçu...",
+    "noPreview": "Pas d'aperçu",
+    "expandSidebar": "Développer la barre latérale",
+    "collapseSidebar": "Réduire la barre latérale",
+    "toggleTheme": "Changer le thème",
+    "resources": "Ressources",
+    "all": "Tout",
+    "previous": "Précédent",
+    "failedToLoad": "Échec du chargement",
+    "extensionPromptTitle": "Installez l’extension Chrome LocalPDF",
+    "extensionPromptBody": "Ouvrez LocalPDF plus vite après chaque téléchargement.",
+    "extensionPromptCta": "Obtenir l’extension Chrome",
+    "extensionPromptDismiss": "Non merci",
+    "save": "Enregistrer",
+    "show": "Afficher",
+    "zoom": "Zoom",
+    "zoomIn": "Agrandir",
+    "zoomOut": "Réduire",
+    "addFiles": "Ajouter plus de fichiers",
+    "errors": {
+      "previewFailed": "Échec du chargement de l'aperçu"
+    },
+    "change": "Changer",
+    "generatingPreview": "Génération de l'aperçu...",
+    "nextPage": "Page suivante",
+    "prevPage": "Page précédente",
+    "selected": "Sélectionné"
+  },
+  "upload": {
+    "selectFiles": "Sélectionner des fichiers",
+    "dragOrClick": "Faites glisser les fichiers ici ou cliquez pour sélectionner",
+    "dropHere": "Déposez les fichiers ici",
+    "multipleFilesAllowed": "Prend en charge jusqu'à 10 fichiers",
+    "singleFileAllowed": "Un seul fichier",
+    "pasteHint": "Ou appuyez sur Ctrl+V pour coller des fichiers",
+    "maxFiles": "Fichiers maximum",
+    "maxSize": "Taille maximale par fichier",
+    "acceptedTypes": "Types acceptés",
+    "errors": {
+      "tooManyFiles": "Trop de fichiers. Maximum : {max}",
+      "tooManyFilesFree": "Trop de fichiers pour le plan gratuit. Maximum : {max}. Passez à la version supérieure pour plus.",
+      "tooManyFilesPro": "Trop de fichiers. Maximum : {max}",
+      "invalidFileType": "Type de fichier invalide. Veuillez sélectionner uniquement des fichiers PDF.",
+      "fileTooLarge": "Fichier trop volumineux. Taille maximale : {max} Mo",
+      "fileTooLargeFree": "Fichier trop volumineux pour le plan gratuit. Maximum : {max} Mo. Passez à la version supérieure pour des fichiers plus volumineux.",
+      "fileTooLargePro": "Fichier trop volumineux. Maximum : {max} Mo"
+    },
+    "readyToProcess": "Sanctuaire privé",
+    "filesReadySingle": "{count} fichier prêt",
+    "filesReadyPlural": "{count} fichiers prêts"
+  },
+  "merge": {
+    "fileList": "Fichiers à fusionner",
+    "reorderHint": "Faites glisser pour réorganiser",
+    "mergeButton": "Fusionner les PDF",
+    "mergeAnother": "Fusionner un autre",
+    "minFilesHint": "Ajoutez au moins 2 fichiers PDF à fusionner",
+    "errors": {
+      "minFiles": "Veuillez sélectionner au moins 2 fichiers PDF à fusionner"
+    },
+    "success": {
+      "title": "PDF fusionnés avec succès !",
+      "pages": "Pages totales",
+      "size": "Taille du fichier",
+      "time": "Temps de traitement"
+    },
+    "quickActions": {
+      "title": "Et après ?",
+      "description": "Continuez à travailler avec votre PDF fusionné avec ces outils :",
+      "compress": "Réduire la taille",
+      "protect": "Ajouter un mot de passe",
+      "watermark": "Ajouter un filigrane",
+      "split": "Extraire des pages"
+    }
+  },
+  "smartMerge": {
+    "title": "Fusion intelligente",
+    "analyzing": "Analyse des documents...",
+    "sortSuggestions": "Suggestions de tri",
+    "detectedDates": "Dates détectées",
+    "duplicatesFound": "Doublons possibles trouvés",
+    "similarFiles": "fichiers similaires",
+    "keepFirst": "Garder le premier",
+    "sortApplied": "Tri appliqué",
+    "duplicatesRemoved": "Doublons supprimés"
+  },
+  "smartOrganize": {
+    "title": "Organisation intelligente",
+    "analyzing": "Analyse des pages...",
+    "quickActions": "Actions rapides",
+    "detectedChapters": "Chapitres détectés",
+    "removeBlank": "Supprimer les pages vides",
+    "removeDuplicates": "Supprimer les doublons",
+    "fixRotation": "Corriger la rotation",
+    "moveTOC": "Déplacer la table des matières",
+    "noIssues": "Aucun problème détecté - le document est en ordre!"
+  },
+  "smartCompression": {
+    "title": "Analyse Intelligente",
+    "analyzing": "Analyse du contenu...",
+    "highPotential": "Fort potentiel de compression",
+    "optimized": "Fichier déjà optimisé",
+    "images": "Images",
+    "structure": "Structure",
+    "heavy": "Beaucoup d'images",
+    "light": "Texte principalement",
+    "recommendation": "Mode recommandé",
+    "apply": "Appliquer",
+    "applied": "Mode recommandé appliqué",
+    "insights": {
+      "mostlyText": "Contenu principalement textuel",
+      "imageCount": "Contient ~{count} images",
+      "largeImages": "Fichier volumineux dû aux images",
+      "highDensity": "Haute densité de contenu",
+      "efficient": "Structure déjà efficace",
+      "standard": "Analyse PDF standard"
+    }
+  },
+  "smartImageFilter": {
+    "title": "Filtre d'images intelligent",
+    "analyzing": "Analyse des images...",
+    "totalImages": "Total",
+    "useful": "Utiles",
+    "junk": "Inutiles",
+    "quickFilters": "Filtres rapides",
+    "categories": "Catégories",
+    "processingInfo": "Toute l'analyse est effectuée localement dans votre navigateur. Les images sont catégorisées par taille, format et caractéristiques.",
+    "presets": {
+      "useful": {
+        "label": "Images utiles",
+        "description": "Seulement photos et graphiques"
+      },
+      "photosOnly": {
+        "label": "Photos uniquement",
+        "description": "Photos de haute qualité"
+      },
+      "excludeIcons": {
+        "label": "Sans icônes",
+        "description": "Exclure les petites icônes"
+      },
+      "large": {
+        "label": "Grandes images",
+        "description": "Images > 0,1 MP"
+      }
+    },
+    "junkWarning": {
+      "title": "Images de faible valeur détectées",
+      "description": "Trouvé {count} petites icônes/décorations. Envisagez d'utiliser le filtre 'Images utiles'."
     }
   },
   "compress": {
@@ -165,122 +381,6 @@
       "description": "Votre PDF a été chargé depuis l'outil précédent"
     }
   },
-  "smartCompression": {
-    "title": "Analyse Intelligente",
-    "analyzing": "Analyse du contenu...",
-    "highPotential": "Fort potentiel de compression",
-    "optimized": "Fichier déjà optimisé",
-    "images": "Images",
-    "structure": "Structure",
-    "heavy": "Beaucoup d'images",
-    "light": "Texte principalement",
-    "recommendation": "Mode recommandé",
-    "apply": "Appliquer",
-    "applied": "Mode recommandé appliqué",
-    "insights": {
-      "mostlyText": "Contenu principalement textuel",
-      "imageCount": "Contient ~{count} images",
-      "largeImages": "Fichier volumineux dû aux images",
-      "highDensity": "Haute densité de contenu",
-      "efficient": "Structure déjà efficace",
-      "standard": "Analyse PDF standard"
-    }
-  },
-  "common": {
-    "upload": "Télécharger des fichiers",
-    "selectFile": "Sélectionner un fichier",
-    "uploadFile": "Télécharger le fichier",
-    "supportId": "ID de support",
-    "feedback": "Donner votre avis",
-    "feedbackTitle": "Nous apprécions votre avis",
-    "feedbackDescription": "Aidez-nous à améliorer LocalPDF. Vos commentaires sont anonymes sauf si vous fournissez un e-mail.",
-    "rating": "Évaluation",
-    "ratingRequired": "Veuillez sélectionner une évaluation",
-    "comment": "Commentaire",
-    "commentPlaceholder": "Que pouvons-nous améliorer ?",
-    "email": "E-mail",
-    "optional": "optionnel",
-    "sendFeedback": "Envoyer l'avis",
-    "sending": "Envoi en cours...",
-    "feedbackSuccess": "Merci pour votre avis !",
-    "feedbackError": "Échec de l'envoi de l'avis. Veuillez réessayer plus tard.",
-    "supportDeveloper": "Soutenir le développeur",
-    "uploadDescription": "Glissez-déposez ou cliquez pour télécharger",
-    "download": "Télécharger",
-    "processing": "Traitement en cours...",
-    "searching": "Recherche...",
-    "error": "Erreur",
-    "success": "Succès",
-    "cancel": "Annuler",
-    "close": "Fermer",
-    "back": "Retour",
-    "next": "Suivant",
-    "done": "Terminé",
-    "remove": "Supprimer",
-    "newFile": "Nouveau fichier",
-    "filePreview": "Aperçu du fichier",
-    "totalPages": "Pages totales",
-    "page": "Page",
-    "pages": "pages",
-    "fileSize": "Taille du fichier",
-    "changeFile": "Changer de fichier",
-    "autoLoaded": "Fichier chargé depuis l'outil précédent",
-    "autoLoadedDescription": "Votre PDF a été chargé automatiquement",
-    "reset": "Réinitialiser",
-    "processAnother": "Traiter un autre",
-    "relatedTools": "Outils connexes",
-    "clickToEdit": "Cliquer pour modifier",
-    "convertAnother": "Convertir un autre",
-    "quickActions": "Actions rapides",
-    "preview": "Aperçu",
-    "clearAll": "Tout effacer",
-    "processingTime": "Temps de traitement",
-    "selectedFile": "Fichier sélectionné",
-    "originalSize": "Taille originale",
-    "newSize": "Nouvelle taille",
-    "useInOtherTools": "Utiliser dans d'autres outils",
-    "recommended": "Recommandé",
-    "generatingThumbnails": "Génération des vignettes...",
-    "whatsNext": "Et après ?",
-    "continueWorking": "Continuez avec ces outils :",
-    "selectAll": "Tout sélectionner",
-    "convert": "Convertir",
-    "hide": "Masquer",
-    "loading": "Chargement...",
-    "previous": "Précédent",
-    "extensionPromptTitle": "Installez l’extension Chrome LocalPDF",
-    "extensionPromptBody": "Ouvrez LocalPDF plus vite après chaque téléchargement.",
-    "extensionPromptCta": "Obtenir l’extension Chrome",
-    "extensionPromptDismiss": "Non merci",
-    "save": "Enregistrer",
-    "show": "Afficher",
-    "zoom": "Zoom",
-    "zoomIn": "Agrandir",
-    "zoomOut": "Réduire",
-    "addFiles": "Ajouter plus de fichiers",
-    "errors": {
-      "previewFailed": "Échec du chargement de l'aperçu"
-    }
-  },
-  "upload": {
-    "selectFiles": "Sélectionner des fichiers",
-    "dragOrClick": "Faites glisser les fichiers ici ou cliquez pour sélectionner",
-    "dropHere": "Déposez les fichiers ici",
-    "multipleFilesAllowed": "Prend en charge jusqu'à 10 fichiers",
-    "singleFileAllowed": "Un seul fichier",
-    "pasteHint": "Ou appuyez sur Ctrl+V pour coller des fichiers",
-    "maxFiles": "Fichiers maximum",
-    "maxSize": "Taille maximale par fichier",
-    "acceptedTypes": "Types acceptés",
-    "errors": {
-      "tooManyFiles": "Trop de fichiers. Maximum : {max}",
-      "invalidFileType": "Type de fichier invalide. Veuillez sélectionner uniquement des fichiers PDF.",
-      "fileTooLarge": "Fichier trop volumineux. Taille maximale : {max} MB"
-    },
-    "readyToProcess": "Sanctuaire privé",
-    "filesReadySingle": "{count} fichier prêt",
-    "filesReadyPlural": "{count} fichiers prêts"
-  },
   "flatten": {
     "filePreview": "Fichier à aplatir",
     "description": "Rendre formulaires et annotations non modifiables",
@@ -306,135 +406,6 @@
       "title": "Fichier chargé depuis l'outil précédent",
       "description": "Votre PDF a été chargé automatiquement"
     }
-  },
-  "imagesToPdf": {
-    "imagesList": "Images",
-    "settings": "Paramètres PDF",
-    "pageSize": "Taille de page",
-    "pageSizes": {
-      "fit": "Adapter à l'image",
-      "a4": "A4",
-      "letter": "Letter"
-    },
-    "orientation": "Orientation",
-    "orientations": {
-      "portrait": "Portrait",
-      "landscape": "Paysage"
-    },
-    "margin": "Marge",
-    "convert": "Convertir en PDF",
-    "convertAnother": "Convertir un autre",
-    "errors": {
-      "noImages": "Veuillez sélectionner au moins une image"
-    },
-    "success": {
-      "title": "Images converties avec succès!",
-      "pages": "Pages créées"
-    },
-    "successMessage": "PDF créé avec succès avec {count} pages",
-    "quickActions": {
-      "title": "Et après?",
-      "description": "Continuez à travailler avec votre PDF:",
-      "compress": "Réduire la taille",
-      "protect": "Ajouter un mot de passe",
-      "watermark": "Ajouter un filigrane",
-      "merge": "Combiner avec d'autres"
-    }
-  },
-  "smartMerge": {
-    "title": "Fusion intelligente",
-    "analyzing": "Analyse des documents...",
-    "sortSuggestions": "Suggestions de tri",
-    "detectedDates": "Dates détectées",
-    "duplicatesFound": "Doublons possibles trouvés",
-    "similarFiles": "fichiers similaires",
-    "keepFirst": "Garder le premier",
-    "sortApplied": "Tri appliqué",
-    "duplicatesRemoved": "Doublons supprimés"
-  },
-  "smartOrganize": {
-    "title": "Organisation intelligente",
-    "analyzing": "Analyse des pages...",
-    "quickActions": "Actions rapides",
-    "detectedChapters": "Chapitres détectés",
-    "removeBlank": "Supprimer les pages vides",
-    "removeDuplicates": "Supprimer les doublons",
-    "fixRotation": "Corriger la rotation",
-    "moveTOC": "Déplacer la table des matières",
-    "noIssues": "Aucun problème détecté - le document est en ordre!"
-  },
-  "smartImageFilter": {
-    "title": "Filtre d'images intelligent",
-    "analyzing": "Analyse des images...",
-    "totalImages": "Total",
-    "useful": "Utiles",
-    "junk": "Inutiles",
-    "quickFilters": "Filtres rapides",
-    "categories": "Catégories",
-    "processingInfo": "Toute l'analyse est effectuée localement dans votre navigateur. Les images sont catégorisées par taille, format et caractéristiques.",
-    "presets": {
-      "useful": {
-        "label": "Images utiles",
-        "description": "Seulement photos et graphiques"
-      },
-      "photosOnly": {
-        "label": "Photos uniquement",
-        "description": "Photos de haute qualité"
-      },
-      "excludeIcons": {
-        "label": "Sans icônes",
-        "description": "Exclure les petites icônes"
-      },
-      "large": {
-        "label": "Grandes images",
-        "description": "Images > 0,1 MP"
-      }
-    },
-    "junkWarning": {
-      "title": "Images de faible valeur détectées",
-      "description": "Trouvé {count} petites icônes/décorations. Envisagez d'utiliser le filtre 'Images utiles'."
-    }
-  },
-  "extractImages": {
-    "title": "Extraire/Supprimer images",
-    "mode": "Mode d'extraction",
-    "extractDescription": "Extraire toutes les images du PDF",
-    "smartFilter": {
-      "quickFilters": "Filtres rapides",
-      "categories": {
-        "all": "Tous",
-        "photo": "Photos",
-        "chart": "Graphiques",
-        "logo": "Logos",
-        "icon": "Icônes",
-        "decoration": "Décorations",
-        "other": "Autres"
-      },
-      "presets": {
-        "photosOnly": "Photos uniquement",
-        "useful": "Images utiles",
-        "large": "Grandes images",
-        "charts": "Graphiques",
-        "excludeIcons": "Sans icônes"
-      },
-      "usefulJunk": "{useful} useful / {junk} junk detected"
-    },
-    "description": "Extract all images from a PDF or remove them to reduce file size.",
-    "modeExtract": "Extract Images",
-    "modeRemove": "Supprimer les images",
-    "removeDescription": "Supprimez les images du PDF pour réduire la taille du fichier. Vous pouvez prévisualiser et sélectionner les images à supprimer.",
-    "extractBtn": "Extraire les images",
-    "removeBtn": "Analyser les images",
-    "successExtract": "Images extraites avec succès !",
-    "successRemove": "Images supprimées avec succès !",
-    "previewTitle": "Images extraites",
-    "previewTitleRemove": "Sélectionnez les images à supprimer",
-    "previewDescription": "{count} images trouvées. Sélectionnez les images à télécharger.",
-    "previewDescriptionRemove": "{count} images trouvées. Sélectionnez les images à supprimer du PDF.",
-    "selectAll": "Tout sélectionner",
-    "downloadSelected": "Télécharger ({count})",
-    "removeSelected": "Supprimer ({count})",
-    "noImagesSelected": "Veuillez sélectionner au moins une image à télécharger."
   },
   "split": {
     "filePreview": "Fichier à diviser",
@@ -607,6 +578,17 @@
     }
   },
   "ocr": {
+    "errors": {
+      "limitReached": "OCR Limit Reached",
+      "limitReachedDesc": "You reached your monthly limit of {limit} pages for {plan} plan.",
+      "noFile": "Please select a file first",
+      "processingFailed": "OCR processing failed. Please try again.",
+      "unsupportedFileType": "OCR only supports PDF and image files (JPG, PNG). Your file type (.{ext}) is not supported.",
+      "hocrEmpty": "hOCR data is empty. Please try running OCR again.",
+      "tsvEmpty": "TSV data is empty. Please try running OCR again.",
+      "searchablePdfFailed": "Failed to create searchable PDF: {error}",
+      "downloadFailed": "Failed to generate file. Please try again."
+    },
     "filePreview": "Fichier à traiter",
     "recognitionLanguage": "Langue de reconnaissance",
     "languageHint": "Sélectionnez la langue du texte",
@@ -619,8 +601,6 @@
     "firstPageOnly": "Première page seulement",
     "allPages": "Toutes les pages",
     "pageRange": "Plage de pages",
-    "page": "page",
-    "pages": "pages",
     "processed": "traité",
     "processingPage": "Traitement de la page {current} sur {total}...",
     "startOCR": "Démarrer OCR",
@@ -637,11 +617,6 @@
     "confidence": "Précision",
     "extractedText": "Texte extrait",
     "copyText": "Copier texte",
-    "downloadTXT": "Télécharger TXT",
-    "textCopied": "Copié dans le presse-papiers !",
-    "remove": "Supprimer",
-    "newFile": "Nouveau fichier",
-    "preview": "Aperçu",
     "view": "Voir",
     "edit": "Modifier",
     "editPlaceholder": "Modifiez votre texte extrait ici...",
@@ -649,13 +624,34 @@
     "words": "mots",
     "lines": "lignes",
     "characters": "caractères",
-    "languageDetection": {
-      "highConfidence": "Haute confiance",
-      "mediumConfidence": "Moyenne confiance",
-      "lowConfidence": "Basse confiance",
-      "verifyLanguage": "Vérifiez la langue pour une meilleure précision"
-    },
+    "page": "page",
+    "pages": "pages",
+    "textCopied": "Copié dans le presse-papiers !",
+    "remove": "Supprimer",
+    "newFile": "Nouveau fichier",
+    "preview": "Aperçu",
     "startOver": "Recommencer",
+    "downloadTXT": "Télécharger TXT",
+    "download": {
+      "createSearchablePdf": "Créer PDF consultable",
+      "downloadHocr": "Télécharger hOCR",
+      "downloadTsv": "Télécharger TSV",
+      "downloadTxt": "Télécharger TXT",
+      "searchablePdfReady": "Prêt !",
+      "searchablePdfDownloaded": "Téléchargé !"
+    },
+    "results": {
+      "title": "Résultats OCR",
+      "extractedText": "Texte extrait",
+      "resultReady": "Résultat prêt",
+      "successMessage": "Votre document a été traité avec succès. Vous pouvez maintenant télécharger le résultat dans la barre latérale.",
+      "textReady": "Texte reconnu",
+      "searchablePdfReady": "Prêt pour PDF consultable",
+      "hocrReady": "Données hOCR prêtes",
+      "tsvReady": "Données TSV prêtes",
+      "pagesWillProcess": "{count} {pages} seront traitées",
+      "confidenceAndPages": "Confiance : {confidence}% • {count} {pages} traitées"
+    },
     "languages": {
       "eng": "Anglais",
       "rus": "Russe",
@@ -684,15 +680,6 @@
       "tsvShort": "TSV (Données)",
       "tsvDesc": "Valeurs séparées par tabulation"
     },
-    "results": {
-      "textReady": "Texte reconnu",
-      "searchablePdfReady": "Prêt pour PDF consultable",
-      "hocrReady": "Données hOCR prêtes",
-      "tsvReady": "Données TSV prêtes",
-      "pagesWillProcess": "{count} {pages} seront traitées",
-      "confidenceAndPages": "Confiance : {confidence}% • {count} {pages} traitées",
-      "successMessage": "Votre document a été traité avec succès. Vous pouvez maintenant télécharger le résultat dans la barre latérale."
-    },
     "infoPanel": {
       "searchablePdfTitle": "PDF consultable",
       "searchablePdfDesc": "Texte OCR ajouté comme couche invisible.",
@@ -701,39 +688,22 @@
       "tsvTitle": "Format TSV",
       "tsvDesc": "Tableur avec coordonnées."
     },
-    "download": {
-      "createSearchablePdf": "Créer PDF consultable",
-      "downloadHocr": "Télécharger hOCR",
-      "downloadTsv": "Télécharger TSV",
-      "downloadTxt": "Télécharger TXT",
-      "searchablePdfReady": "Prêt !",
-      "searchablePdfDownloaded": "Téléchargé !"
-    },
     "infoTitle": "À propos de l'OCR",
     "info1": "Supporte PDF et images",
     "info2": "5 langues : EN, RU, DE, FR, ES",
     "info3": "Support multi-pages",
-    "info4": "Traitement navigateur - privé",
-    "errors": {
-      "noFile": "Please select a file first",
-      "processingFailed": "OCR processing failed. Please try again.",
-      "unsupportedFileType": "OCR only supports PDF and image files (JPG, PNG). Your file type (.{ext}) is not supported.",
-      "hocrEmpty": "hOCR data is empty. Please try running OCR again.",
-      "tsvEmpty": "TSV data is empty. Please try running OCR again.",
-      "searchablePdfFailed": "Failed to create searchable PDF: {error}",
-      "downloadFailed": "Failed to generate file. Please try again."
-    }
+    "info4": "Traitement navigateur - privé"
   },
   "watermark": {
-    "mode": "Mode",
-    "textMode": "Texte",
-    "imageMode": "Image",
-    "chooseImage": "Choisir une image",
     "filePreview": "Fichier pour filigrane",
     "settings": "Paramètres du filigrane",
     "text": "Texte du filigrane",
     "watermarkText": "Texte du filigrane",
     "watermarkPlaceholder": "Entrer texte",
+    "mode": "Mode",
+    "textMode": "Texte",
+    "imageMode": "Image",
+    "chooseImage": "Choisir une image",
     "image": "Image",
     "imageScale": "Échelle de l'image",
     "position": "Position",
@@ -768,13 +738,15 @@
       "noText": "Veuillez entrer du texte",
       "noImage": "Veuillez d'abord sélectionner une image",
       "failed": "Échec de l'ajout",
-      "cyrillicNotSupported": "Caractères non supportés"
+      "cyrillicNotSupported": "Caractères non supportés",
+      "textRequired": "Please enter watermark text"
     },
     "success": {
       "title": "Succès !",
       "watermarkApplied": "Filigrane",
       "pages": "Pages traitées",
-      "size": "Taille fichier"
+      "size": "Taille fichier",
+      "time": "Processing time"
     },
     "quickActions": {
       "title": "Et après ?",
@@ -787,11 +759,19 @@
     "infoTitle": "Info Filigrane",
     "info1": "Texte filigrane supporté",
     "info2": "6 positions",
-    "info3": "Traitement local"
+    "info3": "Traitement local",
+    "applyAnother": "Apply another watermark",
+    "applyButton": "Apply watermark",
+    "autoLoaded": {
+      "title": "Watermark loaded",
+      "description": "Your file was loaded from the previous tool"
+    }
   },
   "rotate": {
     "settings": "Paramètres de rotation",
     "applyToAll": "Appliquer à tous les fichiers",
+    "nextPage": "Next page",
+    "prevPage": "Previous page",
     "selectAngle": "Sélectionner l'angle de rotation",
     "clockwise": "Sens horaire",
     "upsideDown": "À l'envers",
@@ -800,7 +780,7 @@
     "allPages": "Toutes les pages",
     "rotateAllPages": "Tout tourner",
     "specificPages": "Pages spécifiques",
-    "choosePages": "Quelles pages tourner",
+    "chooseWhichPages": "Choose which pages to rotate",
     "pageNumbers": "Numéros de page",
     "pageNumbersHint": "Ex: 1,3,5-7 (Total: {total})",
     "rotateButton": "Tourner PDF",
@@ -859,6 +839,40 @@
       "protect": "Protéger",
       "watermark": "Filigrane",
       "merge": "Fusionner"
+    }
+  },
+  "imagesToPdf": {
+    "imagesList": "Images",
+    "settings": "Paramètres PDF",
+    "pageSize": "Taille de page",
+    "pageSizes": {
+      "fit": "Adapter à l'image",
+      "a4": "A4",
+      "letter": "Letter"
+    },
+    "orientation": "Orientation",
+    "orientations": {
+      "portrait": "Portrait",
+      "landscape": "Paysage"
+    },
+    "margin": "Marge",
+    "convert": "Convertir en PDF",
+    "convertAnother": "Convertir un autre",
+    "errors": {
+      "noImages": "Veuillez sélectionner au moins une image"
+    },
+    "success": {
+      "title": "Images converties avec succès!",
+      "pages": "Pages créées"
+    },
+    "successMessage": "PDF créé avec succès avec {count} pages",
+    "quickActions": {
+      "title": "Et après?",
+      "description": "Continuez à travailler avec votre PDF:",
+      "compress": "Réduire la taille",
+      "protect": "Ajouter un mot de passe",
+      "watermark": "Ajouter un filigrane",
+      "merge": "Combiner avec d'autres"
     }
   },
   "pdfToImages": {
@@ -925,20 +939,43 @@
     "conversionComplete": "Conversion terminée"
   },
   "sign": {
+    "signatureType": "Type de signature",
+    "drawSignature": "Dessiner une signature",
+    "uploadImage": "Télécharger une image",
+    "signatureText": "Texte de la signature",
+    "position": "Position",
+    "positions": {
+      "bottomRight": "Bas à droite",
+      "bottomLeft": "Bas à gauche",
+      "topRight": "Haut à droite",
+      "topLeft": "Haut à gauche",
+      "custom": "Manuel (Drag & Drop)"
+    },
+    "dragToMove": "Faites glisser pour repositionner",
+    "applyToPages": "Appliquer aux pages",
+    "allPages": "Toutes les pages",
+    "pageNumber": "Page {number}",
+    "pagesSigned": "Pages signées",
+    "fileSize": "Taille du fichier",
+    "yourName": "Votre nom",
+    "loadingHighQuality": "Chargement haute qualité...",
+    "generatingPreview": "Génération de l'aperçu...",
     "nextPage": "Page suivante",
     "prevPage": "Page précédente",
     "zoom": "Zoom",
     "zoomIn": "Zoomer",
     "zoomOut": "Dézoomer",
-    "generatingPreview": "Génération de l'aperçu...",
+    "saving": "Enregistrement...",
+    "addingSignature": "Ajout de la signature...",
+    "signingPage": "Signature de la page {current} sur {total}...",
     "successTitle": "PDF signé avec succès !",
     "modeDraw": "Dessiner",
     "modeUpload": "Télécharger",
     "modeText": "Texte",
     "clearSignature": "Effacer la signature",
-    "drawSignature": "Dessiner une signature",
-    "uploadImage": "Télécharger une image",
-    "signatureText": "Texte de la signature",
+    "noFile": "Please upload a PDF file",
+    "enterText": "Please enter signature text",
+    "provideSignature": "Please draw or upload a signature",
     "textSize": "Taille du texte",
     "signatureSize": "Taille de la signature",
     "includeName": "Incluir le nom imprimé",
@@ -948,6 +985,7 @@
     "color": "Couleur",
     "width": "Largeur",
     "height": "Hauteur",
+    "addSignature": "Place on Page",
     "apply": "Appliquer",
     "finishAndSave": "Enregistrer le PDF signé",
     "quickActions": {
@@ -957,6 +995,9 @@
       "compress": "Réduire la taille",
       "watermark": "Ajouter un filigrane",
       "merge": "Fusionner avec d'autres"
+    },
+    "errors": {
+      "signFailed": "Failed to sign PDF"
     }
   },
   "pageEditor": {
@@ -988,20 +1029,27 @@
     "extract": "Extraire",
     "delete": "Supprimer",
     "extracting": "Extraction des pages...",
+    "pageSelection": "Page Selection",
+    "results": {
+      "successMessage": "Your document has been processed successfully. You can now download the result from the sidebar."
+    },
+    "copyText": "Copy Text",
+    "view": "View",
     "pagesDeleted": "pages supprimées",
     "extractSuccess": "Pages extraites avec succès",
     "extractError": "Échec de l'extraction des pages",
-    "addPDF": "Ajouter PDF",
-    "appendPages": "Ajouter des pages",
     "tips": {
       "title": "Conseils",
       "drag": "Faites glisser les pages pour les réorganiser",
       "select": "Utilisez les cases à cocher ou cliquez pour en sélectionner plusieurs",
       "rotateDelete": "Survolez une page pour la faire pivoter ou la supprimer",
       "extract": "Utilisez la barre d'outils pour extraire les pages sélectionnées"
-    }
+    },
+    "addPDF": "Ajouter PDF",
+    "appendPages": "Ajouter des pages"
   },
   "addText": {
+    "title": "Ajouter du texte",
     "clickToEdit": "Cliquer pour éditer",
     "addedCount": "Texte ajouté : {count}",
     "originalSize": "Taille originale",
@@ -1014,7 +1062,6 @@
     "zoom": "Zoom : {scale}%",
     "pageOf": "Page {current} sur {total}",
     "defaultFileName": "document_avec_texte.pdf",
-    "title": "Ajouter du texte",
     "toolbar": {
       "addText": "Ajouter du texte",
       "select": "Sélectionner",
@@ -1087,6 +1134,7 @@
       "value": "Valeur",
       "selectedByDefault": "Sélectionné par défaut",
       "options": "Options (une par ligne)",
+      "defaultOptions": "Option 1\nOption 2\nOption 3",
       "allowMultiSelect": "Autoriser la sélection multiple",
       "requiredField": "Champ obligatoire",
       "readOnlyField": "Lecture seule",
@@ -1098,9 +1146,13 @@
       "multiline": "Multiligne",
       "checkbox": "Case à cocher",
       "radio": "Bouton radio",
-      "dropdown": "Liste déroulante"
+      "dropdown": "Liste déroulante",
+      "unknown": "Unknown"
     }
   },
+  "toolNotImplemented": "Tool Not Implemented",
+  "toolComingSoon": "This tool is coming soon.",
+  "toolImplementationSoon": "Tool implementation coming soon...",
   "editText": {
     "rasterizationWarning": "Note : Les pages éditées seront converties en images.",
     "selectPage": "Choisir page",
@@ -1141,7 +1193,7 @@
     "replacementText": "Texte de remplacement",
     "enterReplacementText": "Saisir le texte de remplacement (multiligne supporté)...",
     "latinCharactersOnly": "⚠️ Seuls les caractères latins (A-Z, 0-9) sont supportés",
-    "applyChanges": "Appliquer {count} modification(s)",
+    "applyChanges": "Appliquer {count} modification{s}",
     "applyAllHint": "Toutes les sélections seront appliquées au PDF",
     "cover": "Couvrir",
     "replace": "Remplacer",
@@ -1172,41 +1224,65 @@
       "fitToWidth": "Ajuster à la largeur"
     }
   },
-  "merge": {
-    "fileList": "Fichiers à fusionner",
-    "reorderHint": "Faites glisser pour réorganiser",
-    "mergeButton": "Fusionner les PDF",
-    "mergeAnother": "Fusionner un autre",
-    "minFilesHint": "Ajoutez au moins 2 fichiers PDF à fusionner",
-    "errors": {
-      "minFiles": "Veuillez sélectionner au moins 2 fichiers PDF à fusionner"
-    },
-    "success": {
-      "title": "PDF fusionnés avec succès !",
-      "pages": "Pages totales",
-      "size": "Taille du fichier",
-      "time": "Temps de traitement"
-    },
-    "quickActions": {
-      "title": "Et après ?",
-      "description": "Continuez à travailler avec votre PDF fusionné avec ces outils :",
-      "compress": "Réduire la taille",
-      "protect": "Ajouter un mot de passe",
-      "watermark": "Ajouter un filigrane",
-      "split": "Extraire des pages"
+  "extractImages": {
+    "title": "Extraire/Supprimer images",
+    "mode": "Mode d'extraction",
+    "description": "Extract all images from a PDF or remove them to reduce file size.",
+    "modeExtract": "Extract Images",
+    "modeRemove": "Supprimer les images",
+    "extractDescription": "Extraire toutes les images du PDF",
+    "removeDescription": "Supprimez les images du PDF pour réduire la taille du fichier. Vous pouvez prévisualiser et sélectionner les images à supprimer.",
+    "extractBtn": "Extraire les images",
+    "removeBtn": "Analyser les images",
+    "successExtract": "Images extraites avec succès !",
+    "successRemove": "Images supprimées avec succès !",
+    "previewTitle": "Images extraites",
+    "previewTitleRemove": "Sélectionnez les images à supprimer",
+    "previewDescription": "{count} images trouvées. Sélectionnez les images à télécharger.",
+    "previewDescriptionRemove": "{count} images trouvées. Sélectionnez les images à supprimer du PDF.",
+    "selectAll": "Tout sélectionner",
+    "downloadSelected": "Télécharger ({count})",
+    "removeSelected": "Supprimer ({count})",
+    "noImagesSelected": "Veuillez sélectionner au moins une image à télécharger.",
+    "smartFilter": {
+      "quickFilters": "Filtres rapides",
+      "usefulJunk": "{useful} useful / {junk} junk detected",
+      "categories": {
+        "all": "Tous",
+        "photo": "Photos",
+        "chart": "Graphiques",
+        "logo": "Logos",
+        "icon": "Icônes",
+        "decoration": "Décorations",
+        "other": "Autres"
+      },
+      "presets": {
+        "photosOnly": "Photos uniquement",
+        "useful": "Images utiles",
+        "large": "Grandes images",
+        "charts": "Graphiques",
+        "excludeIcons": "Sans icônes"
+      }
     }
   },
   "tables": {
     "title": "Tableaux dans PDF",
     "description": "Créez des tableaux professionnels directement dans votre document",
+    "addTable": "Add Table",
+    "importExcel": "Import Excel/CSV",
     "selectTabs": "Sélectionner les feuilles",
     "selectedTabs": "{count} feuilles sélectionnées",
     "noTabsSelected": "Veuillez sélectionner au moins une feuille",
     "rows": "Lignes",
     "cols": "Colonnes",
+    "generate": "Générer le PDF",
+    "generateWithWatermark": "Générer avec filigrane",
     "style": {
+      "title": "Table Style",
       "header": "Couleur de l'en-tête",
       "stripes": "Rayures zébrées",
+      "border": "Borders",
+      "font": "Font Settings",
       "orientation": "Orientation de la page",
       "orientations": {
         "portrait": "Portrait",
@@ -1215,6 +1291,8 @@
       }
     },
     "actions": {
+      "insertPage": "Insert after page",
+      "float": "Floating on page",
       "generate": "Générer le PDF"
     },
     "errors": {
@@ -1222,5 +1300,60 @@
       "generateFailed": "Échec de la génération du PDF",
       "noData": "Aucune donnée trouvée dans les feuilles sélectionnées"
     }
+  },
+  "monetization": {
+    "upgrade_now": "Passer à PRO",
+    "upgrade": "Mise à niveau",
+    "upgradeTitle": "Upgrade to Pro",
+    "upgradeSubtitle": "Unlock all tools & limits",
+    "proStatus": "Pro Status",
+    "activeSubscription": "Active subscription",
+    "pro_badge": "PRO",
+    "restore": "Restaurer",
+    "restore_hint": "Entrez votre clé de licence LemonSqueezy",
+    "restore_button": "Restaurer l'achat",
+    "restore_description": "Les abonnements sont synchronisés automatiquement avec votre identifiant de support. Utilisez ce formulaire uniquement si vous êtes sur un nouvel appareil.",
+    "choose_plan": "Choisir un plan",
+    "secure_checkout": "Paiement 100% sécurisé",
+    "status": "Statut de l'abonnement",
+    "expires": "Expire le",
+    "never": "Jamais",
+    "refresh_access": "Actualiser l'accès",
+    "once": "une fois",
+    "intervals": {
+      "month": "mois"
+    },
+    "free": {
+      "name": "Plan gratuit",
+      "price": "0",
+      "interval": "pour toujours",
+      "cta": "Plan actuel",
+      "description": "Outils de base et limites"
+    },
+    "pro": {
+      "name": "Abonnement Pro",
+      "cta": "Rejoindre PRO",
+      "description": "Supprimez toutes les limites, bénéficiez d'une assistance prioritaire et d'outils avancés."
+    },
+    "lifetime": {
+      "name": "Pro à vie",
+      "cta": "Meilleure offre",
+      "description": "Payez une fois, profitez-en pour toujours. Toutes les fonctionnalités Pro sont incluses."
+    },
+    "features": {
+      "no_limits": "Aucune limite de fichier",
+      "batch": "Traitement par lots (20+)",
+      "tier3": "Tous les outils (OCR, Signature)",
+      "support": "Support prioritaire",
+      "unlimited": "Illimité"
+    },
+    "premium_feature": "Fonctionnalité Premium",
+    "premium_description": "Utilisez les outils PRO gratuitement avec un filigrane ! Passez à la version supérieure pour supprimer les filigranes, augmenter les limites de taille de fichier et profiter de téléchargements quotidiens illimités.",
+    "download_with_watermark": "Télécharger avec filigrane",
+    "download_pro_clean": "Télécharger PRO (Propre)",
+    "daily_limit_reached": "Limite quotidienne atteinte pour cet outil",
+    "daily_free_downloads_left": "Téléchargements gratuits restants : {count}",
+    "upgrade_to_download": "Mettre à niveau pour télécharger",
+    "private_secure_fast": "Private. Secure. Local."
   }
 }

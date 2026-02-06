@@ -63,8 +63,10 @@ class SubscriptionService {
      * If the input is a license key, it attempts to exchange it for a JWT.
      */
     static async saveToken(tokenOrKey: string): Promise<boolean> {
+        let licenseKey: string | null = null;
         // Simple heuristic: if it looks like a license key (LS-...), exchange it
         if (tokenOrKey.startsWith('LS-') || (tokenOrKey.length < 50 && tokenOrKey.includes('-'))) {
+            licenseKey = tokenOrKey;
             try {
                 const response = await fetch('/api/exchange', {
                     method: 'POST',
@@ -90,7 +92,40 @@ class SubscriptionService {
         const validation = await this.verifyToken(tokenOrKey);
         if (validation.isValid) {
             await StorageService.setToken(tokenOrKey);
+            if (licenseKey) {
+                await StorageService.setLicenseKey(licenseKey);
+            }
             return true;
+        }
+        return false;
+    }
+
+    /**
+     * Re-exchanges a stored license key for a new JWT
+     */
+    static async reExchange(): Promise<boolean> {
+        const key = await StorageService.getLicenseKey();
+        if (!key) return false;
+
+        try {
+            const response = await fetch('/api/exchange', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ licenseKey: key }),
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                if (data.token) {
+                    const validation = await this.verifyToken(data.token);
+                    if (validation.isValid) {
+                        await StorageService.setToken(data.token);
+                        return true;
+                    }
+                }
+            }
+        } catch (e) {
+            console.error('Re-exchange failed:', e);
         }
         return false;
     }

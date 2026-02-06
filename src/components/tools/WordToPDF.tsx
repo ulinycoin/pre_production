@@ -4,17 +4,20 @@ import { useI18n } from '@/hooks/useI18n';
 import { useSharedFile } from '@/hooks/useSharedFile';
 import pdfService from '@/services/pdfService';
 import { Button } from '@/components/ui/button';
+import { DownloadGate } from '@/components/common/DownloadGate';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Progress } from '@/components/ui/progress';
 import { toast } from 'sonner';
 import JSZip from 'jszip';
+import { useSubscription } from '@/hooks/useSubscription';
 import { PreviewFrame } from '@/components/common/preview/PreviewFrame';
 import { PreviewCanvas } from '@/components/common/preview/PreviewCanvas';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import {
   RotateCw,
+  RefreshCw,
   FileStack,
   FileText,
   Download,
@@ -27,7 +30,8 @@ import {
   ZoomIn,
   ZoomOut,
   Scissors,
-  PenTool
+  PenTool,
+  Trash2
 } from 'lucide-react';
 
 type ConversionMode = 'formatted' | 'text';
@@ -41,7 +45,7 @@ interface FileStatus {
   error?: string;
   progress: number;
   previewBlob?: Blob;
-  rotation: number;
+  rotation: 0 | 90 | 180 | 270;
   previewPage: number;
   pages?: number;
   previewGenerationKey?: string;
@@ -55,6 +59,8 @@ interface FileStatus {
 
 export const WordToPDF: React.FC = () => {
   const { t } = useI18n();
+  const { status } = useSubscription();
+  const isPremium = status === 'pro' || status === 'lifetime';
   const { setSharedFile, sharedFile, sharedFiles, clearSharedFile, clearSharedFiles } = useSharedFile();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [files, setFiles] = useState<FileStatus[]>([]);
@@ -175,7 +181,7 @@ export const WordToPDF: React.FC = () => {
           const pageCount = result.metadata?.pageCount || 1;
           const rotateResult = await pdfService.rotatePDF(
             finalBlob,
-            fileStatus.rotation as any,
+            fileStatus.rotation,
             Array.from({ length: pageCount }, (_, i) => i + 1)
           );
           if (rotateResult.success && rotateResult.data) {
@@ -230,10 +236,23 @@ export const WordToPDF: React.FC = () => {
     setIsProcessingAll(false);
   };
 
-  const downloadFile = (fileStatus: FileStatus) => {
+  const downloadFile = async (fileStatus: FileStatus, watermarked: boolean) => {
     if (fileStatus.result?.blob) {
+      let blobToDownload = fileStatus.result.blob;
+
+      // Apply watermark if requested
+      if (!isPremium && watermarked) {
+        try {
+          const arrayBuffer = await blobToDownload.arrayBuffer();
+          const watermarkedBytes = await pdfService.applyWatermark(new Uint8Array(arrayBuffer));
+          blobToDownload = new Blob([new Uint8Array(watermarkedBytes)], { type: 'application/pdf' });
+        } catch (err) {
+          console.error('Failed to apply watermark:', err);
+        }
+      }
+
       const fileName = fileStatus.file.name.replace(/\.(docx|doc)$/i, '.pdf');
-      pdfService.downloadFile(fileStatus.result.blob, fileName);
+      pdfService.downloadFile(blobToDownload, fileName);
     }
   };
 
@@ -242,10 +261,23 @@ export const WordToPDF: React.FC = () => {
     if (completedFiles.length === 0) return;
 
     const zip = new JSZip();
-    completedFiles.forEach(f => {
+    for (const f of completedFiles) {
+      let blobToZip = f.result!.blob;
+
+      // Force watermark for batch download if free (simplest logic for now)
+      if (!isPremium) {
+        try {
+          const arrayBuffer = await blobToZip.arrayBuffer();
+          const watermarkedBytes = await pdfService.applyWatermark(new Uint8Array(arrayBuffer));
+          blobToZip = new Blob([new Uint8Array(watermarkedBytes)], { type: 'application/pdf' });
+        } catch (e) {
+          console.error('Watermarking failed for ZIP entry:', e);
+        }
+      }
+
       const fileName = f.file.name.replace(/\.(docx|doc)$/i, '.pdf');
-      zip.file(fileName, f.result!.blob);
-    });
+      zip.file(fileName, blobToZip);
+    }
 
     const content = await zip.generateAsync({ type: 'blob' });
     pdfService.downloadFile(content, 'converted_files.zip');
@@ -263,7 +295,7 @@ export const WordToPDF: React.FC = () => {
         const delta = direction === 'cw' ? 90 : -90;
         let newRotation = (f.rotation + delta) % 360;
         if (newRotation < 0) newRotation += 360;
-        return { ...f, rotation: newRotation };
+        return { ...f, rotation: newRotation as 0 | 90 | 180 | 270 };
       })
     );
   };
@@ -433,7 +465,7 @@ export const WordToPDF: React.FC = () => {
                         <Button
                           size="icon"
                           variant="ghost"
-                          className="h-14 w-14 text-ocean-600 hover:bg-ocean-50 dark:hover:bg-ocean-900/20 rounded-2xl"
+                          className="h-11 w-11 text-ocean-600 hover:bg-ocean-50 dark:hover:bg-ocean-900/20 rounded-xl"
                           onClick={() => {
                             if (file.result?.blob) {
                               const fileName = file.file.name.replace(/\.(docx|doc)$/i, '.pdf');
@@ -443,26 +475,31 @@ export const WordToPDF: React.FC = () => {
                           }}
                           title={t('wordToPdf.editResult')}
                         >
-                          <PenTool className="h-6 w-6" />
+                          <PenTool className="h-5 w-5" />
                         </Button>
-                        <Button
-                          size="icon"
-                          variant="ghost"
-                          className="h-14 w-14 text-green-600 hover:bg-green-50 dark:hover:bg-green-900/20 rounded-2xl"
-                          onClick={() => downloadFile(file)}
+                        <DownloadGate
+                          toolId="word-to-pdf"
+                          onDownload={(watermarked) => downloadFile(file, watermarked)}
+                          showWatermarkLabel={!isPremium}
                         >
-                          <Download className="h-6 w-6" />
-                        </Button>
+                          <Button
+                            size="icon"
+                            variant="ghost"
+                            className="h-11 w-11 text-green-600 hover:bg-green-50 dark:hover:bg-green-900/20 rounded-xl"
+                          >
+                            <Download className="h-5 w-5" />
+                          </Button>
+                        </DownloadGate>
                       </>
                     )}
                     {!isProcessingAll && (
                       <Button
                         size="icon"
                         variant="ghost"
-                        className="h-14 w-14 text-red-500 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-2xl"
+                        className="h-11 w-11 text-red-500 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-xl"
                         onClick={() => removeFile(file.id)}
                       >
-                        <Scissors className="h-6 w-6" />
+                        <Trash2 className="h-5 w-5" />
                       </Button>
                     )}
                   </div>
@@ -474,10 +511,12 @@ export const WordToPDF: React.FC = () => {
 
         {files.some(f => f.isCompleted) && files.length > 1 && (
           <div className="flex justify-center pt-8">
-            <Button onClick={downloadAllAsZip} size="lg" className="bg-ocean-600 hover:bg-ocean-700 h-16 px-8 text-lg font-bold rounded-2xl shadow-xl">
-              <Archive className="w-6 h-6 mr-3" />
-              {t('common.downloadAll') || 'Download all as ZIP'}
-            </Button>
+            <DownloadGate
+              toolId="word-to-pdf"
+              onDownload={downloadAllAsZip}
+              showWatermarkLabel={!isPremium}
+              label={t('common.downloadAll') || 'Download all as ZIP'}
+            />
           </div>
         )}
 
@@ -554,7 +593,8 @@ export const WordToPDF: React.FC = () => {
         )}
       </Button>
       {files.some(f => f.isCompleted) && !isProcessingAll && (
-        <Button variant="outline" onClick={handleReset} className="w-full">
+        <Button variant="outline" onClick={handleReset} className="w-full h-11 rounded-xl font-bold border-2 mt-4">
+          <RefreshCw className="mr-2 h-4 w-4" />
           {t('common.convertAnother')}
         </Button>
       )}

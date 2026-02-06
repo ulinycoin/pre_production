@@ -8,6 +8,8 @@
     "title": "あなたのプライベートな",
     "titleSuffix": "PDF Sanctuary.",
     "subtitle": "ブラウザ内で 100% 動作する唯一の PDF ツールキットです。アップロードなし、サーバーなし、痕跡なし。お使いのデバイスで動作するプロフェッショナルなツールです。",
+    "selectToolToBegin": "Select a tool to begin",
+    "chooseToolDescription": "Choose a compatible tool and your files will transfer instantly.",
     "firstTimeBanner": "ようこそ！すべての処理はブラウザ内で行われます - ファイルがデバイスから離れることはありません。",
     "selectTool": "サイドバーからツールを選択するか、以下から選択してください"
   },
@@ -112,11 +114,14 @@
     "tables-pdf": {
       "name": "PDF内のテーブル",
       "description": "PDF内のテーブルを追加、編集、スタイル設定します"
+    },
+    "unlock-pdf": {
+      "name": "Unlock PDF",
+      "description": "Remove passwords from PDF files"
     }
   },
   "common": {
     "upload": "ファイルをアップロード",
-    "uploadDescription": "ドラッグ＆ドロップまたはクリックしてアップロード",
     "selectFile": "ファイルを選択",
     "selectFiles": "ファイルを選択",
     "uploadFile": "ファイルをアップロード",
@@ -134,11 +139,12 @@
     "sending": "送信中...",
     "feedbackSuccess": "フィードバックをいただきありがとうございます！",
     "feedbackError": "フィードバックの送信に失敗しました。後でもう一度お試しください。",
+    "uploadDescription": "ドラッグ＆ドロップまたはクリックしてアップロード",
     "download": "ダウンロード",
     "downloadAll": "すべてダウンロード (ZIP)",
+    "supportDeveloper": "開発者をサポート",
     "processing": "処理中...",
     "searching": "検索中...",
-    "supportDeveloper": "開発者をサポート",
     "error": "エラー",
     "success": "成功",
     "cancel": "キャンセル",
@@ -177,7 +183,16 @@
     "convert": "変換",
     "hide": "非表示",
     "loading": "読み込み中...",
+    "loadingTool": "Loading tool...",
+    "loadingPreview": "Loading preview...",
+    "noPreview": "No preview",
+    "expandSidebar": "Expand sidebar",
+    "collapseSidebar": "Collapse sidebar",
+    "toggleTheme": "Toggle theme",
+    "resources": "Resources",
+    "all": "All",
     "previous": "前へ",
+    "failedToLoad": "Failed to load",
     "extensionPromptTitle": "LocalPDF の Chrome 拡張機能を入手",
     "extensionPromptBody": "ダウンロード後にワンクリックで LocalPDF を開けます。",
     "extensionPromptCta": "Chrome 拡張機能を取得",
@@ -190,7 +205,12 @@
     "addFiles": "ファイルを追加",
     "errors": {
       "previewFailed": "プレビューの読み込みに失敗しました"
-    }
+    },
+    "change": "Change",
+    "generatingPreview": "Generating preview...",
+    "nextPage": "Next page",
+    "prevPage": "Previous page",
+    "selected": "Selected"
   },
   "upload": {
     "selectFiles": "ファイルを選択",
@@ -204,8 +224,12 @@
     "acceptedTypes": "受け入れられるタイプ",
     "errors": {
       "tooManyFiles": "ファイルが多すぎます。最大: {max}",
+      "tooManyFilesFree": "無料プランのファイル数制限を超えています。最大: {max}。アップグレードして増やしましょう。",
+      "tooManyFilesPro": "ファイル数が多すぎます。最大: {max}",
       "invalidFileType": "無効なファイルタイプです。PDFファイルのみを選択してください。",
-      "fileTooLarge": "ファイルが大きすぎます。最大サイズ: {max} MB"
+      "fileTooLarge": "ファイルが大きすぎます。最大サイズ: {max} MB",
+      "fileTooLargeFree": "無料プランのファイルサイズ制限を超えています。最大: {max} MB。アップグレードして大きなファイルを処理しましょう。",
+      "fileTooLargePro": "ファイルサイズが大きすぎます。最大: {max} MB"
     },
     "readyToProcess": "プライベート・サンクチュアリ",
     "filesReadySingle": "{count} ファイル準備完了",
@@ -554,6 +578,17 @@
     }
   },
   "ocr": {
+    "errors": {
+      "limitReached": "OCR Limit Reached",
+      "limitReachedDesc": "You reached your monthly limit of {limit} pages for {plan} plan.",
+      "noFile": "まずファイルを選択してください",
+      "processingFailed": "OCR処理に失敗しました。もう一度お試しください。",
+      "unsupportedFileType": "OCRはPDFと画像ファイル（JPG、PNG）のみをサポートしています。ファイルタイプ（.{ext}）はサポートされていません。",
+      "hocrEmpty": "hOCRデータが空です。OCRを再度実行してください。",
+      "tsvEmpty": "TSVデータが空です。OCRを再度実行してください。",
+      "searchablePdfFailed": "検索可能なPDFの作成に失敗しました: {error}",
+      "downloadFailed": "ファイルの生成に失敗しました。もう一度お試しください。"
+    },
     "filePreview": "処理するファイル",
     "recognitionLanguage": "認識言語",
     "languageHint": "ドキュメント内のテキストの言語を選択",
@@ -566,8 +601,6 @@
     "firstPageOnly": "最初のページのみ",
     "allPages": "すべてのページ",
     "pageRange": "ページ範囲",
-    "page": "ページ",
-    "pages": "ページ",
     "processed": "処理済み",
     "processingPage": "ページ {current} / {total} を処理中...",
     "startOCR": "OCRを開始",
@@ -579,15 +612,11 @@
     "processingPDF": "PDFを処理中...",
     "recognizing": "テキストを認識中",
     "completed": "OCRが完了しました！",
+    "pageTitle": "OCR結果",
     "resultsTitle": "認識されたテキスト",
     "confidence": "信頼度",
     "extractedText": "抽出されたテキスト",
     "copyText": "テキストをコピー",
-    "downloadTXT": "TXTをダウンロード",
-    "textCopied": "テキストがクリップボードにコピーされました！",
-    "remove": "削除",
-    "newFile": "新しいファイル",
-    "preview": "プレビュー",
     "view": "表示",
     "edit": "編集",
     "editPlaceholder": "抽出されたテキストをここで編集...",
@@ -595,13 +624,34 @@
     "words": "単語",
     "lines": "行",
     "characters": "文字",
-    "languageDetection": {
-      "highConfidence": "高い信頼度",
-      "mediumConfidence": "中程度の信頼度",
-      "lowConfidence": "低い信頼度",
-      "verifyLanguage": "より良いOCR精度のために言語選択を確認してください"
-    },
+    "page": "ページ",
+    "pages": "ページ",
+    "textCopied": "テキストがクリップボードにコピーされました！",
+    "remove": "削除",
+    "newFile": "新しいファイル",
+    "preview": "プレビュー",
     "startOver": "最初からやり直す",
+    "downloadTXT": "TXTをダウンロード",
+    "download": {
+      "createSearchablePdf": "検索可能なPDFを作成",
+      "downloadHocr": "hOCRをダウンロード (.html)",
+      "downloadTsv": "TSVをダウンロード (.tsv)",
+      "downloadTxt": "TXTをダウンロード",
+      "searchablePdfReady": "検索可能なPDFを作成する準備ができました！",
+      "searchablePdfDownloaded": "検索可能なPDFがダウンロードされました！"
+    },
+    "results": {
+      "title": "OCR結果",
+      "extractedText": "抽出されたテキスト",
+      "resultReady": "結果の準備ができました",
+      "successMessage": "ドキュメントの処理が正常に完了しました。サイドバーから結果をダウンロードできます。",
+      "textReady": "認識されたテキスト",
+      "searchablePdfReady": "検索可能なPDFを作成する準備ができました",
+      "hocrReady": "hOCRデータの準備完了",
+      "tsvReady": "TSVデータの準備完了",
+      "pagesWillProcess": "{count} {pages}がOCRで処理されます",
+      "confidenceAndPages": "信頼度: {confidence}% • {count} {pages}処理済み"
+    },
     "languages": {
       "eng": "英語",
       "rus": "ロシア語",
@@ -630,15 +680,6 @@
       "tsvShort": "TSV (データ)",
       "tsvDesc": "バウンディングボックス付きのタブ区切り値 - データ分析のための解析が簡単"
     },
-    "results": {
-      "textReady": "認識されたテキスト",
-      "searchablePdfReady": "検索可能なPDFを作成する準備ができました",
-      "hocrReady": "hOCRデータの準備完了",
-      "tsvReady": "TSVデータの準備完了",
-      "pagesWillProcess": "{count} {pages}がOCRで処理されます",
-      "confidenceAndPages": "信頼度: {confidence}% • {count} {pages}処理済み",
-      "successMessage": "ドキュメントの処理が正常に完了しました。サイドバーから結果をダウンロードできます。"
-    },
     "infoPanel": {
       "searchablePdfTitle": "非表示テキストレイヤー付き検索可能なPDF",
       "searchablePdfDesc": "元のドキュメント画像は、表示されているとおりに正確に保存されます。OCRテキストは非表示のレイヤーとして追加され、元の視覚的外観を維持しながら、PDFを完全に検索可能にし、テキスト選択を可能にします。",
@@ -647,40 +688,22 @@
       "tsvTitle": "TSVフォーマット（タブ区切り値）",
       "tsvDesc": "バウンディングボックス座標と信頼度スコアを持つスプレッドシート互換フォーマット。Excel、Googleスプレッドシート、またはPython/Pandasなどのデータ分析ツールに簡単にインポートできます。各行には、レベル、ページ番号、ブロック、段落、行、単語、位置、テキストが含まれています。"
     },
-    "download": {
-      "createSearchablePdf": "検索可能なPDFを作成",
-      "downloadHocr": "hOCRをダウンロード (.html)",
-      "downloadTsv": "TSVをダウンロード (.tsv)",
-      "downloadTxt": "TXTをダウンロード",
-      "searchablePdfReady": "検索可能なPDFを作成する準備ができました！",
-      "searchablePdfDownloaded": "検索可能なPDFがダウンロードされました！"
-    },
     "infoTitle": "OCRについて",
     "info1": "PDFドキュメントと画像（JPG、PNG）をサポート",
     "info2": "5つの言語での認識: EN、RU、DE、FR、ES",
     "info3": "ページ範囲選択を備えた複数ページPDFサポート",
-    "info4": "すべての処理はブラウザ内で行われます - ファイルはプライベートのまま",
-    "errors": {
-      "noFile": "まずファイルを選択してください",
-      "processingFailed": "OCR処理に失敗しました。もう一度お試しください。",
-      "unsupportedFileType": "OCRはPDFと画像ファイル（JPG、PNG）のみをサポートしています。ファイルタイプ（.{ext}）はサポートされていません。",
-      "hocrEmpty": "hOCRデータが空です。OCRを再度実行してください。",
-      "tsvEmpty": "TSVデータが空です。OCRを再度実行してください。",
-      "searchablePdfFailed": "検索可能なPDFの作成に失敗しました: {error}",
-      "downloadFailed": "ファイルの生成に失敗しました。もう一度お試しください。"
-    },
-    "pageTitle": "OCR結果"
+    "info4": "すべての処理はブラウザ内で行われます - ファイルはプライベートのまま"
   },
   "watermark": {
-    "mode": "モード",
-    "textMode": "テキスト",
-    "imageMode": "画像",
-    "chooseImage": "画像を選択",
     "filePreview": "透かしを入れるファイル",
     "settings": "透かし設定",
     "text": "透かしテキスト",
     "watermarkText": "透かしテキスト",
     "watermarkPlaceholder": "透かしテキストを入力",
+    "mode": "モード",
+    "textMode": "テキスト",
+    "imageMode": "画像",
+    "chooseImage": "画像を選択",
     "image": "画像",
     "imageScale": "画像のスケール",
     "position": "位置",
@@ -703,22 +726,20 @@
     "opacity": "不透明度",
     "fontSize": "フォントサイズ",
     "rotation": "回転",
-    "preview": "プレビュー",
     "apply": "透かしを適用",
-    "applyButton": "透かしを適用",
-    "applyAnother": "別のファイルに適用",
-    "loading": "PDFを読み込み中...",
-    "loadingPreview": "プレビューを読み込み中...",
     "processing": "透かしを追加中...",
     "processingPage": "ページ {current} / {total} を処理中...",
     "saving": "PDFを保存中...",
     "completed": "透かしが適用されました！",
+    "preview": "プレビュー",
+    "loading": "PDFを読み込み中...",
+    "loadingPreview": "プレビューを読み込み中...",
     "errors": {
       "noText": "透かしテキストを入力してください",
-      "textRequired": "透かしテキストを入力してください",
       "noImage": "最初に画像を選択してください",
       "failed": "透かしの適用に失敗しました",
-      "cyrillicNotSupported": "キリル文字はサポートされていません。ラテン文字を使用してください。"
+      "cyrillicNotSupported": "キリル文字はサポートされていません。ラテン文字を使用してください。",
+      "textRequired": "透かしテキストを入力してください"
     },
     "success": {
       "title": "透かしが正常に適用されました！",
@@ -735,18 +756,22 @@
       "split": "ページを抽出",
       "merge": "他のファイルと結合"
     },
-    "autoLoaded": {
-      "title": "前のツールからファイルが読み込まれました",
-      "description": "PDFが自動的に読み込まれました"
-    },
     "infoTitle": "透かしについて",
     "info1": "キリル文字とラテン文字の完全サポートでテキスト透かしをサポート",
     "info2": "6つの位置オプション: 斜め、中央、4つの角",
-    "info3": "すべての処理はブラウザ内で行われます - ファイルはプライベートのまま"
+    "info3": "すべての処理はブラウザ内で行われます - ファイルはプライベートのまま",
+    "applyAnother": "別のファイルに適用",
+    "applyButton": "透かしを適用",
+    "autoLoaded": {
+      "title": "前のツールからファイルが読み込まれました",
+      "description": "PDFが自動的に読み込まれました"
+    }
   },
   "rotate": {
     "settings": "回転設定",
     "applyToAll": "すべてのファイルに適用",
+    "nextPage": "Next page",
+    "prevPage": "Previous page",
     "selectAngle": "回転角度を選択",
     "clockwise": "時計回り",
     "upsideDown": "上下逆",
@@ -755,7 +780,7 @@
     "allPages": "すべてのページ",
     "rotateAllPages": "ドキュメント内のすべてのページを回転",
     "specificPages": "特定のページ",
-    "choosePages": "回転するページを選択",
+    "chooseWhichPages": "Choose which pages to rotate",
     "pageNumbers": "ページ番号",
     "pageNumbersHint": "例: 1,3,5-7,10（総ページ数: {total}）",
     "rotateButton": "PDFを回転",
@@ -914,20 +939,43 @@
     "conversionComplete": "変換が完了しました"
   },
   "sign": {
+    "signatureType": "署名の種類",
+    "drawSignature": "署名を描く",
+    "uploadImage": "画像をアップロード",
+    "signatureText": "署名テキスト",
+    "position": "位置",
+    "positions": {
+      "bottomRight": "右下",
+      "bottomLeft": "左下",
+      "topRight": "右上",
+      "topLeft": "左上",
+      "custom": "手動 (ドラッグ＆ドロップ)"
+    },
+    "dragToMove": "ドラッグして位置を調整",
+    "applyToPages": "ページに適用",
+    "allPages": "すべてのページ",
+    "pageNumber": "{number} ページ",
+    "pagesSigned": "署名済みページ",
+    "fileSize": "ファイルサイズ",
+    "yourName": "お名前",
+    "loadingHighQuality": "高品質で読み込み中...",
+    "generatingPreview": "プレビューを生成中...",
     "nextPage": "次のページ",
     "prevPage": "前のページ",
     "zoom": "ズーム",
     "zoomIn": "拡大",
     "zoomOut": "縮小",
-    "generatingPreview": "プレビューを生成中...",
+    "saving": "保存中...",
+    "addingSignature": "署名を追加中...",
+    "signingPage": "{total} ページ中 {current} ページを署名中...",
     "successTitle": "PDFの署名が完了しました！",
     "modeDraw": "手書き",
     "modeUpload": "アップロード",
     "modeText": "テキスト",
     "clearSignature": "署名を消去",
-    "drawSignature": "署名を描く",
-    "uploadImage": "画像をアップロード",
-    "signatureText": "署名テキスト",
+    "noFile": "Please upload a PDF file",
+    "enterText": "Please enter signature text",
+    "provideSignature": "Please draw or upload a signature",
     "textSize": "テキストサイズ",
     "signatureSize": "署名サイズ",
     "includeName": "名前を含める",
@@ -937,6 +985,7 @@
     "color": "色",
     "width": "幅",
     "height": "高さ",
+    "addSignature": "Place on Page",
     "apply": "適用",
     "finishAndSave": "署名済みPDFを保存",
     "quickActions": {
@@ -946,6 +995,9 @@
       "compress": "ファイルサイズを削減",
       "watermark": "透かしを追加",
       "merge": "他のファイルと結合"
+    },
+    "errors": {
+      "signFailed": "Failed to sign PDF"
     }
   },
   "pageEditor": {
@@ -977,20 +1029,27 @@
     "extract": "抽出",
     "delete": "削除",
     "extracting": "ページを抽出中...",
+    "pageSelection": "Page Selection",
+    "results": {
+      "successMessage": "Your document has been processed successfully. You can now download the result from the sidebar."
+    },
+    "copyText": "Copy Text",
+    "view": "View",
     "pagesDeleted": "ページを削除しました",
     "extractSuccess": "ページの抽出に成功しました",
     "extractError": "ページの抽出に失敗しました",
-    "addPDF": "PDFを追加",
-    "appendPages": "ページを追加",
     "tips": {
       "title": "ヒント",
       "drag": "ページをドラッグして並べ替え",
       "select": "チェックボックスを使用するか、クリックして複数選択",
       "rotateDelete": "ページにカーソルを合わせて回転または削除",
       "extract": "ツールバーを使用して選択したページを抽出"
-    }
+    },
+    "addPDF": "PDFを追加",
+    "appendPages": "ページを追加"
   },
   "addText": {
+    "title": "テキストを追加",
     "clickToEdit": "クリックして編集",
     "addedCount": "追加されたテキスト要素: {count}",
     "originalSize": "元のサイズ",
@@ -1003,7 +1062,6 @@
     "zoom": "ズーム: {scale}%",
     "pageOf": "ページ {current} / {total}",
     "defaultFileName": "document_with_text.pdf",
-    "title": "テキストを追加",
     "toolbar": {
       "addText": "テキストを追加",
       "select": "選択",
@@ -1076,6 +1134,7 @@
       "value": "値",
       "selectedByDefault": "デフォルトで選択済み",
       "options": "オプション（1行に1つ）",
+      "defaultOptions": "Option 1\nOption 2\nOption 3",
       "allowMultiSelect": "複数選択を許可",
       "requiredField": "必須フィールド",
       "readOnlyField": "読み取り専用",
@@ -1087,9 +1146,13 @@
       "multiline": "複数行",
       "checkbox": "チェックボックス",
       "radio": "ラジオボタン",
-      "dropdown": "ドロップダウン"
+      "dropdown": "ドロップダウン",
+      "unknown": "Unknown"
     }
   },
+  "toolNotImplemented": "Tool Not Implemented",
+  "toolComingSoon": "This tool is coming soon.",
+  "toolImplementationSoon": "Tool implementation coming soon...",
   "editText": {
     "rasterizationWarning": "注意: 編集されたページは画像に変換されます。これらのページのテキストは編集後に選択できなくなります。",
     "selectPage": "ページを選択",
@@ -1101,6 +1164,11 @@
     "selectAll": "すべて選択",
     "deselectAll": "すべて選択解除",
     "replacementSettings": "置換設定",
+    "selectPageToEdit": "編集するページを選択",
+    "textPosition": "テキスト位置 (選択範囲用)",
+    "pagePreview": "ページプレビュー",
+    "xLabel": "X:",
+    "yLabel": "Y:",
     "newText": "新しいテキスト",
     "enterNewText": "新しいテキストを入力",
     "backgroundColor": "背景色",
@@ -1125,7 +1193,7 @@
     "replacementText": "置換テキスト",
     "enterReplacementText": "置換テキストを入力 (複数行対応)...",
     "latinCharactersOnly": "⚠️ ラテン文字 (A-Z, 0-9) のみサポートされています",
-    "applyChanges": "{count} 件の変更を適用",
+    "applyChanges": "{count}件の変更を適用{s}",
     "applyAllHint": "すべての選択がPDFに適用されます",
     "cover": "カバー",
     "replace": "置換",
@@ -1136,11 +1204,6 @@
     "successMessage": "テキストが正常に置換されました！",
     "useInOtherTools": "他のツールで使用",
     "settings": "テキスト設定",
-    "selectPageToEdit": "編集するページを選択",
-    "textPosition": "テキスト位置 (選択範囲用)",
-    "pagePreview": "ページプレビュー",
-    "xLabel": "X:",
-    "yLabel": "Y:",
     "smartEdit": "スマート編集",
     "format": {
       "title": "テキストの書式設定",
@@ -1205,14 +1268,21 @@
   "tables": {
     "title": "PDF内のテーブル",
     "description": "ドキュメント内に直接プロフェッショナルなテーブルを作成します",
+    "addTable": "Add Table",
+    "importExcel": "Import Excel/CSV",
     "selectTabs": "シートを選択",
     "selectedTabs": "{count} 個のシートが選択されました",
     "noTabsSelected": "少なくとも1つのシートを選択してください",
     "rows": "行",
     "cols": "列",
+    "generate": "PDFを作成",
+    "generateWithWatermark": "透かし付きで作成",
     "style": {
+      "title": "Table Style",
       "header": "ヘッダーの色",
       "stripes": "ゼブラ模様",
+      "border": "Borders",
+      "font": "Font Settings",
       "orientation": "ページの向き",
       "orientations": {
         "portrait": "縦向き",
@@ -1221,6 +1291,8 @@
       }
     },
     "actions": {
+      "insertPage": "Insert after page",
+      "float": "Floating on page",
       "generate": "PDFを生成"
     },
     "errors": {
@@ -1228,5 +1300,60 @@
       "generateFailed": "PDFの生成に失敗しました",
       "noData": "選択したシートにデータが見つかりません"
     }
+  },
+  "monetization": {
+    "upgrade_now": "PROにアップグレード",
+    "upgrade": "アップグレード",
+    "upgradeTitle": "Upgrade to Pro",
+    "upgradeSubtitle": "Unlock all tools & limits",
+    "proStatus": "Pro Status",
+    "activeSubscription": "Active subscription",
+    "pro_badge": "PRO",
+    "restore": "復元",
+    "restore_hint": "LemonSqueezy ライセンスキーを入力してください",
+    "restore_button": "購入を復元",
+    "restore_description": "サブスクリプションはサポートIDと自動的に同期されます。新しいデバイスを使用している場合にのみ、このフォームを使用してください。",
+    "choose_plan": "プランを選択",
+    "secure_checkout": "100% 安全なチェックアウト",
+    "status": "サブスクリプション状況",
+    "expires": "有効期限",
+    "never": "なし",
+    "refresh_access": "アクセスを更新",
+    "once": "1回",
+    "intervals": {
+      "month": "月"
+    },
+    "free": {
+      "name": "無料プラン",
+      "price": "0",
+      "interval": "永久",
+      "cta": "現在のプラン",
+      "description": "基本的なツールと制限"
+    },
+    "pro": {
+      "name": "Pro サブスクリプション",
+      "cta": "PROに参加",
+      "description": "すべての制限を解除し、優先サポートと高度なツールを利用できます。"
+    },
+    "lifetime": {
+      "name": "Pro ライフタイム",
+      "cta": "ベストバリュー",
+      "description": "一度の支払いで、永久に利用可能です。すべての Pro 機能が含まれています。"
+    },
+    "features": {
+      "no_limits": "ファイル制限なし",
+      "batch": "バッチ処理 (20+)",
+      "tier3": "すべてのツール (OCR, 署名)",
+      "support": "優先サポート",
+      "unlimited": "無制限"
+    },
+    "premium_feature": "プレミアム機能",
+    "premium_description": "透かし付きでPROツールを無料で使用できます！アップグレードして透かしを削除し、ファイルサイズ制限を増やし、無制限の1日あたりのダウンロードをお楽しみください。",
+    "download_with_watermark": "透かしを入れてダウンロード",
+    "download_pro_clean": "PROをダウンロード (クリーン)",
+    "daily_limit_reached": "このツールの1日の制限に達しました",
+    "daily_free_downloads_left": "残りの無料ダウンロード数: {count}",
+    "upgrade_to_download": "アップグレードしてダウンロード",
+    "private_secure_fast": "Private. Secure. Local."
   }
 }

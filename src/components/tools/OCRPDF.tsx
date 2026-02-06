@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useSharedFile } from '@/hooks/useSharedFile';
+import { useSubscription } from '@/hooks/useSubscription';
+import pdfService from '@/services/pdfService';
 import { FileUpload } from '@/components/common/FileUpload';
 import { useI18n } from '@/hooks/useI18n';
 import * as pdfjsLib from 'pdfjs-dist';
@@ -14,8 +16,9 @@ import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { ToolLayout } from '@/components/common/ToolLayout';
-import { FileText, Image as ImageIcon, Download, Copy, RefreshCw, Eye, Edit } from 'lucide-react';
+import { FileText, Image as ImageIcon, Copy, RefreshCw, Eye, Edit } from 'lucide-react';
 import { ProgressBar } from '@/components/common/ProgressBar';
+import { DownloadGate } from '@/components/common/DownloadGate';
 
 // Configure PDF.js worker
 pdfjsLib.GlobalWorkerOptions.workerSrc = pdfjsWorker;
@@ -53,6 +56,7 @@ const SUPPORTED_LANGUAGES = [
 
 export const OCRPDF: React.FC = () => {
   const { t } = useI18n();
+  const { isPremium } = useSubscription();
   const { sharedFile, clearSharedFile } = useSharedFile();
   const [file, setFile] = useState<File | null>(null);
   const [totalPages, setTotalPages] = useState<number>(1);
@@ -261,7 +265,7 @@ export const OCRPDF: React.FC = () => {
 
         // Header for HOCR
         if (outputFormat === 'hocr') {
-          combinedHOCR = `<!DOCTYPE html><html><head><meta charset="utf-8"/><title>OCR Results</title></head><body>`;
+          combinedHOCR = `<!DOCTYPE html><html><head><meta charset="utf-8"/><title>${t('ocr.results.title')}</title></head><body>`;
         }
         // Header for TSV
         if (outputFormat === 'tsv') {
@@ -357,10 +361,10 @@ export const OCRPDF: React.FC = () => {
     }
   };
 
-  const handleDownload = async () => {
+  const handleDownload = async (watermarked: boolean) => {
     if (!result || !file) return;
 
-    const baseName = file.name.replace(/\.[^.]+$/, '');
+    const baseName = file?.name.split('.').slice(0, -1).join('.') || 'document';
 
     try {
       if (outputFormat === 'hocr') {
@@ -422,6 +426,13 @@ export const OCRPDF: React.FC = () => {
             pdfBlob = await createSearchablePDFFromImage(file, selectedLanguage, (p, m) => { setProgress(p); setProgressMessage(m); });
           } else {
             pdfBlob = await createSearchablePDF(file, selectedLanguage, pagesToProcess, (p, m) => { setProgress(p); setProgressMessage(m); });
+          }
+
+          // Apply watermark for free users if selected
+          if (!isPremium && watermarked) {
+            const arrayBuffer = await pdfBlob.arrayBuffer();
+            const watermarkedBytes = await pdfService.applyWatermark(new Uint8Array(arrayBuffer));
+            pdfBlob = new Blob([new Uint8Array(watermarkedBytes)], { type: 'application/pdf' });
           }
 
           const url = URL.createObjectURL(pdfBlob);
@@ -528,15 +539,18 @@ export const OCRPDF: React.FC = () => {
             </Button>
           ) : (
             <div className="space-y-3">
-              <Button onClick={handleDownload} size="lg" className="w-full bg-green-600 hover:bg-green-700 text-white shadow-lg shadow-green-500/20">
-                <Download className="mr-2 h-4 w-4" /> {t('common.download')}
-              </Button>
+              <DownloadGate
+                toolId="ocr-pdf"
+                onDownload={handleDownload}
+                className="w-full"
+                showWatermarkLabel={outputFormat === 'searchable-pdf'}
+              />
               {outputFormat === 'text' && (
                 <Button onClick={handleCopyText} variant="outline" className="w-full">
-                  <Copy className="mr-2 h-4 w-4" /> Copy Text
+                  <Copy className="mr-2 h-4 w-4" /> {t('ocr.copyText')}
                 </Button>
               )}
-              <Button onClick={() => setResult(null)} variant="ghost" className="w-full">
+              <Button onClick={() => setResult(null)} variant="ghost" className="w-full h-11 rounded-xl">
                 <RefreshCw className="mr-2 h-4 w-4" /> {t('ocr.startOver')}
               </Button>
             </div>
@@ -584,7 +598,7 @@ export const OCRPDF: React.FC = () => {
                   {outputFormat === 'text' && <FileText className="w-5 h-5 text-ocean-500" />}
                   {outputFormat === 'searchable-pdf' && <ImageIcon className="w-5 h-5 text-ocean-500" />}
                   <span className="font-semibold text-gray-700 dark:text-gray-200">
-                    {outputFormat === 'text' ? 'Extracted Text' : 'Result Ready'}
+                    {outputFormat === 'text' ? t('ocr.results.extractedText') : t('ocr.results.resultReady')}
                   </span>
                 </div>
                 {outputFormat === 'text' && (

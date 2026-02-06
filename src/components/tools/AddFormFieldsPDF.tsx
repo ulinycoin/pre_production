@@ -10,7 +10,10 @@ import { addFormFieldsToPDF } from '@/services/pdfService';
 import type { UploadedFile } from '@/types/pdf';
 import type { FormField } from '@/types/formFields';
 import { CheckCircle2, Copy } from 'lucide-react';
+import { DownloadGate } from '@/components/common/DownloadGate';
 import * as pdfjsLib from 'pdfjs-dist';
+import { useSubscription } from '@/hooks/useSubscription';
+import pdfService from '@/services/pdfService';
 import pdfjsWorker from 'pdfjs-dist/build/pdf.worker.min.mjs?url';
 
 // Configure PDF.js worker
@@ -18,6 +21,8 @@ pdfjsLib.GlobalWorkerOptions.workerSrc = pdfjsWorker;
 
 export const AddFormFieldsPDF: React.FC = () => {
   const { t } = useI18n();
+  const { status } = useSubscription();
+  const isPremium = status === 'pro' || status === 'lifetime';
   const { sharedFile, clearSharedFile, setSharedFile } = useSharedFile();
   const [file, setFile] = useState<UploadedFile | null>(null);
   const [result, setResult] = useState<Blob | null>(null);
@@ -179,10 +184,23 @@ export const AddFormFieldsPDF: React.FC = () => {
     }
   }, [file, formFields, t, setProgress]);
 
-  const handleDownload = () => {
+  const handleDownload = async (watermarked: boolean) => {
     if (!result) return;
 
-    const url = URL.createObjectURL(result);
+    let blobToDownload = result;
+
+    // Apply watermark for free users if selected
+    if (!isPremium && watermarked) {
+      try {
+        const arrayBuffer = await result.arrayBuffer();
+        const watermarkedBytes = await pdfService.applyWatermark(new Uint8Array(arrayBuffer));
+        blobToDownload = new Blob([new Uint8Array(watermarkedBytes)], { type: 'application/pdf' });
+      } catch (err) {
+        console.error('Failed to apply watermark:', err);
+      }
+    }
+
+    const url = URL.createObjectURL(blobToDownload);
     const link = document.createElement('a');
     link.href = url;
     link.download = file?.name.replace('.pdf', '_with_form.pdf') || 'document_with_form.pdf';
@@ -229,10 +247,13 @@ export const AddFormFieldsPDF: React.FC = () => {
             </div>
           </div>
           <div className="flex gap-3 justify-center">
-            <Button onClick={handleDownload} size="lg" className="bg-green-600 hover:bg-green-700 text-white shadow-lg hover:shadow-xl transition-all">
-              {t('common.download')}
-            </Button>
-            <Button variant="outline" onClick={handleReset} size="lg">
+            <DownloadGate
+              toolId="add-form-fields-pdf"
+              onDownload={handleDownload}
+              showWatermarkLabel={!isPremium}
+            />
+            <Button variant="outline" onClick={handleReset} className="h-11 px-8 rounded-xl font-bold border-2">
+              <RefreshCw className="mr-2 h-4 w-4" />
               {t('common.processAnother')}
             </Button>
           </div>

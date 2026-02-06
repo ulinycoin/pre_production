@@ -8,6 +8,8 @@
     "title": "Seu",
     "titleSuffix": "PDF Sanctuary.",
     "subtitle": "O único conjunto de ferramentas PDF que funciona 100% no seu navegador. Sem uploads, sem servidores, sem rastros. Apenas ferramentas profissionais, alimentadas pelo seu dispositivo.",
+    "selectToolToBegin": "Select a tool to begin",
+    "chooseToolDescription": "Choose a compatible tool and your files will transfer instantly.",
     "firstTimeBanner": "Bem-vindo! Todo o processamento acontece no seu navegador - seus arquivos nunca saem do seu dispositivo.",
     "selectTool": "Selecione uma ferramenta na barra lateral ou escolha uma abaixo"
   },
@@ -112,11 +114,14 @@
     "tables-pdf": {
       "name": "Tabelas em PDF",
       "description": "Adicione, edite e estilize tabelas em seu PDF"
+    },
+    "unlock-pdf": {
+      "name": "Unlock PDF",
+      "description": "Remove passwords from PDF files"
     }
   },
   "common": {
     "upload": "Carregar arquivos",
-    "uploadDescription": "Arraste e solte ou clique para enviar",
     "selectFile": "Selecionar arquivo",
     "selectFiles": "Selecionar arquivos",
     "uploadFile": "Carregar arquivo",
@@ -134,6 +139,7 @@
     "sending": "Enviando...",
     "feedbackSuccess": "Obrigado pelo seu feedback!",
     "feedbackError": "Falha ao enviar feedback. Por favor, tente novamente mais tarde.",
+    "uploadDescription": "Arraste e solte ou clique para enviar",
     "download": "Baixar",
     "downloadAll": "Baixar tudo (ZIP)",
     "supportDeveloper": "Apoiar o desenvolvedor",
@@ -177,7 +183,16 @@
     "convert": "Converter",
     "hide": "Ocultar",
     "loading": "Carregando...",
+    "loadingTool": "Loading tool...",
+    "loadingPreview": "Loading preview...",
+    "noPreview": "No preview",
+    "expandSidebar": "Expand sidebar",
+    "collapseSidebar": "Collapse sidebar",
+    "toggleTheme": "Toggle theme",
+    "resources": "Resources",
+    "all": "All",
     "previous": "Anterior",
+    "failedToLoad": "Failed to load",
     "extensionPromptTitle": "Instale a extensão do Chrome da LocalPDF",
     "extensionPromptBody": "Abra o LocalPDF mais rápido após cada download.",
     "extensionPromptCta": "Obter extensão do Chrome",
@@ -190,7 +205,12 @@
     "addFiles": "Adicionar mais arquivos",
     "errors": {
       "previewFailed": "Falha ao carregar a visualização"
-    }
+    },
+    "change": "Change",
+    "generatingPreview": "Generating preview...",
+    "nextPage": "Next page",
+    "prevPage": "Previous page",
+    "selected": "Selected"
   },
   "upload": {
     "selectFiles": "Selecionar arquivos",
@@ -204,8 +224,12 @@
     "acceptedTypes": "Tipos aceitos",
     "errors": {
       "tooManyFiles": "Muitos arquivos. Máximo: {max}",
+      "tooManyFilesFree": "Muitos arquivos para o plano gratuito. Máximo: {max}. Atualize para ter mais.",
+      "tooManyFilesPro": "Muitos arquivos. Máximo: {max}",
       "invalidFileType": "Tipo de arquivo inválido. Por favor, selecione apenas arquivos PDF.",
-      "fileTooLarge": "Arquivo muito grande. Tamanho máximo: {max} MB"
+      "fileTooLarge": "Arquivo muito grande. Tamanho máximo: {max} MB",
+      "fileTooLargeFree": "Arquivo muito grande para o planogratuito. Máximo: {max} MB. Atualize para arquivos maiores.",
+      "fileTooLargePro": "Arquivo muito grande. Máximo: {max} MB"
     },
     "readyToProcess": "Santuário privado",
     "filesReadySingle": "{count} arquivo pronto",
@@ -554,6 +578,17 @@
     }
   },
   "ocr": {
+    "errors": {
+      "limitReached": "OCR Limit Reached",
+      "limitReachedDesc": "You reached your monthly limit of {limit} pages for {plan} plan.",
+      "noFile": "Por favor, selecione um arquivo primeiro",
+      "processingFailed": "Falha no processamento OCR. Por favor, tente novamente.",
+      "unsupportedFileType": "OCR suporta apenas arquivos PDF e imagem (JPG, PNG). Seu tipo de arquivo (.{ext}) não é suportado.",
+      "hocrEmpty": "Dados hOCR estão vazios. Por favor, tente executar o OCR novamente.",
+      "tsvEmpty": "Dados TSV estão vazios. Por favor, tente executar o OCR novamente.",
+      "searchablePdfFailed": "Falha ao criar PDF pesquisável: {error}",
+      "downloadFailed": "Falha ao gerar arquivo. Por favor, tente novamente."
+    },
     "filePreview": "Arquivo para processar",
     "recognitionLanguage": "Idioma de reconhecimento",
     "languageHint": "Selecione o idioma do texto no seu documento",
@@ -566,8 +601,6 @@
     "firstPageOnly": "Apenas primeira página",
     "allPages": "Todas as páginas",
     "pageRange": "Intervalo de páginas",
-    "page": "página",
-    "pages": "páginas",
     "processed": "processado",
     "processingPage": "Processando página {current} de {total}...",
     "startOCR": "Iniciar OCR",
@@ -584,11 +617,6 @@
     "confidence": "Confiança",
     "extractedText": "Texto extraído",
     "copyText": "Copiar texto",
-    "downloadTXT": "Baixar TXT",
-    "textCopied": "Texto copiado para a área de transferência!",
-    "remove": "Remover",
-    "newFile": "Novo arquivo",
-    "preview": "Pré-visualizar",
     "view": "Ver",
     "edit": "Editar",
     "editPlaceholder": "Edite seu texto extraído aqui...",
@@ -596,13 +624,34 @@
     "words": "palavras",
     "lines": "linhas",
     "characters": "caracteres",
-    "languageDetection": {
-      "highConfidence": "Alta Confiança",
-      "mediumConfidence": "Confianza Média",
-      "lowConfidence": "Baixa Confiança",
-      "verifyLanguage": "Verifique a seleção do idioma para melhor precisão do OCR"
-    },
+    "page": "página",
+    "pages": "páginas",
+    "textCopied": "Texto copiado para a área de transferência!",
+    "remove": "Remover",
+    "newFile": "Novo arquivo",
+    "preview": "Pré-visualizar",
     "startOver": "Recomeçar",
+    "downloadTXT": "Baixar TXT",
+    "download": {
+      "createSearchablePdf": "Criar PDF Pesquisável",
+      "downloadHocr": "Baixar hOCR (.html)",
+      "downloadTsv": "Baixar TSV (.tsv)",
+      "downloadTxt": "Baixar TXT",
+      "searchablePdfReady": "Pronto para criar PDF pesquisável!",
+      "searchablePdfDownloaded": "PDF pesquisável baixado!"
+    },
+    "results": {
+      "title": "Resultados OCR",
+      "extractedText": "Texto extraído",
+      "resultReady": "Resultado pronto",
+      "successMessage": "Seu documento foi processado com sucesso. Agora você pode baixar o resultado na barra lateral.",
+      "textReady": "Texto Reconhecido",
+      "searchablePdfReady": "Pronto para Criar PDF Pesquisável",
+      "hocrReady": "Dados hOCR Prontos",
+      "tsvReady": "Dados TSV Prontos",
+      "pagesWillProcess": "{count} {pages} serão processadas com OCR",
+      "confidenceAndPages": "Confiança: {confidence}% • {count} {pages} processadas"
+    },
     "languages": {
       "eng": "Inglês",
       "rus": "Russo",
@@ -631,15 +680,6 @@
       "tsvShort": "TSV (Dados)",
       "tsvDesc": "Valores separados por tabulação com caixas delimitadoras - fácil de analisar para análise de dados"
     },
-    "results": {
-      "textReady": "Texto Reconhecido",
-      "searchablePdfReady": "Pronto para Criar PDF Pesquisável",
-      "hocrReady": "Dados hOCR Prontos",
-      "tsvReady": "Dados TSV Prontos",
-      "pagesWillProcess": "{count} {pages} serão processadas com OCR",
-      "confidenceAndPages": "Confiança: {confidence}% • {count} {pages} processadas",
-      "successMessage": "Seu documento foi processado com sucesso. Agora você pode baixar o resultado na barra lateral."
-    },
     "infoPanel": {
       "searchablePdfTitle": "PDF Pesquisável com Camada de Texto Invisível",
       "searchablePdfDesc": "As imagens originais do documento serão preservadas exatamente como aparecem. O texto OCR será adicionado como uma camada invisível, tornando o PDF totalmente pesquisável e permitindo a seleção de texto, mantendo a aparência visual original.",
@@ -648,39 +688,22 @@
       "tsvTitle": "Formato TSV (Valores Separados por Tabulação)",
       "tsvDesc": "Formato compatível com planilhas com coordenadas de caixa delimitadora e pontuações de confiança. Fácil de importar para Excel, Google Sheets ou ferramentas de análise de dados como Python/Pandas."
     },
-    "download": {
-      "createSearchablePdf": "Criar PDF Pesquisável",
-      "downloadHocr": "Baixar hOCR (.html)",
-      "downloadTsv": "Baixar TSV (.tsv)",
-      "downloadTxt": "Baixar TXT",
-      "searchablePdfReady": "Pronto para criar PDF pesquisável!",
-      "searchablePdfDownloaded": "PDF pesquisável baixado!"
-    },
     "infoTitle": "Sobre OCR",
     "info1": "Suporta documentos PDF e imagens (JPG, PNG)",
     "info2": "Reconhecimento em 5 idiomas: EN, RU, DE, FR, ES",
     "info3": "Suporte a PDF multipágina com seleção de intervalo de páginas",
-    "info4": "Todo o processamento acontece no seu navegador - arquivos permanecem privados",
-    "errors": {
-      "noFile": "Por favor, selecione um arquivo primeiro",
-      "processingFailed": "Falha no processamento OCR. Por favor, tente novamente.",
-      "unsupportedFileType": "OCR suporta apenas arquivos PDF e imagem (JPG, PNG). Seu tipo de arquivo (.{ext}) não é suportado.",
-      "hocrEmpty": "Dados hOCR estão vazios. Por favor, tente executar o OCR novamente.",
-      "tsvEmpty": "Dados TSV estão vazios. Por favor, tente executar o OCR novamente.",
-      "searchablePdfFailed": "Falha ao criar PDF pesquisável: {error}",
-      "downloadFailed": "Falha ao gerar arquivo. Por favor, tente novamente."
-    }
+    "info4": "Todo o processamento acontece no seu navegador - arquivos permanecem privados"
   },
   "watermark": {
-    "mode": "Modo",
-    "textMode": "Texto",
-    "imageMode": "Imagem",
-    "chooseImage": "Escolher imagem",
     "filePreview": "Arquivo para adicionar marca d'água",
     "settings": "Configurações da marca d'água",
     "text": "Texto da marca d'água",
     "watermarkText": "Texto da marca d'água",
     "watermarkPlaceholder": "Digite o texto da marca d'água",
+    "mode": "Modo",
+    "textMode": "Texto",
+    "imageMode": "Imagem",
+    "chooseImage": "Escolher imagem",
     "image": "Imagem",
     "imageScale": "Escala da imagem",
     "position": "Posição",
@@ -715,13 +738,15 @@
       "noText": "Por favor, digite o texto da marca d'água",
       "noImage": "Por favor, selecione uma imagem primeiro",
       "failed": "Falha ao adicionar marca d'água",
-      "cyrillicNotSupported": "Caracteres cirílicos podem não ser suportados pela fonte selecionada"
+      "cyrillicNotSupported": "Caracteres cirílicos podem não ser suportados pela fonte selecionada",
+      "textRequired": "Please enter watermark text"
     },
     "success": {
       "title": "Marca d'água Adicionada com Sucesso",
       "watermarkApplied": "Marca d'água",
       "pages": "Páginas Processadas",
-      "size": "Tamanho do Arquivo"
+      "size": "Tamanho do Arquivo",
+      "time": "Processing time"
     },
     "quickActions": {
       "title": "O que vem a seguir?",
@@ -734,11 +759,19 @@
     "infoTitle": "Sobre Marca d'água",
     "info1": "Suporta marcas d'água de texto com suporte total a caracteres cirílicos e latinos",
     "info2": "6 opções de posição: diagonal, centro e 4 cantos",
-    "info3": "Todo o processamento acontece no seu navegador - arquivos permanecem privados"
+    "info3": "Todo o processamento acontece no seu navegador - arquivos permanecem privados",
+    "applyAnother": "Apply another watermark",
+    "applyButton": "Apply watermark",
+    "autoLoaded": {
+      "title": "Watermark loaded",
+      "description": "Your file was loaded from the previous tool"
+    }
   },
   "rotate": {
     "settings": "Configurações de rotação",
     "applyToAll": "Aplicar a todos os arquivos",
+    "nextPage": "Next page",
+    "prevPage": "Previous page",
     "selectAngle": "Selecione o ângulo de rotação",
     "clockwise": "Sentido horário",
     "upsideDown": "De cabeça para baixo",
@@ -747,7 +780,7 @@
     "allPages": "Todas as páginas",
     "rotateAllPages": "Girar todas as páginas no documento",
     "specificPages": "Páginas específicas",
-    "choosePages": "Escolha quais páginas girar",
+    "chooseWhichPages": "Choose which pages to rotate",
     "pageNumbers": "Números das páginas",
     "pageNumbersHint": "Exemplo: 1,3,5-7,10 (Total de páginas: {total})",
     "rotateButton": "Girar PDF",
@@ -906,20 +939,43 @@
     "conversionComplete": "Conversão concluída"
   },
   "sign": {
+    "signatureType": "Tipo de assinatura",
+    "drawSignature": "Desenhar assinatura",
+    "uploadImage": "Carregar imagem",
+    "signatureText": "Texto da assinatura",
+    "position": "Posição",
+    "positions": {
+      "bottomRight": "Canto inferior direito",
+      "bottomLeft": "Canto inferior esquerdo",
+      "topRight": "Canto superior direito",
+      "topLeft": "Canto superior esquerdo",
+      "custom": "Manual (Arrastar e soltar)"
+    },
+    "dragToMove": "Arraste para reposicionar",
+    "applyToPages": "Aplicar às páginas",
+    "allPages": "Todas as páginas",
+    "pageNumber": "Página {number}",
+    "pagesSigned": "Páginas assinadas",
+    "fileSize": "Tamanho do arquivo",
+    "yourName": "Seu nome",
+    "loadingHighQuality": "Carregando alta qualidade...",
+    "generatingPreview": "Gerando visualização...",
     "nextPage": "Próxima página",
     "prevPage": "Página anterior",
     "zoom": "Zoom",
     "zoomIn": "Aumentar",
     "zoomOut": "Diminuir",
-    "generatingPreview": "Gerando visualização...",
+    "saving": "Salvando...",
+    "addingSignature": "Adicionando assinatura...",
+    "signingPage": "Assinando página {current} de {total}...",
     "successTitle": "PDF assinado com sucesso!",
     "modeDraw": "Desenhar",
     "modeUpload": "Carregar",
     "modeText": "Texto",
     "clearSignature": "Limpar assinatura",
-    "drawSignature": "Desenhar assinatura",
-    "uploadImage": "Carregar imagem",
-    "signatureText": "Texto da assinatura",
+    "noFile": "Please upload a PDF file",
+    "enterText": "Please enter signature text",
+    "provideSignature": "Please draw or upload a signature",
     "textSize": "Tamanho do texto",
     "signatureSize": "Tamanho da assinatura",
     "includeName": "Incluir nome impresso",
@@ -929,6 +985,7 @@
     "color": "Cor",
     "width": "Largura",
     "height": "Altura",
+    "addSignature": "Place on Page",
     "apply": "Aplicar",
     "finishAndSave": "Salvar PDF assinado",
     "quickActions": {
@@ -938,6 +995,9 @@
       "compress": "Reduzir tamanho do arquivo",
       "watermark": "Adicionar marca d'água",
       "merge": "Juntar com outros"
+    },
+    "errors": {
+      "signFailed": "Failed to sign PDF"
     }
   },
   "pageEditor": {
@@ -969,20 +1029,27 @@
     "extract": "Extrair",
     "delete": "Excluir",
     "extracting": "Extraindo páginas...",
+    "pageSelection": "Page Selection",
+    "results": {
+      "successMessage": "Your document has been processed successfully. You can now download the result from the sidebar."
+    },
+    "copyText": "Copy Text",
+    "view": "View",
     "pagesDeleted": "páginas excluídas",
     "extractSuccess": "Páginas extraídas com sucesso",
     "extractError": "Falha ao extrair páginas",
-    "addPDF": "Adicionar PDF",
-    "appendPages": "Anexar páginas",
     "tips": {
       "title": "Dicas",
       "drag": "Arraste as páginas para reordená-las",
       "select": "Use as caixas de seleção ou clique para selecionar várias",
       "rotateDelete": "Passe o mouse sobre uma página para girar ou excluir",
       "extract": "Use a barra de ferramentas para extrair as páginas selecionadas"
-    }
+    },
+    "addPDF": "Adicionar PDF",
+    "appendPages": "Anexar páginas"
   },
   "addText": {
+    "title": "Add Text",
     "clickToEdit": "Clique para editar",
     "addedCount": "Elementos de texto adicionados: {count}",
     "originalSize": "Tamanho original",
@@ -1000,7 +1067,9 @@
       "select": "Selecionar",
       "page": "Página",
       "of": "de",
-      "savePdf": "Salvar PDF"
+      "savePdf": "Salvar PDF",
+      "undo": "Undo",
+      "redo": "Redo"
     },
     "format": {
       "title": "Formatar Texto",
@@ -1065,6 +1134,7 @@
       "value": "Valor",
       "selectedByDefault": "Selecionado por padrão",
       "options": "Opções (uma por linha)",
+      "defaultOptions": "Option 1\nOption 2\nOption 3",
       "allowMultiSelect": "Permitir seleção múltipla",
       "requiredField": "Campo obrigatório",
       "readOnlyField": "Somente leitura",
@@ -1076,9 +1146,13 @@
       "multiline": "Multilinha",
       "checkbox": "Caixa de seleção",
       "radio": "Botão de rádio",
-      "dropdown": "Menu suspenso"
+      "dropdown": "Menu suspenso",
+      "unknown": "Unknown"
     }
   },
+  "toolNotImplemented": "Tool Not Implemented",
+  "toolComingSoon": "This tool is coming soon.",
+  "toolImplementationSoon": "Tool implementation coming soon...",
   "editText": {
     "rasterizationWarning": "Nota: As páginas editadas serão convertidas em imagens. O texto nessas páginas não será selecionável após a edição.",
     "selectPage": "Selecionar Página",
@@ -1119,7 +1193,7 @@
     "replacementText": "Texto de Substituição",
     "enterReplacementText": "Digite o texto de substituição (multilinha suportado)...",
     "latinCharactersOnly": "⚠️ Apenas caracteres latinos (A-Z, 0-9) são suportados",
-    "applyChanges": "Aplicar {count} Alteração(ões)",
+    "applyChanges": "Aplicar {count} alteração{s}",
     "applyAllHint": "Todas as seleções serão aplicadas ao PDF",
     "cover": "Cobrir",
     "replace": "Substituir",
@@ -1194,14 +1268,21 @@
   "tables": {
     "title": "Tabelas em PDF",
     "description": "Crie tabelas profissionais diretamente no seu documento",
+    "addTable": "Add Table",
+    "importExcel": "Import Excel/CSV",
     "selectTabs": "Selecionar planilhas",
     "selectedTabs": "{count} planilhas selecionadas",
     "noTabsSelected": "Selecione pelo menos uma planilha",
     "rows": "Linhas",
     "cols": "Colunas",
+    "generate": "Gerar PDF",
+    "generateWithWatermark": "Gerar com marca d'água",
     "style": {
+      "title": "Table Style",
       "header": "Cor do cabeçalho",
       "stripes": "Listras de zebra",
+      "border": "Borders",
+      "font": "Font Settings",
       "orientation": "Orientação da página",
       "orientations": {
         "portrait": "Retrato",
@@ -1210,6 +1291,8 @@
       }
     },
     "actions": {
+      "insertPage": "Insert after page",
+      "float": "Floating on page",
       "generate": "Gerar PDF"
     },
     "errors": {
@@ -1217,5 +1300,60 @@
       "generateFailed": "Falha ao gerar PDF",
       "noData": "Nenhum dado encontrado nas planilhas selecionadas"
     }
+  },
+  "monetization": {
+    "upgrade_now": "Atualizar para PRO",
+    "upgrade": "Atualizar",
+    "upgradeTitle": "Upgrade to Pro",
+    "upgradeSubtitle": "Unlock all tools & limits",
+    "proStatus": "Pro Status",
+    "activeSubscription": "Active subscription",
+    "pro_badge": "PRO",
+    "restore": "Restaurar",
+    "restore_hint": "Insira sua chave de licença do LemonSqueezy",
+    "restore_button": "Restaurar compra",
+    "restore_description": "As assinaturas são sincronizadas automaticamente com o seu ID de suporte. Use este formulário apenas se estiver em um novo dispositivo.",
+    "choose_plan": "Escolher plano",
+    "secure_checkout": "Checkout 100% seguro",
+    "status": "Status da assinatura",
+    "expires": "Expira em",
+    "never": "Nunca",
+    "refresh_access": "Atualizar acesso",
+    "once": "uma vez",
+    "intervals": {
+      "month": "mês"
+    },
+    "free": {
+      "name": "Plano gratuito",
+      "price": "0",
+      "interval": "para sempre",
+      "cta": "Plano atual",
+      "description": "Ferramentas básicas e limites"
+    },
+    "pro": {
+      "name": "Assinatura Pro",
+      "cta": "Aderir ao PRO",
+      "description": "Remova todos os limites, obtenha suporte prioritario e ferramentas avançadas."
+    },
+    "lifetime": {
+      "name": "Pro vitalício",
+      "cta": "Melhor valor",
+      "description": "Pague uma vez, aproveite para sempre. Todos os recursos Pro incluídos."
+    },
+    "features": {
+      "no_limits": "Sem limites de arquivos",
+      "batch": "Processamento em lote (20+)",
+      "tier3": "Todas as ferramentas (OCR, Assinar)",
+      "support": "Suporte prioritário",
+      "unlimited": "Ilimitado"
+    },
+    "premium_feature": "Recurso Premium",
+    "premium_description": "Use as ferramentas PRO gratuitamente com uma marca d'água! Atualize para remover marcas d'água, aumentar os limites de tamanho de arquivo e desfrutar de downloads diários ilimitados.",
+    "download_with_watermark": "Baixar com marca d'água",
+    "download_pro_clean": "Baixar PRO (Limpo)",
+    "daily_limit_reached": "Limite diário atingido para esta ferramenta",
+    "daily_free_downloads_left": "Downloads gratuitos restantes: {count}",
+    "upgrade_to_download": "Atualizar para baixar",
+    "private_secure_fast": "Private. Secure. Local."
   }
 }

@@ -1,13 +1,15 @@
 {
   "app": {
     "title": "LocalPDF",
-    "subtitle": "PDF инструменты с защитой приватности в вашем браузере"
+    "subtitle": "Профессиональные PDF-инструменты, которые работают полностью в вашем браузере. Ваши файлы никогда не покидают ваш компьютер."
   },
   "welcome": {
     "securePrefix": "Просто и безопасно",
     "title": "Ваш приватный",
     "titleSuffix": "PDF Sanctuary.",
     "subtitle": "Единственный набор инструментов для PDF, работающий на 100% в вашем браузере. Без загрузок, серверов и следов. Только профессиональные инструменты на вашем устройстве.",
+    "selectToolToBegin": "Select a tool to begin",
+    "chooseToolDescription": "Choose a compatible tool and your files will transfer instantly.",
     "firstTimeBanner": "Добро пожаловать! Вся обработка происходит в вашем браузере - ваши файлы не покидают устройство.",
     "selectTool": "Выберите инструмент из боковой панели или ниже"
   },
@@ -112,11 +114,14 @@
     "tables-pdf": {
       "name": "Таблицы в PDF",
       "description": "Добавляйте, редактируйте и стилизуйте таблицы в PDF"
+    },
+    "unlock-pdf": {
+      "name": "Разблокировать PDF",
+      "description": "Удалить пароли из PDF файлов"
     }
   },
   "common": {
     "upload": "Загрузить файлы",
-    "uploadDescription": "Перетащите или нажмите для загрузки",
     "selectFile": "Выбрать файл",
     "selectFiles": "Выбрать файлы",
     "uploadFile": "Загрузить файл",
@@ -134,10 +139,12 @@
     "sending": "Отправка...",
     "feedbackSuccess": "Спасибо за ваш отзыв!",
     "feedbackError": "Не удалось отправить отзыв. Попробуйте позже.",
+    "uploadDescription": "Перетащите или нажмите для загрузки",
     "download": "Скачать",
     "downloadAll": "Скачать все (ZIP)",
     "supportDeveloper": "Поддержи разработчика",
     "processing": "Обработка...",
+    "searching": "Поиск...",
     "error": "Ошибка",
     "success": "Успешно",
     "cancel": "Отмена",
@@ -158,6 +165,7 @@
     "reset": "Сбросить",
     "processAnother": "Обработать другой",
     "relatedTools": "Похожие инструменты",
+    "clickToEdit": "Нажмите для редактирования",
     "convertAnother": "Конвертировать другой",
     "quickActions": "Быстрые действия",
     "preview": "Предпросмотр",
@@ -167,6 +175,7 @@
     "originalSize": "Исходный размер",
     "newSize": "Новый размер",
     "useInOtherTools": "Использовать в других инструментах",
+    "recommended": "Рекомендуется",
     "generatingThumbnails": "Создание миниатюр...",
     "whatsNext": "Что дальше?",
     "continueWorking": "Продолжите работу с этими инструментами:",
@@ -174,7 +183,16 @@
     "convert": "Конвертировать",
     "hide": "Скрыть",
     "loading": "Загрузка...",
+    "loadingTool": "Загрузка инструмента...",
+    "loadingPreview": "Загрузка предпросмотра...",
+    "noPreview": "Предпросмотр недоступен",
+    "expandSidebar": "Развернуть боковую панель",
+    "collapseSidebar": "Свернуть боковую панель",
+    "toggleTheme": "Сменить тему",
+    "resources": "Ресурсы",
+    "all": "Все",
     "previous": "Назад",
+    "failedToLoad": "Не удалось загрузить",
     "extensionPromptTitle": "Установите расширение LocalPDF для Chrome",
     "extensionPromptBody": "Открывайте LocalPDF быстрее после каждого скачивания.",
     "extensionPromptCta": "Получить расширение Chrome",
@@ -188,9 +206,11 @@
     "errors": {
       "previewFailed": "Не удалось загрузить предпросмотр"
     },
-    "searching": "Поиск...",
-    "clickToEdit": "Нажмите для редактирования",
-    "recommended": "Рекомендуется"
+    "change": "Изменить",
+    "generatingPreview": "Создание предпросмотра...",
+    "nextPage": "Следующая страница",
+    "prevPage": "Предыдущая страница",
+    "selected": "Выбрано"
   },
   "upload": {
     "selectFiles": "Выбрать файлы",
@@ -204,8 +224,12 @@
     "acceptedTypes": "Допустимые типы",
     "errors": {
       "tooManyFiles": "Слишком много файлов. Максимум: {max}",
+      "tooManyFilesFree": "Бесплатный режим ограничен {max} файлами. Перейдите на PRO для пакетной обработки до 50 файлов.",
+      "tooManyFilesPro": "Достигнут пакетный лимит ({max} файлов).",
       "invalidFileType": "Неверный тип файла. Пожалуйста, выберите PDF или изображения (JPG, PNG).",
-      "fileTooLarge": "Файл слишком большой. Максимальный размер: {max} МБ"
+      "fileTooLarge": "Файл слишком большой. Максимальный размер: {max} МБ",
+      "fileTooLargeFree": "Размер файла превышает лимит {max} МБ. Перейдите на PRO для снятия ограничений.",
+      "fileTooLargePro": "Файл слишком велик даже для PRO (лимит {max} МБ)."
     },
     "readyToProcess": "Частное убежище",
     "filesReadySingle": "{count} файл готов",
@@ -570,31 +594,43 @@
     "languageHint": "Выберите язык текста в вашем документе",
     "autoDetect": "Автоопределение языка",
     "autoDetectHint": "Язык будет определён автоматически по содержимому документа",
-    "detected": "Определено",
-    "detectingLanguage": "Определение языка...",
-    "analyzingContent": "Анализ содержимого документа...",
-    "pageSelection": "Страницы для обработки",
+    "detected": "Detected",
+    "detectingLanguage": "Detecting language...",
+    "analyzingContent": "Analyzing document content...",
+    "pageSelection": "Выбор страниц",
     "firstPageOnly": "Только первая страница",
     "allPages": "Все страницы",
     "pageRange": "Диапазон страниц",
-    "page": "страница",
-    "pages": "страниц",
     "processed": "обработано",
     "processingPage": "Обработка страницы {current} из {total}...",
     "startOCR": "Начать OCR",
     "processing": "Обработка OCR...",
+    "analyzing": "Анализ...",
     "initializing": "Инициализация OCR движка...",
     "loadingModel": "Загрузка языковой модели...",
     "processingImage": "Обработка изображения...",
     "processingPDF": "Обработка PDF...",
     "recognizing": "Распознавание текста",
-    "analyzing": "Анализ...",
     "completed": "OCR завершено!",
     "pageTitle": "Результаты распознавания",
     "resultsTitle": "Распознанный текст",
     "confidence": "Точность",
     "extractedText": "Извлеченный текст",
-    "copyText": "Скопировать текст",
+    "copyText": "Копировать текст",
+    "view": "Просмотр",
+    "edit": "Редактировать",
+    "editPlaceholder": "Отредактируйте распознанный текст здесь...",
+    "textModified": "Текст был изменен",
+    "words": "слов",
+    "lines": "строк",
+    "characters": "символов",
+    "page": "страница",
+    "pages": "страниц",
+    "textCopied": "Текст скопирован в буфер обмена!",
+    "remove": "Удалить",
+    "newFile": "Новый файл",
+    "preview": "Предпросмотр",
+    "startOver": "Начать заново",
     "downloadTXT": "Скачать TXT",
     "download": {
       "createSearchablePdf": "Создать PDF с поиском",
@@ -604,24 +640,18 @@
       "searchablePdfReady": "Готов к созданию PDF с возможностью поиска!",
       "searchablePdfDownloaded": "PDF с возможностью поиска скачан!"
     },
-    "textCopied": "Текст скопирован в буфер обмена!",
-    "remove": "Удалить",
-    "newFile": "Новый файл",
-    "preview": "Предпросмотр",
-    "view": "Просмотр",
-    "edit": "Редактировать",
-    "editPlaceholder": "Отредактируйте распознанный текст здесь...",
-    "textModified": "Текст был изменен",
-    "words": "слов",
-    "lines": "строк",
-    "characters": "символов",
-    "languageDetection": {
-      "highConfidence": "Высокая точность",
-      "mediumConfidence": "Средняя точность",
-      "lowConfidence": "Низкая точность",
-      "verifyLanguage": "Проверьте выбор языка для лучшей точности OCR"
+    "results": {
+      "title": "Результаты OCR",
+      "extractedText": "Извлеченный текст",
+      "resultReady": "Результат готов",
+      "successMessage": "Ваш документ был успешно обработан. Теперь вы можете скачать результат.",
+      "textReady": "Распознанный текст",
+      "searchablePdfReady": "Готов к созданию PDF с поиском",
+      "hocrReady": "Данные hOCR готовы",
+      "tsvReady": "Данные TSV готовы",
+      "pagesWillProcess": "{count} {pages} будут обработаны с помощью OCR",
+      "confidenceAndPages": "Точность: {confidence}% • {count} {pages} обработано"
     },
-    "startOver": "Начать заново",
     "languages": {
       "eng": "Английский",
       "rus": "Русский",
@@ -650,15 +680,6 @@
       "tsvShort": "TSV (Данные)",
       "tsvDesc": "Значения, разделенные табуляцией, с ограничивающими рамками"
     },
-    "results": {
-      "textReady": "Распознанный текст",
-      "searchablePdfReady": "Готов к созданию PDF с поиском",
-      "hocrReady": "Данные hOCR готовы",
-      "tsvReady": "Данные TSV готовы",
-      "pagesWillProcess": "{count} {pages} будут обработаны с помощью OCR",
-      "confidenceAndPages": "Точность: {confidence}% • {count} {pages} обработано",
-      "successMessage": "Ваш документ успешно обработан. Теперь вы можете скачать результат на боковой панели."
-    },
     "infoPanel": {
       "searchablePdfTitle": "PDF с возможностью поиска и невидимым текстовым слоем",
       "searchablePdfDesc": "Оригинальные изображения документа будут сохранены точно в том виде, в каком они есть. Текст OCR будет добавлен как невидимый слой, позволяя выделять и искать текст, сохраняя оригинальный вид документа.",
@@ -674,15 +695,15 @@
     "info4": "Вся обработка происходит в браузере - файлы остаются приватными"
   },
   "watermark": {
-    "mode": "Режим",
-    "textMode": "Текст",
-    "imageMode": "Изображение",
-    "chooseImage": "Выбрать изображение",
     "filePreview": "Файл для водяного знака",
     "settings": "Настройки водяного знака",
     "text": "Текст водяного знака",
     "watermarkText": "Текст водяного знака",
     "watermarkPlaceholder": "Введите текст водяного знака",
+    "mode": "Режим",
+    "textMode": "Текст",
+    "imageMode": "Изображение",
+    "chooseImage": "Выбрать изображение",
     "image": "Изображение",
     "imageScale": "Масштаб",
     "position": "Позиция",
@@ -717,13 +738,15 @@
       "noText": "Пожалуйста, введите текст водяного знака",
       "noImage": "Пожалуйста, сначала выберите изображение",
       "failed": "Не удалось добавить водяной знак",
-      "cyrillicNotSupported": "Кириллица может не поддерживаться выбранным шрифтом"
+      "cyrillicNotSupported": "Кириллица может не поддерживаться выбранным шрифтом",
+      "textRequired": "Please enter watermark text"
     },
     "success": {
       "title": "Водяной знак успешно добавлен",
       "watermarkApplied": "Водяной знак",
       "pages": "Обработано страниц",
-      "size": "Размер файла"
+      "size": "Размер файла",
+      "time": "Processing time"
     },
     "quickActions": {
       "title": "Что дальше?",
@@ -736,7 +759,13 @@
     "infoTitle": "О водяных знаках",
     "info1": "Поддержка текстовых водяных знаков с полной поддержкой кириллицы и латиницы",
     "info2": "6 вариантов расположения: по диагонали, по центру и в 4 углах",
-    "info3": "Вся обработка происходит в вашем браузере — файлы остаются приватными"
+    "info3": "Вся обработка происходит в вашем браузере — файлы остаются приватными",
+    "applyAnother": "Apply another watermark",
+    "applyButton": "Apply watermark",
+    "autoLoaded": {
+      "title": "Watermark loaded",
+      "description": "Your file was loaded from the previous tool"
+    }
   },
   "rotate": {
     "settings": "Настройки поворота",
@@ -751,7 +780,7 @@
     "allPages": "Все страницы",
     "rotateAllPages": "Повернуть все страницы документа",
     "specificPages": "Определённые страницы",
-    "choosePages": "Выберите какие страницы повернуть",
+    "chooseWhichPages": "Choose which pages to rotate",
     "pageNumbers": "Номера страниц",
     "pageNumbersHint": "Пример: 1,3,5-7,10 (Всего страниц: {total})",
     "rotateButton": "Повернуть PDF",
@@ -871,23 +900,6 @@
       "zipFailed": "Не удалось создать ZIP-архив"
     }
   },
-  "pdfToWord": {
-    "convert": "Конвертировать в Word",
-    "convertAnother": "Конвертировать другой",
-    "readyToDownload": "Документ Word готов",
-    "options": "Настройки конвертации",
-    "smartHeadings": "Умные заголовки",
-    "smartHeadingsDescription": "Определять заголовки по размеру шрифта",
-    "extractComments": "Извлечь комментарии",
-    "extractCommentsDescription": "Перенести заметки из PDF в комментарии Word",
-    "errors": {
-      "noFile": "Пожалуйста, сначала выберите PDF файл",
-      "invalidPdf": "Неверный PDF файл",
-      "conversionFailed": "Не удалось конвертировать PDF в Word"
-    },
-    "success": "PDF успешно конвертирован в Word!",
-    "conversionComplete": "Конвертация завершена"
-  },
   "wordToPdf": {
     "convert": "Конвертировать в PDF",
     "convertAnother": "Конвертировать другой",
@@ -908,6 +920,23 @@
     "success": "Документ Word успешно конвертирован!",
     "editabilityWarning": "⚠️ Режим «С форматированием» создает PDF из изображений. Текст в таком файле нельзя будет редактировать стандартным поиском, но можно будет добавлять новый или скрывать области вручную.",
     "editResult": "Редактировать PDF"
+  },
+  "pdfToWord": {
+    "convert": "Конвертировать в Word",
+    "convertAnother": "Конвертировать другой",
+    "options": "Настройки конвертации",
+    "smartHeadings": "Умные заголовки",
+    "smartHeadingsDescription": "Определять заголовки по размеру шрифта",
+    "extractComments": "Извлечь комментарии",
+    "extractCommentsDescription": "Перенести заметки из PDF в комментарии Word",
+    "errors": {
+      "noFile": "Пожалуйста, сначала выберите PDF файл",
+      "invalidPdf": "Неверный PDF файл",
+      "conversionFailed": "Не удалось конвертировать PDF в Word"
+    },
+    "success": "PDF успешно конвертирован в Word!",
+    "readyToDownload": "Документ Word готов",
+    "conversionComplete": "Конвертация завершена"
   },
   "sign": {
     "signatureType": "Тип подписи",
@@ -966,6 +995,9 @@
       "compress": "Уменьшить размер",
       "watermark": "Добавить водяной знак",
       "merge": "Объединить с другими"
+    },
+    "errors": {
+      "signFailed": "Failed to sign PDF"
     }
   },
   "pageEditor": {
@@ -997,18 +1029,24 @@
     "extract": "Извлечь",
     "delete": "Удалить",
     "extracting": "Извлечение страниц...",
+    "pageSelection": "Page Selection",
+    "results": {
+      "successMessage": "Your document has been processed successfully. You can now download the result from the sidebar."
+    },
+    "copyText": "Copy Text",
+    "view": "View",
     "pagesDeleted": "страниц удалено",
     "extractSuccess": "Страницы успешно извлечены",
     "extractError": "Не удалось извлечь страницы",
-    "addPDF": "Добавить PDF",
-    "appendPages": "Добавить страницы",
     "tips": {
       "title": "Советы",
       "drag": "Перетаскивайте страницы для изменения порядка",
       "select": "Используйте чекбоксы или клик для выбора нескольких",
       "rotateDelete": "Наведите на страницу для поворота или удаления",
       "extract": "Используйте панель инструментов для извлечения выбранных страниц"
-    }
+    },
+    "addPDF": "Добавить PDF",
+    "appendPages": "Добавить страницы"
   },
   "addText": {
     "title": "Добавить текст",
@@ -1108,9 +1146,13 @@
       "multiline": "Многострочное",
       "checkbox": "Флажок",
       "radio": "Радиокнопка",
-      "dropdown": "Список"
+      "dropdown": "Список",
+      "unknown": "Неизвестно"
     }
   },
+  "toolNotImplemented": "Tool Not Implemented",
+  "toolComingSoon": "This tool is coming soon.",
+  "toolImplementationSoon": "Tool implementation coming soon...",
   "editText": {
     "rasterizationWarning": "Примечание: Отредактированные страницы будут преобразованы в изображения. Текст на них станет невыделяемым.",
     "selectPage": "Выберите страницу",
@@ -1151,7 +1193,7 @@
     "replacementText": "Текст для замены",
     "enterReplacementText": "Введите текст (можно несколько строк)...",
     "latinCharactersOnly": "⚠️ Поддерживаются только латинские символы (A-Z, 0-9)",
-    "applyChanges": "Применить изменения: {count}",
+    "applyChanges": "Применить {count} изменени{s}",
     "applyAllHint": "Все изменения будут применены к PDF",
     "cover": "Скрыть",
     "replace": "Заменить",
@@ -1233,6 +1275,8 @@
     "noTabsSelected": "Пожалуйста, выберите хотя бы один лист",
     "rows": "Строки",
     "cols": "Столбцы",
+    "generate": "Создать PDF",
+    "generateWithWatermark": "Создать с водяным знаком",
     "style": {
       "title": "Стиль таблицы",
       "header": "Цвет шапки",
@@ -1259,7 +1303,11 @@
   },
   "monetization": {
     "upgrade_now": "Апгрейд до PRO",
-    "upgrade": "Апгрейд",
+    "upgrade": "Перейти на PRO",
+    "upgradeTitle": "Перейти на PRO",
+    "upgradeSubtitle": "Разблокируйте все инструменты и лимиты",
+    "proStatus": "Статус Pro",
+    "activeSubscription": "Подписка активна",
     "pro_badge": "PRO",
     "restore": "Восстановить",
     "restore_hint": "Введите ваш лицензионный ключ LemonSqueezy",
@@ -1267,6 +1315,14 @@
     "restore_description": "Подписки автоматически синхронизируются с вашим Support ID. Используйте эту форму только на новом устройстве.",
     "choose_plan": "Выберите план",
     "secure_checkout": "100% безопасная оплата",
+    "status": "Статус подписки",
+    "expires": "Истекает",
+    "never": "Никогда",
+    "refresh_access": "Обновить доступ",
+    "once": "разово",
+    "intervals": {
+      "month": "месяц"
+    },
     "free": {
       "name": "Бесплатный",
       "price": "0",
@@ -1275,10 +1331,14 @@
       "description": "Базовые инструменты и лимиты"
     },
     "pro": {
-      "cta": "Выбрать PRO"
+      "name": "Подписка PRO",
+      "cta": "Выбрать PRO",
+      "description": "Снятие всех лимитов, приоритетная поддержка и продвинутые инструменты."
     },
     "lifetime": {
-      "cta": "Купить навсегда"
+      "name": "PRO Навсегда",
+      "cta": "Купить навсегда",
+      "description": "Оплатите один раз, пользуйтесь вечно. Все функции PRO включены."
     },
     "features": {
       "no_limits": "Без ограничений по размеру",
@@ -1287,7 +1347,13 @@
       "support": "Приоритетная поддержка",
       "unlimited": "Безлимитно"
     },
-    "premium_feature": "Премиум-функция",
-    "premium_description": "Этот инструмент доступен только для пользователей PRO. Присоединяйтесь, чтобы снять все лимиты и получить доступ к продвинутым функциям обработки PDF."
+    "premium_feature": "Премиум-инструмент",
+    "premium_description": "Используйте PRO-инструменты бесплатно с водяным знаком! Подписка убирает водяные знаки, увеличивает лимиты на размер файлов и снимает дневные ограничения на скачивание.",
+    "download_with_watermark": "Скачать с водяным знаком",
+    "download_pro_clean": "Скачать PRO (Без знака)",
+    "daily_limit_reached": "Лимит на сегодня исчерпан",
+    "daily_free_downloads_left": "Осталось бесплатных PRO-скачиваний сегодня: {count}",
+    "upgrade_to_download": "PRO: Скачать",
+    "private_secure_fast": "Приватно. Безопасно. Локально."
   }
 }

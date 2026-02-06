@@ -8,6 +8,8 @@
     "title": "Ihr privates",
     "titleSuffix": "PDF Sanctuary.",
     "subtitle": "Das einzige PDF-Toolkit, das zu 100 % in Ihrem Browser funktioniert. Keine Uploads, keine Server, keine Spuren. Nur professionelle Tools, betrieben von Ihrem Gerät.",
+    "selectToolToBegin": "Select a tool to begin",
+    "chooseToolDescription": "Choose a compatible tool and your files will transfer instantly.",
     "firstTimeBanner": "Willkommen! Die gesamte Verarbeitung erfolgt in Ihrem Browser - Ihre Dateien verlassen nie Ihr Gerät.",
     "selectTool": "Wählen Sie ein Tool aus der Seitenleiste oder wählen Sie eines unten"
   },
@@ -77,10 +79,6 @@
       "name": "Seiten extrahieren",
       "description": "Bestimmte Seiten extrahieren"
     },
-    "unlock-pdf": {
-      "name": "PDF entsperren",
-      "description": "PDF-Passwort entfernen"
-    },
     "images-to-pdf": {
       "name": "Bilder zu PDF",
       "description": "Bilder in PDF konvertieren"
@@ -105,17 +103,235 @@
       "name": "PDF glätten",
       "description": "PDF-Formulare und Anmerkungen nicht bearbeitbar machen"
     },
-    "edit-pdf": {
-      "name": "PDF bearbeiten",
-      "description": "PDF-Inhalt bearbeiten"
-    },
     "extract-images-pdf": {
       "name": "Bilder extrahieren/entfernen",
       "description": "Alle Bilder aus PDF extrahieren oder entfernen"
     },
+    "edit-pdf": {
+      "name": "PDF bearbeiten",
+      "description": "PDF-Inhalt bearbeiten"
+    },
     "tables-pdf": {
       "name": "Tabellen in PDF",
       "description": "Tabellen in Ihrem PDF hinzufügen, bearbeiten und stylen"
+    },
+    "unlock-pdf": {
+      "name": "PDF entsperren",
+      "description": "PDF-Passwort entfernen"
+    }
+  },
+  "common": {
+    "upload": "Dateien hochladen",
+    "selectFile": "Datei auswählen",
+    "selectFiles": "Dateien auswählen",
+    "uploadFile": "Upload file",
+    "supportId": "Support ID",
+    "feedback": "Share Feedback",
+    "feedbackTitle": "We value your feedback",
+    "feedbackDescription": "Help us improve LocalPDF. Your feedback is anonymous unless you provide an email.",
+    "rating": "Rating",
+    "ratingRequired": "Please select a rating",
+    "comment": "Comment",
+    "commentPlaceholder": "What can we improve?",
+    "email": "Email",
+    "optional": "Optional",
+    "sendFeedback": "Send Feedback",
+    "sending": "Sending...",
+    "feedbackSuccess": "Thank you for your feedback!",
+    "feedbackError": "Failed to send feedback. Please try again later.",
+    "uploadDescription": "Drag and drop or click to upload",
+    "download": "Download",
+    "downloadAll": "Alle herunterladen (ZIP)",
+    "supportDeveloper": "Support Developer",
+    "processing": "Processing...",
+    "searching": "Searching...",
+    "error": "Error",
+    "success": "Success",
+    "cancel": "Cancel",
+    "close": "Close",
+    "back": "Back",
+    "next": "Next",
+    "done": "Done",
+    "remove": "Remove",
+    "newFile": "New file",
+    "filePreview": "File preview",
+    "totalPages": "Total pages",
+    "page": "Seite",
+    "pages": "Seiten",
+    "fileSize": "File size",
+    "changeFile": "Change file",
+    "autoLoaded": "File loaded from previous tool",
+    "autoLoadedDescription": "Your PDF has been automatically loaded",
+    "reset": "Reset",
+    "processAnother": "Process another",
+    "relatedTools": "Related tools",
+    "clickToEdit": "Click to edit",
+    "convertAnother": "Weiteres konvertieren",
+    "quickActions": "Schnellaktionen",
+    "preview": "Vorschau",
+    "clearAll": "Alles löschen",
+    "processingTime": "Processing time",
+    "selectedFile": "Ausgewählte Datei",
+    "originalSize": "Originalgröße",
+    "newSize": "Neue Größe",
+    "useInOtherTools": "In anderen Tools verwenden",
+    "recommended": "Empfohlen",
+    "generatingThumbnails": "Erstelle Vorschaubilder...",
+    "whatsNext": "Was als Nächstes?",
+    "continueWorking": "Arbeiten Sie weiter mit diesen Tools:",
+    "selectAll": "Alle auswählen",
+    "convert": "Konvertieren",
+    "hide": "Verbergen",
+    "loading": "Laden...",
+    "loadingTool": "Lade Tool...",
+    "loadingPreview": "Lade Vorschau...",
+    "noPreview": "Keine Vorschau",
+    "expandSidebar": "Seitenleiste erweitern",
+    "collapseSidebar": "Seitenleiste einklappen",
+    "toggleTheme": "Farbschema umschalten",
+    "resources": "Ressourcen",
+    "all": "Alle",
+    "previous": "Zurück",
+    "failedToLoad": "Fehler beim Laden",
+    "extensionPromptTitle": "Hol dir die LocalPDF Chrome-Erweiterung",
+    "extensionPromptBody": "Starte LocalPDF nach jedem Download mit einem Klick.",
+    "extensionPromptCta": "Chrome-Erweiterung holen",
+    "extensionPromptDismiss": "Nein danke",
+    "save": "Speichern",
+    "show": "Anzeigen",
+    "zoom": "Zoom",
+    "zoomIn": "Vergrößern",
+    "zoomOut": "Verkleinern",
+    "addFiles": "Weitere Dateien hinzufügen",
+    "errors": {
+      "previewFailed": "Vorschau konnte nicht geladen werden"
+    },
+    "change": "Ändern",
+    "generatingPreview": "Vorschau wird erstellt...",
+    "nextPage": "Nächste Seite",
+    "prevPage": "Vorherige Seite",
+    "selected": "Ausgewählt"
+  },
+  "upload": {
+    "selectFiles": "Dateien auswählen",
+    "dragOrClick": "Dateien hierher ziehen oder klicken zum Auswählen",
+    "dropHere": "Dateien hier ablegen",
+    "multipleFilesAllowed": "Unterstützt bis zu 10 Dateien",
+    "singleFileAllowed": "Nur eine Datei",
+    "pasteHint": "Oder drücken Sie Strg+V zum Einfügen von Dateien",
+    "maxFiles": "Maximale Dateien",
+    "maxSize": "Maximale Größe pro Datei",
+    "acceptedTypes": "Akzeptierte Typen",
+    "errors": {
+      "tooManyFiles": "Zu viele Dateien. Maximum: {max}",
+      "tooManyFilesFree": "Zu viele Dateien für den kostenlosen Plan. Maximum: {max}. Für mehr upgraden.",
+      "tooManyFilesPro": "Zu viele Dateien. Maximum: {max}",
+      "invalidFileType": "Ungültiger Dateityp. Bitte wählen Sie nur PDF-Dateien.",
+      "fileTooLarge": "Datei zu groß. Maximale Größe: {max} MB",
+      "fileTooLargeFree": "Datei zu groß für den kostenlosen Plan. Maximum: {max} MB. Für größere Dateien upgraden.",
+      "fileTooLargePro": "Datei zu groß. Maximum: {max} MB"
+    },
+    "readyToProcess": "Privates Refugium",
+    "filesReadySingle": "{count} Datei bereit",
+    "filesReadyPlural": "{count} Dateien bereit"
+  },
+  "merge": {
+    "fileList": "Dateien zum Zusammenführen",
+    "reorderHint": "Ziehen zum Neuordnen",
+    "mergeButton": "PDFs zusammenführen",
+    "mergeAnother": "Weitere zusammenführen",
+    "minFilesHint": "Fügen Sie mindestens 2 PDF-Dateien zum Zusammenführen hinzu",
+    "errors": {
+      "minFiles": "Bitte wählen Sie mindestens 2 PDF-Dateien zum Zusammenführen aus"
+    },
+    "success": {
+      "title": "PDFs erfolgreich zusammengeführt!",
+      "pages": "Gesamtseiten",
+      "size": "Dateigröße",
+      "time": "Verarbeitungszeit"
+    },
+    "quickActions": {
+      "title": "Was als Nächstes?",
+      "description": "Arbeiten Sie mit Ihrer zusammengeführten PDF weiter:",
+      "compress": "Dateigröße reduzieren",
+      "protect": "Passwort hinzufügen",
+      "watermark": "Wasserzeichen hinzufügen",
+      "split": "Seiten extrahieren"
+    }
+  },
+  "smartMerge": {
+    "title": "Intelligentes Zusammenführen",
+    "analyzing": "Dokumente werden analysiert...",
+    "sortSuggestions": "Sortiervorschläge",
+    "detectedDates": "Erkannte Daten",
+    "duplicatesFound": "Mögliche Duplikate gefunden",
+    "similarFiles": "ähnliche Dateien",
+    "keepFirst": "Erste behalten",
+    "sortApplied": "Sortierung angewendet",
+    "duplicatesRemoved": "Duplikate entfernt"
+  },
+  "smartOrganize": {
+    "title": "Intelligente Organisation",
+    "analyzing": "Seiten werden analysiert...",
+    "quickActions": "Schnellaktionen",
+    "detectedChapters": "Erkannte Kapitel",
+    "removeBlank": "Leere Seiten entfernen",
+    "removeDuplicates": "Duplikate entfernen",
+    "fixRotation": "Drehung korrigieren",
+    "moveTOC": "Inhaltsverzeichnis nach vorne",
+    "noIssues": "Keine Probleme gefunden - Dokument ist in Ordnung!"
+  },
+  "smartCompression": {
+    "title": "Smarte Analyse",
+    "analyzing": "Analysiere Inhalt...",
+    "highPotential": "Hohes Kompressionspotenzial",
+    "optimized": "Datei bereits optimiert",
+    "images": "Bilder",
+    "structure": "Struktur",
+    "heavy": "Viele Bilder",
+    "light": "Vorwiegend Text",
+    "recommendation": "Empfohlener Modus",
+    "apply": "Empfehlung anwenden",
+    "applied": "Empfehlung angewendet",
+    "insights": {
+      "mostlyText": "Hauptsächlich Textinhalt",
+      "imageCount": "Enthält ~{count} Bilder",
+      "largeImages": "Große Dateigröße wegen Bildern",
+      "highDensity": "Hohe Inhaltsdichte",
+      "efficient": "Bereits effiziente Struktur",
+      "standard": "Standard-PDF-Analyse"
+    }
+  },
+  "smartImageFilter": {
+    "title": "Intelligenter Bildfilter",
+    "analyzing": "Bilder werden analysiert...",
+    "totalImages": "Gesamt",
+    "useful": "Nützlich",
+    "junk": "Unwichtig",
+    "quickFilters": "Schnellfilter",
+    "categories": "Kategorien",
+    "processingInfo": "Die gesamte Analyse wird lokal in Ihrem Browser durchgeführt. Bilder werden nach Größe, Format und Eigenschaften kategorisiert.",
+    "presets": {
+      "useful": {
+        "label": "Nützliche Bilder",
+        "description": "Nur Fotos und Diagramme"
+      },
+      "photosOnly": {
+        "label": "Nur Fotos",
+        "description": "Hochwertige Fotos"
+      },
+      "excludeIcons": {
+        "label": "Keine Icons",
+        "description": "Kleine Icons ausschließen"
+      },
+      "large": {
+        "label": "Große Bilder",
+        "description": "Bilder > 0,1 MP"
+      }
+    },
+    "junkWarning": {
+      "title": "Minderwertige Bilder erkannt",
+      "description": "Gefunden {count} kleine Icons/Dekorationen. Erwägen Sie die Verwendung des Filters 'Nützliche Bilder'."
     }
   },
   "compress": {
@@ -165,122 +381,6 @@
       "description": "Ihre PDF wurde automatisch geladen"
     }
   },
-  "smartCompression": {
-    "title": "Smarte Analyse",
-    "analyzing": "Analysiere Inhalt...",
-    "highPotential": "Hohes Kompressionspotenzial",
-    "optimized": "Datei bereits optimiert",
-    "images": "Bilder",
-    "structure": "Struktur",
-    "heavy": "Viele Bilder",
-    "light": "Vorwiegend Text",
-    "recommendation": "Empfohlener Modus",
-    "apply": "Empfehlung anwenden",
-    "applied": "Empfehlung angewendet",
-    "insights": {
-      "mostlyText": "Hauptsächlich Textinhalt",
-      "imageCount": "Enthält ~{count} Bilder",
-      "largeImages": "Große Dateigröße wegen Bildern",
-      "highDensity": "Hohe Inhaltsdichte",
-      "efficient": "Bereits effiziente Struktur",
-      "standard": "Standard-PDF-Analyse"
-    }
-  },
-  "common": {
-    "upload": "Dateien hochladen",
-    "uploadDescription": "Ziehen und ablegen oder klicken zum Hochladen",
-    "selectFile": "Datei auswählen",
-    "uploadFile": "Datei hochladen",
-    "supportId": "Support-ID",
-    "feedback": "Feedback geben",
-    "feedbackTitle": "Wir schätzen Ihr Feedback",
-    "feedbackDescription": "Helfen Sie uns, LocalPDF zu verbessern. Ihr Feedback ist anonym, es sei denn, Sie geben eine E-Mail-Adresse an.",
-    "rating": "Bewertung",
-    "ratingRequired": "Bitte wählen Sie eine Bewertung aus",
-    "comment": "Kommentar",
-    "commentPlaceholder": "Was können wir verbessern?",
-    "email": "E-Mail",
-    "optional": "optional",
-    "sendFeedback": "Feedback senden",
-    "sending": "Wird gesendet...",
-    "feedbackSuccess": "Vielen Dank für Ihr Feedback!",
-    "feedbackError": "Fehler beim Senden des Feedbacks. Bitte versuchen Sie es später erneut.",
-    "supportDeveloper": "Entwickler unterstützen",
-    "download": "Herunterladen",
-    "processing": "Verarbeitung läuft...",
-    "error": "Fehler",
-    "success": "Erfolg",
-    "cancel": "Abbrechen",
-    "close": "Schließen",
-    "back": "Zurück",
-    "next": "Weiter",
-    "done": "Fertig",
-    "remove": "Entfernen",
-    "newFile": "Neue Datei",
-    "filePreview": "Dateivorschau",
-    "totalPages": "Gesamtseiten",
-    "fileSize": "Dateigröße",
-    "changeFile": "Datei ändern",
-    "autoLoaded": "Datei vom vorherigen Tool geladen",
-    "autoLoadedDescription": "Ihr PDF wurde automatisch geladen",
-    "reset": "Zurücksetzen",
-    "processAnother": "Weitere verarbeiten",
-    "relatedTools": "Verwandte Tools",
-    "clickToEdit": "Zum Bearbeiten klicken",
-    "convertAnother": "Convert another",
-    "quickActions": "Quick Actions",
-    "preview": "Preview",
-    "clearAll": "Clear All",
-    "processingTime": "Verarbeitungszeit",
-    "generatingThumbnails": "Erstelle Vorschaubilder...",
-    "whatsNext": "Was als Nächstes?",
-    "continueWorking": "Arbeiten Sie weiter mit diesen Tools:",
-    "selectAll": "Alle auswählen",
-    "convert": "Konvertieren",
-    "hide": "Verbergen",
-    "loading": "Laden...",
-    "previous": "Zurück",
-    "extensionPromptTitle": "Hol dir die LocalPDF Chrome-Erweiterung",
-    "extensionPromptBody": "Starte LocalPDF nach jedem Download mit einem Klick.",
-    "extensionPromptCta": "Chrome-Erweiterung holen",
-    "extensionPromptDismiss": "Nein danke",
-    "save": "Speichern",
-    "show": "Anzeigen",
-    "zoom": "Zoom",
-    "zoomIn": "Vergrößern",
-    "zoomOut": "Verkleinern",
-    "addFiles": "Weitere Dateien hinzufügen",
-    "errors": {
-      "previewFailed": "Vorschau konnte nicht geladen werden"
-    },
-    "searching": "Suchen...",
-    "page": "Page",
-    "pages": "pages",
-    "selectedFile": "Selected file",
-    "originalSize": "Original size",
-    "newSize": "New size",
-    "useInOtherTools": "Use in other tools",
-    "recommended": "Empfohlen"
-  },
-  "upload": {
-    "selectFiles": "Dateien auswählen",
-    "dragOrClick": "Dateien hierher ziehen oder klicken zum Auswählen",
-    "dropHere": "Dateien hier ablegen",
-    "multipleFilesAllowed": "Unterstützt bis zu 10 Dateien",
-    "singleFileAllowed": "Nur eine Datei",
-    "pasteHint": "Oder drücken Sie Strg+V zum Einfügen von Dateien",
-    "maxFiles": "Maximale Dateien",
-    "maxSize": "Maximale Größe pro Datei",
-    "acceptedTypes": "Akzeptierte Typen",
-    "errors": {
-      "tooManyFiles": "Zu viele Dateien. Maximum: {max}",
-      "invalidFileType": "Ungültiger Dateityp. Bitte wählen Sie nur PDF-Dateien.",
-      "fileTooLarge": "Datei zu groß. Maximale Größe: {max} MB"
-    },
-    "readyToProcess": "Privates Refugium",
-    "filesReadySingle": "{count} Datei bereit",
-    "filesReadyPlural": "{count} Dateien bereit"
-  },
   "flatten": {
     "filePreview": "Datei zum Glätten",
     "description": "PDF-Formulare und Anmerkungen unbedienbar machen",
@@ -306,135 +406,6 @@
       "title": "Datei vom vorherigen Tool geladen",
       "description": "Ihre PDF wurde automatisch geladen"
     }
-  },
-  "imagesToPdf": {
-    "imagesList": "Bilder",
-    "settings": "PDF-Einstellungen",
-    "pageSize": "Seitengröße",
-    "pageSizes": {
-      "fit": "An Bild anpassen",
-      "a4": "A4",
-      "letter": "Letter"
-    },
-    "orientation": "Ausrichtung",
-    "orientations": {
-      "portrait": "Hochformat",
-      "landscape": "Querformat"
-    },
-    "margin": "Rand",
-    "convert": "In PDF konvertieren",
-    "convertAnother": "Weitere konvertieren",
-    "errors": {
-      "noImages": "Bitte wählen Sie mindestens ein Bild aus"
-    },
-    "success": {
-      "title": "Bilder erfolgreich konvertiert!",
-      "pages": "Erstellte Seiten"
-    },
-    "successMessage": "PDF mit {count} Seiten erfolgreich erstellt",
-    "quickActions": {
-      "title": "Was als Nächstes?",
-      "description": "Arbeiten Sie weiter mit Ihrer PDF:",
-      "compress": "Dateigröße reduzieren",
-      "protect": "Passwort hinzufügen",
-      "watermark": "Wasserzeichen hinzufügen",
-      "merge": "Mit anderen kombinieren"
-    }
-  },
-  "smartMerge": {
-    "title": "Intelligentes Zusammenführen",
-    "analyzing": "Dokumente werden analysiert...",
-    "sortSuggestions": "Sortiervorschläge",
-    "detectedDates": "Erkannte Daten",
-    "duplicatesFound": "Mögliche Duplikate gefunden",
-    "similarFiles": "ähnliche Dateien",
-    "keepFirst": "Erste behalten",
-    "sortApplied": "Sortierung angewendet",
-    "duplicatesRemoved": "Duplikate entfernt"
-  },
-  "smartOrganize": {
-    "title": "Intelligente Organisation",
-    "analyzing": "Seiten werden analysiert...",
-    "quickActions": "Schnellaktionen",
-    "detectedChapters": "Erkannte Kapitel",
-    "removeBlank": "Leere Seiten entfernen",
-    "removeDuplicates": "Duplikate entfernen",
-    "fixRotation": "Drehung korrigieren",
-    "moveTOC": "Inhaltsverzeichnis nach vorne",
-    "noIssues": "Keine Probleme gefunden - Dokument ist in Ordnung!"
-  },
-  "smartImageFilter": {
-    "title": "Intelligenter Bildfilter",
-    "analyzing": "Bilder werden analysiert...",
-    "totalImages": "Gesamt",
-    "useful": "Nützlich",
-    "junk": "Unwichtig",
-    "quickFilters": "Schnellfilter",
-    "categories": "Kategorien",
-    "processingInfo": "Die gesamte Analyse wird lokal in Ihrem Browser durchgeführt. Bilder werden nach Größe, Format und Eigenschaften kategorisiert.",
-    "presets": {
-      "useful": {
-        "label": "Nützliche Bilder",
-        "description": "Nur Fotos und Diagramme"
-      },
-      "photosOnly": {
-        "label": "Nur Fotos",
-        "description": "Hochwertige Fotos"
-      },
-      "excludeIcons": {
-        "label": "Keine Icons",
-        "description": "Kleine Icons ausschließen"
-      },
-      "large": {
-        "label": "Große Bilder",
-        "description": "Bilder > 0,1 MP"
-      }
-    },
-    "junkWarning": {
-      "title": "Minderwertige Bilder erkannt",
-      "description": "Gefunden {count} kleine Icons/Dekorationen. Erwägen Sie die Verwendung des Filters 'Nützliche Bilder'."
-    }
-  },
-  "extractImages": {
-    "title": "Bilder extrahieren/entfernen",
-    "mode": "Extraktionsmodus",
-    "extractDescription": "Alle Bilder aus PDF extrahieren",
-    "smartFilter": {
-      "quickFilters": "Schnellfilter",
-      "categories": {
-        "all": "Alle",
-        "photo": "Fotos",
-        "chart": "Diagramme",
-        "logo": "Logos",
-        "icon": "Symbole",
-        "decoration": "Dekorationen",
-        "other": "Andere"
-      },
-      "presets": {
-        "photosOnly": "Nur Fotos",
-        "useful": "Nützliche Bilder",
-        "large": "Große Bilder",
-        "charts": "Diagramme",
-        "excludeIcons": "Keine Symbole"
-      },
-      "usefulJunk": "{useful} useful / {junk} junk detected"
-    },
-    "description": "Extract all images from a PDF or remove them to reduce file size.",
-    "modeExtract": "Extract Images",
-    "modeRemove": "Bilder entfernen",
-    "removeDescription": "Bilder aus der PDF entfernen, um die Dateigröße zu reduzieren. Sie können auswählen, welche Bilder entfernt werden sollen.",
-    "extractBtn": "Bilder extrahieren",
-    "removeBtn": "Bilder analysieren",
-    "successExtract": "Bilder erfolgreich extrahiert!",
-    "successRemove": "Bilder erfolgreich entfernt!",
-    "previewTitle": "Extrahierte Bilder",
-    "previewTitleRemove": "Bilder zum Entfernen auswählen",
-    "previewDescription": "{count} Bilder gefunden. Wählen Sie die Bilder zum Herunterladen aus.",
-    "previewDescriptionRemove": "{count} Bilder gefunden. Wählen Sie die Bilder aus, die aus der PDF entfernt werden sollen.",
-    "selectAll": "Alle auswählen",
-    "downloadSelected": "Herunterladen ({count})",
-    "removeSelected": "Entfernen ({count})",
-    "noImagesSelected": "Bitte wählen Sie mindestens ein Bild zum Herunterladen aus."
   },
   "split": {
     "filePreview": "Zu teilende Datei",
@@ -607,6 +578,17 @@
     }
   },
   "ocr": {
+    "errors": {
+      "limitReached": "OCR Limit Reached",
+      "limitReachedDesc": "You reached your monthly limit of {limit} pages for {plan} plan.",
+      "noFile": "Please select a file first",
+      "processingFailed": "OCR processing failed. Please try again.",
+      "unsupportedFileType": "OCR only supports PDF and image files (JPG, PNG). Your file type (.{ext}) is not supported.",
+      "hocrEmpty": "hOCR data is empty. Please try running OCR again.",
+      "tsvEmpty": "TSV data is empty. Please try running OCR again.",
+      "searchablePdfFailed": "Failed to create searchable PDF: {error}",
+      "downloadFailed": "Failed to generate file. Please try again."
+    },
     "filePreview": "Datei zu verarbeiten",
     "recognitionLanguage": "Erkennungssprache",
     "languageHint": "Wählen Sie die Sprache des Textes in Ihrem Dokument",
@@ -619,8 +601,6 @@
     "firstPageOnly": "Nur erste Seite",
     "allPages": "Alle Seiten",
     "pageRange": "Seitenbereich",
-    "page": "Seite",
-    "pages": "Seiten",
     "processed": "verarbeitet",
     "processingPage": "Verarbeite Seite {current} von {total}...",
     "startOCR": "OCR starten",
@@ -637,11 +617,6 @@
     "confidence": "Genauigkeit",
     "extractedText": "Extrahierter Text",
     "copyText": "Text kopieren",
-    "downloadTXT": "TXT herunterladen",
-    "textCopied": "Text in Zwischenablage kopiert!",
-    "remove": "Entfernen",
-    "newFile": "Neue Datei",
-    "preview": "Vorschau",
     "view": "Ansicht",
     "edit": "Bearbeiten",
     "editPlaceholder": "Bearbeiten Sie hier Ihren extrahierten Text...",
@@ -649,13 +624,34 @@
     "words": "Wörter",
     "lines": "Zeilen",
     "characters": "Zeichen",
-    "languageDetection": {
-      "highConfidence": "Hohe Wahrscheinlichkeit",
-      "mediumConfidence": "Mittlere Wahrscheinlichkeit",
-      "lowConfidence": "Niedrige Wahrscheinlichkeit",
-      "verifyLanguage": "Überprüfen Sie die Sprachauswahl für bessere OCR-Genauigkeit"
-    },
+    "page": "Seite",
+    "pages": "Seiten",
+    "textCopied": "Text in Zwischenablage kopiert!",
+    "remove": "Entfernen",
+    "newFile": "Neue Datei",
+    "preview": "Vorschau",
     "startOver": "Neu starten",
+    "downloadTXT": "TXT herunterladen",
+    "download": {
+      "createSearchablePdf": "Durchsuchbare PDF erstellen",
+      "downloadHocr": "hOCR herunterladen",
+      "downloadTsv": "TSV herunterladen",
+      "downloadTxt": "TXT herunterladen",
+      "searchablePdfReady": "Bereit zum Erstellen!",
+      "searchablePdfDownloaded": "Heruntergeladen!"
+    },
+    "results": {
+      "title": "OCR-Ergebnisse",
+      "extractedText": "Extrahierter Text",
+      "resultReady": "Ergebnis bereit",
+      "successMessage": "Ihre PDF wurde erfolgreich verarbeitet. Sie können das Ergebnis nun in der Seitenleiste herunterladen.",
+      "textReady": "Erkannter Text",
+      "searchablePdfReady": "Bereit für durchsuchbare PDF",
+      "hocrReady": "hOCR Daten bereit",
+      "tsvReady": "TSV Daten bereit",
+      "pagesWillProcess": "{count} {pages} werden mit OCR verarbeitet",
+      "confidenceAndPages": "Genauigkeit: {confidence}% • {count} {pages} verarbeitet"
+    },
     "languages": {
       "eng": "Englisch",
       "rus": "Russisch",
@@ -684,15 +680,6 @@
       "tsvShort": "TSV (Daten)",
       "tsvDesc": "Tab-getrennte Werte mit Koordinaten"
     },
-    "results": {
-      "textReady": "Erkannter Text",
-      "searchablePdfReady": "Bereit für durchsuchbare PDF",
-      "hocrReady": "hOCR Daten bereit",
-      "tsvReady": "TSV Daten bereit",
-      "pagesWillProcess": "{count} {pages} werden mit OCR verarbeitet",
-      "confidenceAndPages": "Genauigkeit: {confidence}% • {count} {pages} verarbeitet",
-      "successMessage": "Ihre PDF wurde erfolgreich verarbeitet. Sie können das Ergebnis nun in der Seitenleiste herunterladen."
-    },
     "infoPanel": {
       "searchablePdfTitle": "Durchsuchbare PDF mit unsichtbarer Textebene",
       "searchablePdfDesc": "Originalbilder bleiben erhalten. OCR-Text wird als unsichtbare Ebene hinzugefügt.",
@@ -701,39 +688,22 @@
       "tsvTitle": "TSV Format",
       "tsvDesc": "Tabellenkalkulationsformat mit Koordinaten."
     },
-    "download": {
-      "createSearchablePdf": "Durchsuchbare PDF erstellen",
-      "downloadHocr": "hOCR herunterladen",
-      "downloadTsv": "TSV herunterladen",
-      "downloadTxt": "TXT herunterladen",
-      "searchablePdfReady": "Bereit zum Erstellen!",
-      "searchablePdfDownloaded": "Heruntergeladen!"
-    },
     "infoTitle": "Über OCR",
     "info1": "Unterstützt PDF und Bilder (JPG, PNG)",
     "info2": "Erkennung in 5 Sprachen: EN, RU, DE, FR, ES",
     "info3": "Mehrseitige PDFs unterstützt",
-    "info4": "Verarbeitung im Browser - privat",
-    "errors": {
-      "noFile": "Please select a file first",
-      "processingFailed": "OCR processing failed. Please try again.",
-      "unsupportedFileType": "OCR only supports PDF and image files (JPG, PNG). Your file type (.{ext}) is not supported.",
-      "hocrEmpty": "hOCR data is empty. Please try running OCR again.",
-      "tsvEmpty": "TSV data is empty. Please try running OCR again.",
-      "searchablePdfFailed": "Failed to create searchable PDF: {error}",
-      "downloadFailed": "Failed to generate file. Please try again."
-    }
+    "info4": "Verarbeitung im Browser - privat"
   },
   "watermark": {
-    "mode": "Modus",
-    "textMode": "Text",
-    "imageMode": "Bild",
-    "chooseImage": "Bild auswählen",
     "filePreview": "Datei für Wasserzeichen",
     "settings": "Wasserzeichen-Einstellungen",
     "text": "Wasserzeichen Text",
     "watermarkText": "Wasserzeichen Text",
     "watermarkPlaceholder": "Text eingeben",
+    "mode": "Modus",
+    "textMode": "Text",
+    "imageMode": "Bild",
+    "chooseImage": "Bild auswählen",
     "image": "Bild",
     "imageScale": "Bildskalierung",
     "position": "Position",
@@ -768,13 +738,15 @@
       "noText": "Bitte Text eingeben",
       "noImage": "Bitte wählen Sie zuerst ein Bild aus",
       "failed": "Fehler beim Hinzufügen",
-      "cyrillicNotSupported": "Zeichen möglicherweise nicht unterstützt"
+      "cyrillicNotSupported": "Zeichen möglicherweise nicht unterstützt",
+      "textRequired": "Please enter watermark text"
     },
     "success": {
       "title": "Wasserzeichen erfolgreich!",
       "watermarkApplied": "Wasserzeichen",
       "pages": "Seiten verarbeitet",
-      "size": "Dateigröße"
+      "size": "Dateigröße",
+      "time": "Processing time"
     },
     "quickActions": {
       "title": "Was als Nächstes?",
@@ -787,11 +759,19 @@
     "infoTitle": "Über Wasserzeichen",
     "info1": "Text-Wasserzeichen unterstützt",
     "info2": "6 Positionen",
-    "info3": "Lokale Verarbeitung"
+    "info3": "Lokale Verarbeitung",
+    "applyAnother": "Apply another watermark",
+    "applyButton": "Apply watermark",
+    "autoLoaded": {
+      "title": "Watermark loaded",
+      "description": "Your file was loaded from the previous tool"
+    }
   },
   "rotate": {
     "settings": "Rotations-Einstellungen",
     "applyToAll": "Auf alle Dateien anwenden",
+    "nextPage": "Next page",
+    "prevPage": "Previous page",
     "selectAngle": "Winkel wählen",
     "clockwise": "Im Uhrzeigersinn",
     "upsideDown": "Kopfüber",
@@ -800,7 +780,7 @@
     "allPages": "Alle Seiten",
     "rotateAllPages": "Alle Seiten drehen",
     "specificPages": "Bestimmte Seiten",
-    "choosePages": "Welche Seiten drehen",
+    "chooseWhichPages": "Choose which pages to rotate",
     "pageNumbers": "Seitennummern",
     "pageNumbersHint": "Bsp: 1,3,5-7 (Gesamt: {total})",
     "rotateButton": "PDF drehen",
@@ -861,6 +841,40 @@
       "merge": "Zusammenführen"
     }
   },
+  "imagesToPdf": {
+    "imagesList": "Bilder",
+    "settings": "PDF-Einstellungen",
+    "pageSize": "Seitengröße",
+    "pageSizes": {
+      "fit": "An Bild anpassen",
+      "a4": "A4",
+      "letter": "Letter"
+    },
+    "orientation": "Ausrichtung",
+    "orientations": {
+      "portrait": "Hochformat",
+      "landscape": "Querformat"
+    },
+    "margin": "Rand",
+    "convert": "In PDF konvertieren",
+    "convertAnother": "Weitere konvertieren",
+    "errors": {
+      "noImages": "Bitte wählen Sie mindestens ein Bild aus"
+    },
+    "success": {
+      "title": "Bilder erfolgreich konvertiert!",
+      "pages": "Erstellte Seiten"
+    },
+    "successMessage": "PDF mit {count} Seiten erfolgreich erstellt",
+    "quickActions": {
+      "title": "Was als Nächstes?",
+      "description": "Arbeiten Sie weiter mit Ihrer PDF:",
+      "compress": "Dateigröße reduzieren",
+      "protect": "Passwort hinzufügen",
+      "watermark": "Wasserzeichen hinzufügen",
+      "merge": "Mit anderen kombinieren"
+    }
+  },
   "pdfToImages": {
     "title": "PDF zu Bildern",
     "description": "PDF-Seiten in Bilder konvertieren",
@@ -913,6 +927,8 @@
     "options": "Optionen",
     "smartHeadings": "Smarte Überschriften",
     "smartHeadingsDescription": "Überschriften automatisch erkennen",
+    "extractComments": "Extract Comments",
+    "extractCommentsDescription": "Convert PDF sticky notes to Word comments",
     "errors": {
       "noFile": "Bitte PDF wählen",
       "invalidPdf": "Ungültige PDF",
@@ -923,20 +939,43 @@
     "conversionComplete": "Konvertierung abgeschlossen"
   },
   "sign": {
+    "signatureType": "Signaturtyp",
+    "drawSignature": "Unterschrift zeichnen",
+    "uploadImage": "Bild hochladen",
+    "signatureText": "Unterschriftstext",
+    "position": "Position",
+    "positions": {
+      "bottomRight": "Unten rechts",
+      "bottomLeft": "Unten links",
+      "topRight": "Oben rechts",
+      "topLeft": "Oben links",
+      "custom": "Manuell (Drag & Drop)"
+    },
+    "dragToMove": "Zum Umpositionieren ziehen",
+    "applyToPages": "Auf Seiten anwenden",
+    "allPages": "Alle Seiten",
+    "pageNumber": "Seite {number}",
+    "pagesSigned": "Signierte Seiten",
+    "fileSize": "Dateigröße",
+    "yourName": "Ihr Name",
+    "loadingHighQuality": "Hohe Qualität laden...",
+    "generatingPreview": "Vorschau wird erstellt...",
     "nextPage": "Nächste Seite",
     "prevPage": "Vorherige Seite",
     "zoom": "Zoom",
     "zoomIn": "Vergrößern",
     "zoomOut": "Verkleinern",
-    "generatingPreview": "Vorschau wird erstellt...",
+    "saving": "Speichern...",
+    "addingSignature": "Signatur wird hinzugefügt...",
+    "signingPage": "Seite {current} von {total} wird signiert...",
     "successTitle": "PDF erfolgreich signiert!",
     "modeDraw": "Zeichnen",
     "modeUpload": "Hochladen",
     "modeText": "Text",
     "clearSignature": "Unterschrift löschen",
-    "drawSignature": "Unterschrift zeichnen",
-    "uploadImage": "Bild hochladen",
-    "signatureText": "Unterschriftstext",
+    "noFile": "Please upload a PDF file",
+    "enterText": "Please enter signature text",
+    "provideSignature": "Please draw or upload a signature",
     "textSize": "Textgröße",
     "signatureSize": "Signaturgröße",
     "includeName": "Gedruckten Namen hinzufügen",
@@ -946,6 +985,7 @@
     "color": "Farbe",
     "width": "Breite",
     "height": "Höhe",
+    "addSignature": "Place on Page",
     "apply": "Anwenden",
     "finishAndSave": "Signiertes PDF speichern",
     "quickActions": {
@@ -955,6 +995,9 @@
       "compress": "Dateigröße reduzieren",
       "watermark": "Wasserzeichen hinzufügen",
       "merge": "Mit anderen zusammenführen"
+    },
+    "errors": {
+      "signFailed": "Failed to sign PDF"
     }
   },
   "pageEditor": {
@@ -986,20 +1029,27 @@
     "extract": "Extrahieren",
     "delete": "Löschen",
     "extracting": "Seiten werden extrahiert...",
+    "pageSelection": "Page Selection",
+    "results": {
+      "successMessage": "Your document has been processed successfully. You can now download the result from the sidebar."
+    },
+    "copyText": "Copy Text",
+    "view": "View",
     "pagesDeleted": "Seiten gelöscht",
     "extractSuccess": "Seiten erfolgreich extrahiert",
     "extractError": "Fehler beim Extrahieren der Seiten",
-    "addPDF": "PDF hinzufügen",
-    "appendPages": "Seiten anhängen",
     "tips": {
       "title": "Tipps",
       "drag": "Zieh die Seiten, um sie neu anzuordnen",
       "select": "Verwende Kontrollkästchen oder klicke, um mehrere auszuwählen",
       "rotateDelete": "Fahre mit der Maus über eine Seite zum Drehen oder Löschen",
       "extract": "Verwende die Symbolleiste, um ausgewählte Seiten zu extrahieren"
-    }
+    },
+    "addPDF": "PDF hinzufügen",
+    "appendPages": "Seiten anhängen"
   },
   "addText": {
+    "title": "Text hinzufügen",
     "clickToEdit": "Zum Bearbeiten klicken",
     "addedCount": "Text hinzugefügt: {count}",
     "originalSize": "Originalgröße",
@@ -1012,7 +1062,6 @@
     "zoom": "Zoom: {scale}%",
     "pageOf": "Seite {current} von {total}",
     "defaultFileName": "dokument_mit_text.pdf",
-    "title": "Text hinzufügen",
     "toolbar": {
       "addText": "Text hinzufügen",
       "select": "Auswählen",
@@ -1085,6 +1134,7 @@
       "value": "Wert",
       "selectedByDefault": "Standardmäßig ausgewählt",
       "options": "Optionen (eine pro Zeile)",
+      "defaultOptions": "Option 1\nOption 2\nOption 3",
       "allowMultiSelect": "Mehrfachauswahl erlauben",
       "requiredField": "Pflichtfeld",
       "readOnlyField": "Schreibgeschützt",
@@ -1096,9 +1146,13 @@
       "multiline": "Mehrzeilig",
       "checkbox": "Kontrollkästchen",
       "radio": "Radiobutton",
-      "dropdown": "Dropdown"
+      "dropdown": "Dropdown",
+      "unknown": "Unknown"
     }
   },
+  "toolNotImplemented": "Tool Not Implemented",
+  "toolComingSoon": "This tool is coming soon.",
+  "toolImplementationSoon": "Tool implementation coming soon...",
   "editText": {
     "rasterizationWarning": "Hinweis: Bearbeitete Seiten werden zu Bildern.",
     "selectPage": "Seite wählen",
@@ -1139,7 +1193,7 @@
     "replacementText": "Ersatztext",
     "enterReplacementText": "Ersatztext eingeben (mehrzeilig unterstützt)...",
     "latinCharactersOnly": "⚠️ Nur lateinische Zeichen (A-Z, 0-9) werden unterstützt",
-    "applyChanges": "Wende {count} Änderung(en) an",
+    "applyChanges": "Änderungen anwenden ({count}{s})",
     "applyAllHint": "Alle Auswahlen werden auf das PDF angewendet",
     "cover": "Abdecken",
     "replace": "Ersetzen",
@@ -1170,41 +1224,65 @@
       "fitToWidth": "An Breite anpassen"
     }
   },
-  "merge": {
-    "fileList": "Dateien zum Zusammenführen",
-    "reorderHint": "Ziehen zum Neuordnen",
-    "mergeButton": "PDFs zusammenführen",
-    "mergeAnother": "Weitere zusammenführen",
-    "minFilesHint": "Fügen Sie mindestens 2 PDF-Dateien zum Zusammenführen hinzu",
-    "errors": {
-      "minFiles": "Bitte wählen Sie mindestens 2 PDF-Dateien zum Zusammenführen aus"
-    },
-    "success": {
-      "title": "PDFs erfolgreich zusammengeführt!",
-      "pages": "Gesamtseiten",
-      "size": "Dateigröße",
-      "time": "Verarbeitungszeit"
-    },
-    "quickActions": {
-      "title": "Was als Nächstes?",
-      "description": "Arbeiten Sie mit Ihrer zusammengeführten PDF weiter:",
-      "compress": "Dateigröße reduzieren",
-      "protect": "Passwort hinzufügen",
-      "watermark": "Wasserzeichen hinzufügen",
-      "split": "Seiten extrahieren"
+  "extractImages": {
+    "title": "Bilder extrahieren/entfernen",
+    "mode": "Extraktionsmodus",
+    "description": "Extract all images from a PDF or remove them to reduce file size.",
+    "modeExtract": "Extract Images",
+    "modeRemove": "Bilder entfernen",
+    "extractDescription": "Alle Bilder aus PDF extrahieren",
+    "removeDescription": "Bilder aus der PDF entfernen, um die Dateigröße zu reduzieren. Sie können auswählen, welche Bilder entfernt werden sollen.",
+    "extractBtn": "Bilder extrahieren",
+    "removeBtn": "Bilder analysieren",
+    "successExtract": "Bilder erfolgreich extrahiert!",
+    "successRemove": "Bilder erfolgreich entfernt!",
+    "previewTitle": "Extrahierte Bilder",
+    "previewTitleRemove": "Bilder zum Entfernen auswählen",
+    "previewDescription": "{count} Bilder gefunden. Wählen Sie die Bilder zum Herunterladen aus.",
+    "previewDescriptionRemove": "{count} Bilder gefunden. Wählen Sie die Bilder aus, die aus der PDF entfernt werden sollen.",
+    "selectAll": "Alle auswählen",
+    "downloadSelected": "Herunterladen ({count})",
+    "removeSelected": "Entfernen ({count})",
+    "noImagesSelected": "Bitte wählen Sie mindestens ein Bild zum Herunterladen aus.",
+    "smartFilter": {
+      "quickFilters": "Schnellfilter",
+      "usefulJunk": "{useful} useful / {junk} junk detected",
+      "categories": {
+        "all": "Alle",
+        "photo": "Fotos",
+        "chart": "Diagramme",
+        "logo": "Logos",
+        "icon": "Symbole",
+        "decoration": "Dekorationen",
+        "other": "Andere"
+      },
+      "presets": {
+        "photosOnly": "Nur Fotos",
+        "useful": "Nützliche Bilder",
+        "large": "Große Bilder",
+        "charts": "Diagramme",
+        "excludeIcons": "Keine Symbole"
+      }
     }
   },
   "tables": {
     "title": "Tabellen in PDF",
     "description": "Erstellen Sie professionelle Tabellen direkt in Ihrem Dokument",
+    "addTable": "Add Table",
+    "importExcel": "Import Excel/CSV",
     "selectTabs": "Blätter auswählen",
     "selectedTabs": "{count} Blätter ausgewählt",
     "noTabsSelected": "Bitte wählen Sie mindestens ein Blatt aus",
     "rows": "Zeilen",
     "cols": "Spalten",
+    "generate": "PDF generieren",
+    "generateWithWatermark": "Mit Wasserzeichen generieren",
     "style": {
+      "title": "Table Style",
       "header": "Kopfzeilenfarbe",
       "stripes": "Zebrastreifen",
+      "border": "Borders",
+      "font": "Font Settings",
       "orientation": "Seitenausrichtung",
       "orientations": {
         "portrait": "Hochformat",
@@ -1213,6 +1291,8 @@
       }
     },
     "actions": {
+      "insertPage": "Insert after page",
+      "float": "Floating on page",
       "generate": "PDF generieren"
     },
     "errors": {
@@ -1220,5 +1300,60 @@
       "generateFailed": "PDF-Generierung fehlgeschlagen",
       "noData": "Keine Daten in ausgewählten Blättern gefunden"
     }
+  },
+  "monetization": {
+    "upgrade_now": "Auf PRO upgraden",
+    "upgrade": "Upgrade",
+    "upgradeTitle": "Upgrade to Pro",
+    "upgradeSubtitle": "Unlock all tools & limits",
+    "proStatus": "Pro Status",
+    "activeSubscription": "Active subscription",
+    "pro_badge": "PRO",
+    "restore": "Wiederherstellen",
+    "restore_hint": "Geben Sie Ihren LemonSqueezy-Lizenzschlüssel ein",
+    "restore_button": "Kauf wiederherstellen",
+    "restore_description": "Abonnements werden automatisch mit Ihrer Support-ID synchronisiert. Verwenden Sie dieses Formular nur auf einem neuen Gerät.",
+    "choose_plan": "Plan wählen",
+    "secure_checkout": "100% Sicherer Checkout",
+    "status": "Abonnement-Status",
+    "expires": "Läuft ab am",
+    "never": "Niemals",
+    "refresh_access": "Zugang aktualisieren",
+    "once": "einmal",
+    "intervals": {
+      "month": "Monat"
+    },
+    "free": {
+      "name": "Kostenloser Plan",
+      "price": "0",
+      "interval": "für immer",
+      "cta": "Aktueller Plan",
+      "description": "Basistools und Limits"
+    },
+    "pro": {
+      "name": "Pro Abonnement",
+      "cta": "PRO beitreten",
+      "description": "Entfernen Sie alle Limits, erhalten Sie Prioritäts-Support und fortgeschrittene Tools."
+    },
+    "lifetime": {
+      "name": "Pro Lebenslang",
+      "cta": "Bester Wert",
+      "description": "Einmal zahlen, ewig genießen. Alle Pro-Funktionen enthalten."
+    },
+    "features": {
+      "no_limits": "Keine Dateilimits",
+      "batch": "Stapelverarbeitung (20+)",
+      "tier3": "Alle Tools (OCR, Sign)",
+      "support": "Prioritäts-Support",
+      "unlimited": "Unbegrenzt"
+    },
+    "premium_feature": "Premium-Funktion",
+    "premium_description": "Nutzen Sie PRO-Tools kostenlos mit einem Wasserzeichen! Aktualisieren Sie, um Wasserzeichen zu entfernen, Dateigrößen-Limits zu erhöhen und unbegrenzte tägliche Downloads zu genießen.",
+    "download_with_watermark": "Mit Wasserzeichen herunterladen",
+    "download_pro_clean": "PRO herunterladen (Clean)",
+    "daily_limit_reached": "Tageslimit für dieses Tool erreicht",
+    "daily_free_downloads_left": "Kostenlose Downloads übrig: {count}",
+    "upgrade_to_download": "Upgrade zum Herunterladen",
+    "private_secure_fast": "Private. Secure. Local."
   }
 }
