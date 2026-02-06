@@ -3,7 +3,7 @@ import { OCRWorkerManager } from './ocrWorkerManager';
 
 // Mock Tesseract.js
 vi.mock('tesseract.js', () => {
-    const createWorker = vi.fn(async (lang) => {
+    const createWorker = vi.fn(async () => {
         return {
             loadLanguage: vi.fn(),
             initialize: vi.fn(),
@@ -41,7 +41,7 @@ describe('OCRWorkerManager', () => {
     });
 
     it('should reinitialize for a different language', async () => {
-        const worker1 = await OCRWorkerManager.getWorker('eng');
+        await OCRWorkerManager.getWorker('eng');
         await OCRWorkerManager.getWorker('rus');
         const info = OCRWorkerManager.getWorkerInfo();
         expect(info.currentLanguage).toBe('rus');

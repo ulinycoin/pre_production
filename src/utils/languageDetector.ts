@@ -23,8 +23,6 @@ const detectFromContentSample = (contentSample: string): LanguageDetectionResult
 
   if (sample.length < 10) return null;
 
-  const methods: string[] = [];
-
   const cyrillicCount = countMatches(/[а-яёА-ЯЁ]/g, sample);
   if (cyrillicCount >= 5) {
     const ukrCount = countMatches(/[іїєґІЇЄҐ]/g, sample);

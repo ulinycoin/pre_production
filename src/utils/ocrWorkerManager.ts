@@ -46,7 +46,7 @@ export class OCRWorkerManager {
         console.log(`🚀 OCRWorkerManager: Creating worker with language '${language}'`);
 
         this.worker = await Tesseract.createWorker(language, 1, {
-          logger: () => {} // Suppress default logging
+          logger: () => { } // Suppress default logging
         });
 
         this.currentLanguage = language;
@@ -77,8 +77,7 @@ export class OCRWorkerManager {
     // If language is not loaded, load it
     if (!this.loadedLanguages.has(language)) {
       console.log(`📥 OCRWorkerManager: Loading new language '${language}'`);
-      await this.worker.loadLanguage(language);
-      await this.worker.initialize(language);
+      await this.worker.reinitialize(language);
       this.loadedLanguages.add(language);
     } else {
       // Language already loaded, just reinitialize with it
@@ -107,8 +106,7 @@ export class OCRWorkerManager {
         const lang = languages[i];
         if (!this.loadedLanguages.has(lang) && this.worker) {
           console.log(`📥 OCRWorkerManager: Preloading language '${lang}'`);
-          await this.worker.loadLanguage(lang);
-          await this.worker.initialize(lang);
+          await this.worker.reinitialize(lang);
           this.loadedLanguages.add(lang);
         }
       }

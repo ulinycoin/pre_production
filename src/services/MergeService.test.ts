@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { describe, it, expect, beforeEach } from 'vitest';
 import { MergeService } from './MergeService';
 
 describe('MergeService', () => {
@@ -10,7 +10,7 @@ describe('MergeService', () => {
 
     it('should throw an error if less than 2 files are provided', async () => {
         const files = [new File([''], 'test1.pdf', { type: 'application/pdf' })];
-        const result = await mergeService.mergePDFs(files);
+        const result = await mergeService.mergePDFs(files, () => { });
 
         expect(result.success).toBe(false);
         expect(result.error?.message).toBe('At least 2 files are required for merging');
@@ -22,7 +22,7 @@ describe('MergeService', () => {
         const files = [file1, file2];
 
         const log: string[] = [];
-        const onProgress = (p: number, msg: string) => {
+        const onProgress = (_p: number, msg: string) => {
             log.push(msg);
         };
 

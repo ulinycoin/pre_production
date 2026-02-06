@@ -1,0 +1,38 @@
+src/components/common/preview/PreviewCanvas.tsx(50,30): error TS2724: '"/Users/aleksejs/Desktop/Localpdf_v3/node_modules/pdfjs-dist/types/src/pdf"' has no exported member named 'PDFRenderTask'. Did you mean 'RenderTask'?
+src/components/common/preview/PreviewCanvas.tsx(92,23): error TS2694: Namespace '"/Users/aleksejs/Desktop/Localpdf_v3/node_modules/pdfjs-dist/types/src/pdf"' has no exported member 'RenderParameters'.
+src/components/modals/SubscriptionModal.tsx(189,79): error TS2339: Property 'currency' does not exist on type 'TierInfo'.
+  Property 'currency' does not exist on type '{ name: string; price: number; features: string[]; tier: number[]; }'.
+src/components/modals/SubscriptionModal.tsx(192,56): error TS2339: Property 'interval' does not exist on type 'TierInfo'.
+  Property 'interval' does not exist on type '{ name: string; price: number; features: string[]; tier: number[]; }'.
+src/components/modals/SubscriptionModal.tsx(192,136): error TS2339: Property 'interval' does not exist on type 'TierInfo'.
+  Property 'interval' does not exist on type '{ name: string; price: number; features: string[]; tier: number[]; }'.
+src/components/smart/SmartCompressionPanel.tsx(84,61): error TS2345: Argument of type 'Record<string, unknown> | undefined' is not assignable to parameter of type 'Record<string, string | number> | undefined'.
+  Type 'Record<string, unknown>' is not assignable to type 'Record<string, string | number>'.
+    'string' index signatures are incompatible.
+      Type 'unknown' is not assignable to type 'string | number'.
+src/components/tools/AddFormFieldsPDF.tsx(256,16): error TS2304: Cannot find name 'RefreshCw'.
+src/components/tools/ExtractImagesPDF.tsx(150,41): error TS2345: Argument of type 'Blob | undefined' is not assignable to parameter of type 'Blob'.
+  Type 'undefined' is not assignable to type 'Blob'.
+src/components/tools/ExtractImagesPDF.tsx(153,48): error TS2345: Argument of type '{ blob: Blob | undefined; filename: string; }[]' is not assignable to parameter of type '{ blob: Blob; filename: string; }[]'.
+  Type '{ blob: Blob | undefined; filename: string; }' is not assignable to type '{ blob: Blob; filename: string; }'.
+    Types of property 'blob' are incompatible.
+      Type 'Blob | undefined' is not assignable to type 'Blob'.
+        Type 'undefined' is not assignable to type 'Blob'.
+src/components/tools/PDFToWord.tsx(13,3): error TS6133: 'Download' is declared but its value is never read.
+src/components/tools/PDFToWord.tsx(14,3): error TS6133: 'Archive' is declared but its value is never read.
+src/components/tools/PDFToWord.tsx(16,3): error TS6133: 'X' is declared but its value is never read.
+src/components/tools/WordToPDF.tsx(24,3): error TS6133: 'Archive' is declared but its value is never read.
+src/components/tools/WordToPDF.tsx(32,3): error TS6133: 'Scissors' is declared but its value is never read.
+src/components/WelcomeScreen.tsx(206,58): error TS2339: Property 'pageCount' does not exist on type 'PDFFileInfo'.
+src/hooks/usePDFThumbnails.tsx(90,27): error TS2345: Argument of type '{ canvasContext: CanvasRenderingContext2D; viewport: PageViewport; }' is not assignable to parameter of type 'RenderParameters'.
+  Property 'canvas' is missing in type '{ canvasContext: CanvasRenderingContext2D; viewport: PageViewport; }' but required in type 'RenderParameters'.
+src/services/MergeService.test.ts(1,32): error TS6133: 'vi' is declared but its value is never read.
+src/services/MergeService.test.ts(25,29): error TS6133: 'p' is declared but its value is never read.
+src/services/SplitService.test.ts(7,5): error TS2304: Cannot find name 'beforeEach'.
+src/utils/languageDetector.ts(26,9): error TS6133: 'methods' is declared but its value is never read.
+src/utils/OCR.test.ts(6,39): error TS6133: 'lang' is declared but its value is never read.
+src/utils/OCR.test.ts(44,15): error TS6133: 'worker1' is declared but its value is never read.
+src/utils/ocrWorkerManager.ts(80,25): error TS2339: Property 'loadLanguage' does not exist on type 'Worker'.
+src/utils/ocrWorkerManager.ts(81,25): error TS2551: Property 'initialize' does not exist on type 'Worker'. Did you mean 'reinitialize'?
+src/utils/ocrWorkerManager.ts(110,29): error TS2339: Property 'loadLanguage' does not exist on type 'Worker'.
+src/utils/ocrWorkerManager.ts(111,29): error TS2551: Property 'initialize' does not exist on type 'Worker'. Did you mean 'reinitialize'?

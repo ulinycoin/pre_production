@@ -18,20 +18,18 @@ import { Badge } from '@/components/ui/badge';
 import {
   RotateCw,
   RefreshCw,
-  FileStack,
   FileText,
-  Download,
-  Archive,
   Loader2,
+  PenTool,
+  Download,
   Plus,
+  Trash2,
   ChevronLeft,
   ChevronRight,
-  Maximize,
   ZoomIn,
   ZoomOut,
-  Scissors,
-  PenTool,
-  Trash2
+  Maximize,
+  FileStack
 } from 'lucide-react';
 
 type ConversionMode = 'formatted' | 'text';

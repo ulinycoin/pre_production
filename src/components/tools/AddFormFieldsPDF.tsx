@@ -9,7 +9,7 @@ import { FieldPanel } from './AddFormFieldsPDF/FieldPanel';
 import { addFormFieldsToPDF } from '@/services/pdfService';
 import type { UploadedFile } from '@/types/pdf';
 import type { FormField } from '@/types/formFields';
-import { CheckCircle2, Copy } from 'lucide-react';
+import { CheckCircle2, Copy, RefreshCw } from 'lucide-react';
 import { DownloadGate } from '@/components/common/DownloadGate';
 import * as pdfjsLib from 'pdfjs-dist';
 import { useSubscription } from '@/hooks/useSubscription';

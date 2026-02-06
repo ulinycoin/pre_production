@@ -47,7 +47,7 @@ export const PreviewCanvas: React.FC<PreviewCanvasProps> = ({
   useEffect(() => {
     let isMounted = true;
     let pdfDoc: pdfjsLib.PDFDocumentProxy | null = null;
-    let renderTask: pdfjsLib.PDFRenderTask | null = null;
+    let renderTask: any = null;
 
     const renderPreview = async () => {
       const source = blob || file;
@@ -89,7 +89,7 @@ export const PreviewCanvas: React.FC<PreviewCanvasProps> = ({
           canvasContext: context,
           viewport: scaledViewport,
           canvas,
-        } as pdfjsLib.RenderParameters);
+        } as any);
 
         await renderTask.promise;
         page.cleanup();

@@ -90,6 +90,7 @@ export const usePDFThumbnails = ({
         await page.render({
           canvasContext: context,
           viewport: scaledViewport,
+          canvas: canvas, // Added missing canvas property
         }).promise;
 
         // Convert to data URL

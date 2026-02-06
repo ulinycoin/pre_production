@@ -203,7 +203,7 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onToolSelect }) =>
           setUploadedFiles((prev) =>
             prev.map((item) =>
               item.id === file.id
-                ? { ...item, pages: info?.pages || info?.pageCount || undefined }
+                ? { ...item, pages: info?.pages || undefined }
                 : item
             )
           );

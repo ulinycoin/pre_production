@@ -147,9 +147,9 @@ export const ExtractImagesPDF: React.FC = () => {
             }
             const baseName = file?.name.replace(/\.pdf$/i, '') || 'images';
             if (selectedImages.length === 1) {
-                pdfService.downloadFile(selectedImages[0].blob, selectedImages[0].filename);
+                pdfService.downloadFile(selectedImages[0].blob as Blob, selectedImages[0].filename);
             } else {
-                const filesToZip = selectedImages.map(img => ({ blob: img.blob, filename: img.filename }));
+                const filesToZip = selectedImages.map(img => ({ blob: img.blob as Blob, filename: img.filename }));
                 await pdfService.downloadAsZip(filesToZip, `${baseName}_images.zip`);
             }
         } else if (mode === 'remove' && result?.success && result.data && !(result.data instanceof Array)) {

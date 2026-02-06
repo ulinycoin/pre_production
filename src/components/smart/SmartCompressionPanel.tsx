@@ -81,7 +81,7 @@ export const SmartCompressionPanel: React.FC<SmartCompressionPanelProps> = ({
                         </div>
                         <ul className="text-xs opacity-80 list-disc list-inside">
                             {analysis.insights.slice(0, 1).map((insight, i) => (
-                                <li key={i}>{t(insight.key, insight.params)}</li>
+                                <li key={i}>{t(insight.key, insight.params as any)}</li>
                             ))}
                         </ul>
                     </div>

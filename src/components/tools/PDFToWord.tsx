@@ -10,10 +10,7 @@ import { Label } from '@/components/ui/label';
 import {
   CheckCircle2,
   FileText,
-  Download,
-  Archive,
   Loader2,
-  X,
   AlertCircle,
   Eye,
   Plus,

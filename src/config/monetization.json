@@ -12,7 +12,9 @@
             "tier": [
                 1,
                 2
-            ]
+            ],
+            "interval": "once",
+            "currency": "EUR"
         },
         "pro": {
             "name": "Pro Subscription",
