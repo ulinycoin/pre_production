@@ -1,0 +1,1 @@
+const i={low:{jpegQuality:.3,resolution:72,description:"Smallest file size, basic quality"},medium:{jpegQuality:.7,resolution:150,description:"Balanced size and quality"},high:{jpegQuality:.9,resolution:300,description:"High quality, larger files"},maximum:{jpegQuality:.95,resolution:600,description:"Maximum quality, largest files"}};export{i as QUALITY_SETTINGS};
